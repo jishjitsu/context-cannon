@@ -1,0 +1,45 @@
+name: Generate Framework llms.txt
+
+# 1. When does this run?
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Runs every Sunday at midnight
+  workflow_dispatch: # Adds a "Run Workflow" button in the GitHub UI for manual testing
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    
+    # 2. The Matrix: Add as many frameworks here as you want
+    strategy:
+      matrix:
+        framework: [nextjs, react, tailwind, node, django]
+      fail-fast: false # If Next.js fails, keep running the others
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          # Required to push commits back to the repo
+          token: ${{ secrets.GITHUB_TOKEN }} 
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # 3. The Core Script
+      - name: Generate llms.txt for ${{ matrix.framework }}
+        run: npm run generate-docs -- --framework=${{ matrix.framework }}
+
+      # 4. Auto-Commit the results back to the repo
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(docs): auto-update llms.txt for ${{ matrix.framework }}"
+          file_pattern: "data/llms/*.txt" # Only commit the generated text files
+          branch: main
