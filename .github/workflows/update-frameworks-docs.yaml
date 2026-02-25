@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * 0' # Runs every Sunday at midnight
   workflow_dispatch: # Adds a "Run Workflow" button in the GitHub UI for manual testing
 
-# 🔥 THE FIX: Explicitly grant the bot permission to push commits
+# THE FIX: Explicitly grant the bot permission to push commits
 permissions:
   contents: write
 
@@ -16,6 +16,7 @@ jobs:
     
     # 2. The Matrix: Add as many frameworks here as you want
     strategy:
+      max-parallel: 1
       matrix:
         framework: [nextjs, react, tailwind, node, django]
       fail-fast: false # If Next.js fails, keep running the others
