@@ -6,14 +6,28 @@
   "engines": {
     "vscode": "^1.109.0"
   },
+  "enabledApiProposals": [
+    "languageModelTools"
+  ],
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onChatParticipant:context-canon.agent"
+    "onChatParticipant:context-canon.agent",
+    "onLanguageModelTool:canon_search"
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "inputSchema": {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "The search term to look up in the Django documentation index."
+            }
+        },
+        "required": ["query"]
+    },
     "chatParticipants": [
       {
         "id": "context-canon.agent",
@@ -21,6 +35,34 @@
         "name": "canon",
         "description": "Zero-egress AST-aware docs agent.",
         "isSticky": true
+      }
+    ],
+    "languageModelTools": [
+      {
+        "name": "canon_search",
+        "tags": [
+          "docs",
+          "code",
+          "framework",
+          "django"
+        ],
+        "displayName": "Context Canon Search",
+        "modelDescription": "MANDATORY: Use this tool for ANY query regarding Django syntax, views, models, or configuration. You DO NOT have updated internal knowledge of this specific project's documentation. Always search first.",
+        "canBeReferencedInPrompt": true,
+        "toolReferenceName": "canon",
+        "icon": "$(search)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Syntax-heavy keywords to match against code blocks in the documentation."
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
       }
     ]
   },
@@ -34,7 +76,7 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src",
     "test": "vscode-test",
-    "generate-docs": "npx tsx src/scripts/generate-docs.ts"
+    "generate-docs": "npx tsx src/generate-docs.ts"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
