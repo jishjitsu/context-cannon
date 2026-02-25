@@ -1,48 +1,40 @@
-//@ts-check
-
-'use strict';
-
 const path = require('path');
 
-//@ts-check
-/** @typedef {import('webpack').Configuration} WebpackConfig **/
-
-/** @type WebpackConfig */
-const extensionConfig = {
-  target: 'node', // VS Code extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
-	mode: 'none', // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
-
-  entry: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
+module.exports = {
+  target: 'node',
+  mode: 'none',
+  entry: './src/extension.ts',
   output: {
-    // the bundle is stored in the 'dist' folder (check package.json), 📖 -> https://webpack.js.org/configuration/output/
     path: path.resolve(__dirname, 'dist'),
     filename: 'extension.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs'
   },
+  // 🔥 THE FIX: Tell Webpack to completely ignore these imports during the build
   externals: {
-    vscode: 'commonjs vscode' // the vscode-module is created on-the-fly and must be excluded. Add other modules that cannot be webpack'ed, 📖 -> https://webpack.js.org/configuration/externals/
-    // modules added here also need to be added in the .vscodeignore file
+    'vscode': 'commonjs vscode',
+    'onnxruntime-node': 'commonjs onnxruntime-node',
+    'sharp': 'commonjs sharp',
+    'web-tree-sitter': 'commonjs web-tree-sitter' 
   },
   resolve: {
-    // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    alias: {
+        'onnxruntime-node': false,
+        'sharp': false
+    },
+    // Add the exact fallback from the web-tree-sitter docs
+    fallback: {
+      fs: false
+    }
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader'
-          }
-        ]
+        use: [{ loader: 'ts-loader' }]
       }
     ]
   },
-  devtool: 'nosources-source-map',
-  infrastructureLogging: {
-    level: "log", // enables logging required for problem matchers
-  },
+  devtool: 'nosources-source-map'
 };
-module.exports = [ extensionConfig ];
