@@ -6,6 +6,10 @@ on:
     - cron: '0 0 * * 0' # Runs every Sunday at midnight
   workflow_dispatch: # Adds a "Run Workflow" button in the GitHub UI for manual testing
 
+# 🔥 THE FIX: Explicitly grant the bot permission to push commits
+permissions:
+  contents: write
+
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
