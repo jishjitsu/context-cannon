@@ -42,6 +42,9 @@ jobs:
         run: npm run generate-docs -- --framework=${{ matrix.framework }}
 
       # 4. Auto-Commit the results back to the repo
+      - name: Pull latest changes to avoid detached head/diverged branches
+        run: git pull origin main --rebase --autostash
+        
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
