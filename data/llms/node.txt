@@ -1,3 +1,7 @@
+
+
+--- SOURCE: https://raw.githubusercontent.com/nodejs/node/main/doc/api/fs.md ---
+
 # File system
 
 <!--introduced_in=v0.10.0-->
