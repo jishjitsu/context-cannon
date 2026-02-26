@@ -43,7 +43,7 @@ jobs:
         
       # Run the offline indexer (ensure ts-node is installed or compile it first)
       - name: Build AST Index and Vectors
-        run: npx ts-node scripts/indexer.ts
+        run: npx ts-node src/scripts/indexer.ts
 
       # 4. Auto-Commit the results back to the repo
       - name: Pull latest changes to avoid detached head/diverged branches
