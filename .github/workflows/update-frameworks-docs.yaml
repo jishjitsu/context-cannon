@@ -40,6 +40,10 @@ jobs:
       # 3. The Core Script
       - name: Generate llms.txt for ${{ matrix.framework }}
         run: npm run generate-docs -- --framework=${{ matrix.framework }}
+        
+      # Run the offline indexer (ensure ts-node is installed or compile it first)
+      - name: Build AST Index and Vectors
+        run: npx ts-node scripts/indexer.ts
 
       # 4. Auto-Commit the results back to the repo
       - name: Pull latest changes to avoid detached head/diverged branches
@@ -49,5 +53,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(docs): auto-update llms.txt for ${{ matrix.framework }}"
-          file_pattern: "data/llms/*.txt" # Only commit the generated text files
+          file_pattern: "data/llms/*.txt data/canon_index.json"
           branch: main
