@@ -1,31 +1,59 @@
 name: Generate Framework llms.txt
 
-# 1. When does this run?
 on:
   schedule:
     - cron: '0 0 * * 0' # Runs every Sunday at midnight
-  workflow_dispatch: # Adds a "Run Workflow" button in the GitHub UI for manual testing
+  workflow_dispatch: 
 
-# THE FIX: Explicitly grant the bot permission to push commits
 permissions:
   contents: write
 
 jobs:
+  # ==========================================
+  # PHASE 1: Generate Docs in Parallel (Fan-Out)
+  # ==========================================
   generate-docs:
     runs-on: ubuntu-latest
-    
-    # 2. The Matrix: Add as many frameworks here as you want
     strategy:
-      max-parallel: 1
+      fail-fast: false
       matrix:
         framework: [nextjs, react, tailwind, node, django]
-      fail-fast: false # If Next.js fails, keep running the others
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          # Required to push commits back to the repo
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Generate llms.txt for ${{ matrix.framework }}
+        run: npm run generate-docs -- --framework=${{ matrix.framework }}
+        
+      # Upload the generated file temporarily to GitHub's artifact storage
+      - name: Upload Generated Doc
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-${{ matrix.framework }}
+          path: data/llms/${{ matrix.framework }}.txt
+          retention-days: 1 # We only need it for the next job
+
+  # ==========================================
+  # PHASE 2: Index and Commit (Fan-In)
+  # ==========================================
+  build-index-and-commit:
+    needs: generate-docs # Wait for ALL matrix jobs to finish
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
           token: ${{ secrets.GITHUB_TOKEN }} 
 
       - name: Setup Node.js
@@ -37,21 +65,21 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      # 3. The Core Script
-      - name: Generate llms.txt for ${{ matrix.framework }}
-        run: npm run generate-docs -- --framework=${{ matrix.framework }}
-        
-      # Run the offline indexer (ensure ts-node is installed or compile it first)
+      # Download ALL 5 generated txt files from the previous job into the llms folder
+      - name: Download All Generated Docs
+        uses: actions/download-artifact@v4
+        with:
+          path: data/llms/
+          merge-multiple: true
+
+      # Run the AST chunker and Orama indexer EXACTLY ONCE
       - name: Build AST Index and Vectors
         run: npx ts-node src/scripts/indexer.ts
 
-      # 4. Auto-Commit the results back to the repo
-      - name: Pull latest changes to avoid detached head/diverged branches
-        run: git pull origin main --rebase --autostash
-        
+      # Commit all the new text files AND the new JSON index in one atomic commit
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(docs): auto-update llms.txt for ${{ matrix.framework }}"
+          commit_message: "chore(docs): weekly update of llms.txt and canon_index.json"
           file_pattern: "data/llms/*.txt data/canon_index.json"
           branch: main
