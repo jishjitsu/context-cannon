@@ -181,7 +181,10 @@ yarn add next@latest react@latest react-dom@latest
 bun add next@latest react@latest react-dom@latest
 ```
 
-> **Good to know**: The App Router uses [React canary releases](https://react.dev/blog/2023/05/03/react-canaries) built-in, which include all the stable React 19 changes, as well as newer features being validated in frameworks. The Pages Router uses the React version you install in `package.json`.
+> **Good to know**:
+>
+> * The `App Router` uses [React canary releases](https://react.dev/blog/2023/05/03/react-canaries) built-in, which include all the stable React 19 changes, as well as newer features being validated in frameworks, but you should still declare react and react-dom in package.json for tooling and ecosystem compatibility.
+> * The `Pages Router` uses the React version from your `package.json`.
 
 Then, add the following scripts to your `package.json` file:
 
@@ -1147,6 +1150,8 @@ Next.js avoids this with client-side transitions using the `<Link>` component. I
 * Replacing the current page with the prefetched loading state or a new page if available.
 
 Client-side transitions are what makes a server-rendered apps *feel* like client-rendered apps. And when paired with [prefetching](#prefetching) and [streaming](#streaming), it enables fast transitions, even for dynamic routes.
+
+Next.js also handles [scrolling to the top of the page](/docs/app/api-reference/components/link#scroll) during client-side transitions. If content scrolls behind a sticky or fixed header after navigation, you can fix this with CSS [`scroll-padding-top`](/docs/app/api-reference/components/link#scroll-offset-with-sticky-headers).
 
 ## What can make transitions slow?
 
@@ -6108,10 +6113,11 @@ Node.js deployments support all Next.js features. Learn how to [configure them](
 * [Flightcontrol](https://github.com/nextjs/deploy-flightcontrol)
 * [Railway](https://github.com/nextjs/deploy-railway)
 * [Replit](https://github.com/nextjs/deploy-replit)
+* [Hostinger](https://github.com/hostinger/deploy-nextjs)
 
 ## Docker
 
-Next.js can be deployed to any provider that supports [Docker](https://www.docker.com/) containers. This includes container orchestrators like Kubernetes or a cloud provider that runs Docker.
+Next.js can be deployed to any provider that supports [Docker](https://www.docker.com/) containers. This includes container orchestrators like Kubernetes or a cloud provider that runs Docker. For containerization best practices, see the [Docker guide for React.js](https://docs.docker.com/guides/reactjs/).
 
 Docker deployments support all Next.js features. Learn how to [configure them](/docs/app/guides/self-hosting) for your infrastructure.
 
@@ -6119,8 +6125,14 @@ Docker deployments support all Next.js features. Learn how to [configure them](/
 
 ### Templates
 
-* [Docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
-* [Docker Multi-Environment](https://github.com/vercel/next.js/tree/canary/examples/with-docker-multi-env)
+The following examples demonstrate best practices for containerizing Next.js applications:
+
+* [Docker Standalone Output](https://github.com/vercel/next.js/tree/canary/examples/with-docker) - Deploy a Next.js application using `output: "standalone"` to generate a minimal, production-ready Docker image with only the required runtime files and dependencies.
+* [Docker Export Output](https://github.com/vercel/next.js/tree/canary/examples/with-docker-export-output) - Deploy a fully static Next.js application using `output: "export"` to generate optimized HTML files that can be served from a lightweight container or any static hosting environment.
+* [Docker Multi-Environment](https://github.com/vercel/next.js/tree/canary/examples/with-docker-multi-env) - Manage separate Docker configurations for development, staging, and production environments with different environment variables.
+
+Additionally, hosting providers offer guidance on deploying Next.js:
+
 * [DigitalOcean](https://github.com/nextjs/deploy-digitalocean)
 * [Fly.io](https://github.com/nextjs/deploy-fly)
 * [Google Cloud Run](https://github.com/nextjs/deploy-google-cloud-run)
@@ -6185,7 +6197,7 @@ yarn next upgrade
 bunx next upgrade
 ```
 
-Next.js 15 and earlier do not support the `upgrade` command and need to use a separate package instead:
+Versions before Next.js 16.1.0 do not support the `upgrade` command and need to use a separate package instead:
 
 ```bash filename="Terminal"
 npx @next/codemod@canary upgrade latest
@@ -8114,6 +8126,105 @@ export async function GET(request) {
 
 Sanitize any input used to generate markup.
 
+### Content negotiation
+
+You can use [rewrites](/docs/app/api-reference/config/next-config-js/rewrites) with header matching to serve different content types from the same URL based on the request's `Accept` header. This is known as [content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation).
+
+For example, a documentation site might serve HTML pages to browsers and raw Markdown to AI agents from the same `/docs/…` URLs.
+
+**1. Configure a rewrite that matches the `Accept` header:**
+
+```js filename="next.config.js"
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/docs/:slug*',
+        destination: '/docs/md/:slug*',
+        has: [
+          {
+            type: 'header',
+            key: 'accept',
+            value: '(.*)text/markdown(.*)',
+          },
+        ],
+      },
+    ]
+  },
+}
+```
+
+When a request to `/docs/getting-started` includes `Accept: text/markdown`, the rewrite routes it to `/docs/md/getting-started`. A Route Handler at that path returns the Markdown response. Clients that do not send `text/markdown` in their `Accept` header continue to receive the normal HTML page.
+
+**2. Create a Route Handler for the Markdown response:**
+
+```ts filename="app/docs/md/[...slug]/route.ts" switcher
+import { getDocsMd, generateDocsStaticParams } from '@/lib/docs'
+
+export async function generateStaticParams() {
+  return generateDocsStaticParams()
+}
+
+export async function GET(_: Request, ctx: RouteContext<'/docs/md/[...slug]'>) {
+  const { slug } = await ctx.params
+  const mdDoc = await getDocsMd({ slug })
+
+  if (mdDoc == null) {
+    return new Response(null, { status: 404 })
+  }
+
+  return new Response(mdDoc, {
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      Vary: 'Accept',
+    },
+  })
+}
+```
+
+```js filename="app/docs/md/[...slug]/route.js" switcher
+import { getDocsMd, generateDocsStaticParams } from '@/lib/docs'
+
+export async function generateStaticParams() {
+  return generateDocsStaticParams()
+}
+
+export async function GET(_, { params }) {
+  const { slug } = await params
+  const mdDoc = await getDocsMd({ slug })
+
+  if (mdDoc == null) {
+    return new Response(null, { status: 404 })
+  }
+
+  return new Response(mdDoc, {
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      Vary: 'Accept',
+    },
+  })
+}
+```
+
+The [`Vary: Accept`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary) response header tells caches that the response body depends on the `Accept` request header. Without it, a shared cache could serve a cached Markdown response to a browser (or vice versa). Most hosting providers already include the `Accept` header in their cache key, but setting `Vary` explicitly ensures correct behavior across all CDNs and proxy caches.
+
+`generateStaticParams` lets you pre-render the Markdown variants at build time so they can be served from the edge without hitting the origin server on every request.
+
+**3. Test it with `curl`:**
+
+```bash
+# Returns Markdown
+curl -H "Accept: text/markdown" https://example.com/docs/getting-started
+
+# Returns the normal HTML page
+curl https://example.com/docs/getting-started
+```
+
+> **Good to know:**
+>
+> * The `/docs/md/...` route is still directly accessible without the rewrite. If you want to restrict it to only serve via the rewrite, use [`proxy`](/docs/app/api-reference/file-conventions/proxy) to block direct requests that don't include the expected `Accept` header.
+> * For more advanced negotiation logic, you can use [`proxy`](/docs/app/api-reference/file-conventions/proxy) instead of rewrites for more flexibility.
+
 ### Consuming request payloads
 
 Use Request [instance methods](https://developer.mozilla.org/en-US/docs/Web/API/Request#instance_methods) like `.json()`, `.formData()`, or `.text()` to access the request body.
@@ -8751,12 +8862,14 @@ Some hosts deploy Route Handlers as lambda functions. This means:
 * WebSockets won’t work because the connection closes on timeout, or after the response is generated.
 ## API Reference
 
-Learn more about Route Handlers and Proxy
+Learn more about Route Handlers, Proxy, and Rewrites
 
 - [route.js](/docs/app/api-reference/file-conventions/route)
   - API reference for the route.js special file.
 - [proxy.js](/docs/app/api-reference/file-conventions/proxy)
   - API reference for the proxy.js file.
+- [rewrites](/docs/app/api-reference/config/next-config-js/rewrites)
+  - Add rewrites to your Next.js app.
 
 
 ---
@@ -29540,6 +29653,58 @@ const router = useRouter()
 router.push('/dashboard', { scroll: false })
 ```
 
+### Scroll offset with sticky headers
+
+Because Next.js skips sticky and fixed positioned elements when finding the scroll target, content may end up behind a sticky header after navigation. For example, if your layout has a sticky header:
+
+```tsx filename="app/layout.tsx" switcher
+import './globals.css'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <header className="sticky top-0 h-16 bg-white">
+          {/* Navigation */}
+        </header>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import './globals.css'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <header className="sticky top-0 h-16 bg-white">
+          {/* Navigation */}
+        </header>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+You can account for its height using [`scroll-padding-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-top) on the scroll container:
+
+```css filename="app/globals.css"
+html {
+  scroll-padding-top: 64px; /* Match the height of your sticky header */
+}
+```
+
+This is a browser CSS property that offsets scroll-based positioning. It applies whenever Next.js uses the native [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) API, including hash fragment (`#id`) navigation. Alternatively, you can use [`scroll-margin-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top) on individual target elements instead of setting a global offset.
+
 ### Prefetching links in Proxy
 
 It's common to use [Proxy](/docs/app/api-reference/file-conventions/proxy) for authentication or other purposes that involve rewriting the user to a different page. In order for the `<Link />` component to properly prefetch links with rewrites via Proxy, you need to tell Next.js both the URL to display and the URL to prefetch. This is required to avoid un-necessary fetches to proxy to know the correct route to prefetch.
@@ -32505,7 +32670,7 @@ Next.js provides two conventions to handle not found cases:
 
 ## `not-found.js`
 
-The **not-found** file is used to render UI when the [`notFound`](/docs/app/api-reference/functions/not-found) function is thrown within a route segment. Along with serving a custom UI, Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses.
+The **not-found** file is used to render UI when the [`notFound`](/docs/app/api-reference/functions/not-found) function is thrown within a route segment. Along with serving a custom UI, Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses (see [Status Codes](/docs/app/api-reference/file-conventions/loading#status-codes) for details about SEO).
 
 ```tsx filename="app/not-found.tsx" switcher
 import Link from 'next/link'
@@ -35750,7 +35915,7 @@ Add or generate a `manifest.(json|webmanifest)` file that matches the [Web Manif
 
 Add a `manifest.js` or `manifest.ts` file that returns a [`Manifest` object](#manifest-object).
 
-> Good to know: `manifest.js` is special Route Handlers that is cached by default unless it uses a [Dynamic API](/docs/app/guides/caching#dynamic-apis) or [dynamic config](/docs/app/guides/caching#segment-config-options) option.
+> Good to know: `manifest.js` is a special Route Handler that is cached by default unless it uses a [Dynamic API](/docs/app/guides/caching#dynamic-apis) or [dynamic config](/docs/app/guides/caching#segment-config-options) option.
 
 ```ts filename="app/manifest.ts" switcher
 import type { MetadataRoute } from 'next'
@@ -42004,7 +42169,7 @@ version: 16.1.6
 
 # notFound
 
-The `notFound` function allows you to render the [`not-found file`](/docs/app/api-reference/file-conventions/not-found) within a route segment as well as inject a `<meta name="robots" content="noindex" />` tag.
+The `notFound` function allows you to render the [`not-found file`](/docs/app/api-reference/file-conventions/not-found) within a route segment as well as inject a [`<meta name="robots" content="noindex" />`](/docs/app/api-reference/file-conventions/loading#status-codes) tag for search engines.
 
 ## `notFound()`
 
@@ -43935,7 +44100,7 @@ The `metric` object passed as the hook's argument consists of a number of proper
 * `name`: The name of the performance metric. Possible values include names of [Web Vitals](#web-vitals) metrics (TTFB, FCP, LCP, FID, CLS) specific to a web application.
 * `delta`: The difference between the current value and the previous value of the metric. The value is typically in milliseconds and represents the change in the metric's value over time.
 * `entries`: An array of [Performance Entries](https://developer.mozilla.org/docs/Web/API/PerformanceEntry) associated with the metric. These entries provide detailed information about the performance events related to the metric.
-* `navigationType`: Indicates the [type of navigation](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type) that triggered the metric collection. Possible values include `"navigate"`, `"reload"`, `"back_forward"`, and `"prerender"`.
+* `navigationType`: Indicates the navigation type that triggered metric collection. Values are derived from [PerformanceNavigationTiming.type](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type) and may include `"navigate"`, `"reload"`, `"prerender"`, `"back-forward"` (normalized from `"back_forward"`), `"back-forward-cache"` (BFCache restore), and `"restore"` (page restored after discard).
 * `rating`: A qualitative rating of the metric value, providing an assessment of the performance. Possible values are `"good"`, `"needs-improvement"`, and `"poor"`. The rating is typically determined by comparing the metric value against predefined thresholds that indicate acceptable or suboptimal performance.
 * `value`: The actual value or duration of the performance entry, typically in milliseconds. The value provides a quantitative measure of the performance aspect being tracked by the metric. The source of the value depends on the specific metric being measured and can come from various [Performance API](https://developer.mozilla.org/docs/Web/API/Performance_API)s.
 
@@ -44005,7 +44170,7 @@ You can send results to any endpoint to measure and track
 real user performance on your site. For example:
 
 ```js
-function postWebVitals(metrics) {
+function postWebVitals(metric) {
   const body = JSON.stringify(metric)
   const url = 'https://example.com/analytics'
 
@@ -52207,6 +52372,7 @@ NODE_OPTIONS='--inspect' next
 
 | Version   | Changes                                                                         |
 | --------- | ------------------------------------------------------------------------------- |
+| `v16.1.0` | Add the `next upgrade` command                                                  |
 | `v16.1.0` | Add the `next experimental-analyze` command                                     |
 | `v16.0.0` | The JS bundle size metrics have been removed from `next build`                  |
 | `v15.5.0` | Add the `next typegen` command                                                  |
@@ -53056,7 +53222,10 @@ yarn add next@latest react@latest react-dom@latest
 bun add next@latest react@latest react-dom@latest
 ```
 
-> **Good to know**: The App Router uses [React canary releases](https://react.dev/blog/2023/05/03/react-canaries) built-in, which include all the stable React 19 changes, as well as newer features being validated in frameworks. The Pages Router uses the React version you install in `package.json`.
+> **Good to know**:
+>
+> * The `App Router` uses [React canary releases](https://react.dev/blog/2023/05/03/react-canaries) built-in, which include all the stable React 19 changes, as well as newer features being validated in frameworks, but you should still declare react and react-dom in package.json for tooling and ecosystem compatibility.
+> * The `Pages Router` uses the React version from your `package.json`.
 
 Then, add the following scripts to your `package.json` file:
 
@@ -54079,10 +54248,11 @@ Node.js deployments support all Next.js features. Learn how to [configure them](
 * [Flightcontrol](https://github.com/nextjs/deploy-flightcontrol)
 * [Railway](https://github.com/nextjs/deploy-railway)
 * [Replit](https://github.com/nextjs/deploy-replit)
+* [Hostinger](https://github.com/hostinger/deploy-nextjs)
 
 ## Docker
 
-Next.js can be deployed to any provider that supports [Docker](https://www.docker.com/) containers. This includes container orchestrators like Kubernetes or a cloud provider that runs Docker.
+Next.js can be deployed to any provider that supports [Docker](https://www.docker.com/) containers. This includes container orchestrators like Kubernetes or a cloud provider that runs Docker. For containerization best practices, see the [Docker guide for React.js](https://docs.docker.com/guides/reactjs/).
 
 Docker deployments support all Next.js features. Learn how to [configure them](/docs/app/guides/self-hosting) for your infrastructure.
 
@@ -54090,8 +54260,14 @@ Docker deployments support all Next.js features. Learn how to [configure them](/
 
 ### Templates
 
-* [Docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
-* [Docker Multi-Environment](https://github.com/vercel/next.js/tree/canary/examples/with-docker-multi-env)
+The following examples demonstrate best practices for containerizing Next.js applications:
+
+* [Docker Standalone Output](https://github.com/vercel/next.js/tree/canary/examples/with-docker) - Deploy a Next.js application using `output: "standalone"` to generate a minimal, production-ready Docker image with only the required runtime files and dependencies.
+* [Docker Export Output](https://github.com/vercel/next.js/tree/canary/examples/with-docker-export-output) - Deploy a fully static Next.js application using `output: "export"` to generate optimized HTML files that can be served from a lightweight container or any static hosting environment.
+* [Docker Multi-Environment](https://github.com/vercel/next.js/tree/canary/examples/with-docker-multi-env) - Manage separate Docker configurations for development, staging, and production environments with different environment variables.
+
+Additionally, hosting providers offer guidance on deploying Next.js:
+
 * [DigitalOcean](https://github.com/nextjs/deploy-digitalocean)
 * [Fly.io](https://github.com/nextjs/deploy-fly)
 * [Google Cloud Run](https://github.com/nextjs/deploy-google-cloud-run)
@@ -56463,7 +56639,7 @@ export default function Page() {
   async function onSubmit(event) {
     event.preventDefault()
 
-    const formData = new FormData(event.target)
+    const formData = new FormData(event.currentTarget)
     const response = await fetch('/api/submit', {
       method: 'POST',
       body: formData,
@@ -56567,7 +56743,7 @@ export default function Page() {
     <div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <form onSubmit={onSubmit}>
-        <input type="text" name="name" />
+        <input type="text" name="name" required />
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Submit'}
         </button>
@@ -56616,7 +56792,7 @@ export default function Page() {
     <div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <form onSubmit={onSubmit}>
-        <input type="text" name="name" />
+        <input type="text" name="name" required />
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Submit'}
         </button>
@@ -71584,6 +71760,58 @@ export default function Home() {
 }
 ```
 
+### Scroll offset with sticky headers
+
+Because Next.js skips sticky and fixed positioned elements when finding the scroll target, content may end up behind a sticky header after navigation. For example, if your layout has a sticky header:
+
+```tsx filename="app/layout.tsx" switcher
+import './globals.css'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <header className="sticky top-0 h-16 bg-white">
+          {/* Navigation */}
+        </header>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import './globals.css'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <header className="sticky top-0 h-16 bg-white">
+          {/* Navigation */}
+        </header>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+You can account for its height using [`scroll-padding-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-top) on the scroll container:
+
+```css filename="app/globals.css"
+html {
+  scroll-padding-top: 64px; /* Match the height of your sticky header */
+}
+```
+
+This is a browser CSS property that offsets scroll-based positioning. It applies whenever Next.js uses the native [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) API, including hash fragment (`#id`) navigation. Alternatively, you can use [`scroll-margin-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top) on individual target elements instead of setting a global offset.
+
 ### Prefetching links in Proxy
 
 It's common to use [Proxy](/docs/app/api-reference/file-conventions/proxy) for authentication or other purposes that involve rewriting the user to a different page. In order for the `<Link />` component to properly prefetch links with rewrites via Proxy, you need to tell Next.js both the URL to display and the URL to prefetch. This is required to avoid un-necessary fetches to proxy to know the correct route to prefetch.
@@ -74280,7 +74508,7 @@ The `metric` object passed as the hook's argument consists of a number of proper
 * `name`: The name of the performance metric. Possible values include names of [Web Vitals](#web-vitals) metrics (TTFB, FCP, LCP, FID, CLS) specific to a web application.
 * `delta`: The difference between the current value and the previous value of the metric. The value is typically in milliseconds and represents the change in the metric's value over time.
 * `entries`: An array of [Performance Entries](https://developer.mozilla.org/docs/Web/API/PerformanceEntry) associated with the metric. These entries provide detailed information about the performance events related to the metric.
-* `navigationType`: Indicates the [type of navigation](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type) that triggered the metric collection. Possible values include `"navigate"`, `"reload"`, `"back_forward"`, and `"prerender"`.
+* `navigationType`: Indicates the navigation type that triggered metric collection. Values are derived from [PerformanceNavigationTiming.type](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type) and may include `"navigate"`, `"reload"`, `"prerender"`, `"back-forward"` (normalized from `"back_forward"`), `"back-forward-cache"` (BFCache restore), and `"restore"` (page restored after discard).
 * `rating`: A qualitative rating of the metric value, providing an assessment of the performance. Possible values are `"good"`, `"needs-improvement"`, and `"poor"`. The rating is typically determined by comparing the metric value against predefined thresholds that indicate acceptable or suboptimal performance.
 * `value`: The actual value or duration of the performance entry, typically in milliseconds. The value provides a quantitative measure of the performance aspect being tracked by the metric. The source of the value depends on the specific metric being measured and can come from various [Performance API](https://developer.mozilla.org/docs/Web/API/Performance_API)s.
 
@@ -74335,7 +74563,7 @@ You can handle all the results of these metrics separately:
 ```jsx filename="pages/_app.js"
 import { useReportWebVitals } from 'next/web-vitals'
 
-function handleCustomMetrics(metrics) {
+function handleCustomMetrics(metric) {
   switch (metric.name) {
     case 'Next.js-hydration':
       // handle hydration results
@@ -74366,7 +74594,7 @@ You can send results to any endpoint to measure and track
 real user performance on your site. For example:
 
 ```js
-function postWebVitals(metrics) {
+function postWebVitals(metric) {
   const body = JSON.stringify(metric)
   const url = 'https://example.com/analytics'
 
@@ -80901,6 +81129,7 @@ NODE_OPTIONS='--inspect' next
 
 | Version   | Changes                                                                         |
 | --------- | ------------------------------------------------------------------------------- |
+| `v16.1.0` | Add the `next upgrade` command                                                  |
 | `v16.1.0` | Add the `next experimental-analyze` command                                     |
 | `v16.0.0` | The JS bundle size metrics have been removed from `next build`                  |
 | `v15.5.0` | Add the `next typegen` command                                                  |
