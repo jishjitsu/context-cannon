@@ -4244,13 +4244,13 @@ import { unstable_catchError as catchError, type ErrorInfo } from 'next/error'
 
 function ErrorFallback(
   props: { title: string },
-  { error, unstable_retry: retry }: ErrorInfo
+  { error, unstable_retry }: ErrorInfo
 ) {
   return (
     <div>
       <h2>{props.title}</h2>
       <p>{error.message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button onClick={() => unstable_retry()}>Try again</button>
     </div>
   )
 }
@@ -4263,12 +4263,12 @@ export default catchError(ErrorFallback)
 
 import { unstable_catchError as catchError } from 'next/error'
 
-function ErrorFallback(props, { error, unstable_retry: retry }) {
+function ErrorFallback(props, { error, unstable_retry }) {
   return (
     <div>
       <h2>{props.title}</h2>
       <p>{error.message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button onClick={() => unstable_retry()}>Try again</button>
     </div>
   )
 }
@@ -5728,12 +5728,12 @@ version: 16.2.1
 
 Next.js can be deployed as a Node.js server, Docker container, static export, or adapted to run on different platforms.
 
-| Deployment Option                | Feature Support   |
-| -------------------------------- | ----------------- |
-| [Node.js server](#nodejs-server) | All               |
-| [Docker container](#docker)      | All               |
-| [Static export](#static-export)  | Limited           |
-| [Adapters](#adapters)            | Platform-specific |
+| Deployment Option                | Feature Support                                                     |
+| -------------------------------- | ------------------------------------------------------------------- |
+| [Node.js server](#nodejs-server) | All                                                                 |
+| [Docker container](#docker)      | All                                                                 |
+| [Static export](#static-export)  | Limited                                                             |
+| [Adapters](#adapters)            | Varies ([verified](#verified-adapters) adapters run the test suite) |
 
 ## Node.js server
 
@@ -5798,9 +5798,20 @@ Running as a [static export](/docs/app/guides/static-exports) **does not** suppo
 
 ## Adapters
 
-Next.js can be adapted to run on different platforms to support their infrastructure capabilities.
+Next.js can be adapted to run on different platforms to support their infrastructure capabilities. The [Deployment Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath) lets platforms customize how Next.js applications are built and deployed.
 
-Refer to each provider's documentation for information on supported Next.js features:
+### Verified Adapters
+
+Verified adapters are open source, run the full [Next.js compatibility test suite](/docs/app/api-reference/config/next-config-js/adapterPath#testing-adapters), and are hosted under the [Next.js GitHub organization](https://github.com/nextjs). The Next.js team coordinates testing with these platforms before major releases. Publicly visible test results for each adapter are coming soon. [Learn more about verified adapters](/docs/app/guides/deploying-to-platforms#verified-adapters).
+
+* [Vercel](https://vercel.com/docs/frameworks/nextjs)
+* [Bun](https://bun.sh/docs/frameworks/nextjs)
+
+Cloudflare and Netlify are working on verified adapters built on the Adapter API. In the meantime, they offer their own Next.js integrations (see below).
+
+### Other Platforms
+
+The following platforms offer their own Next.js integrations. These are not built on the public [Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath) and are not verified by the Next.js team, so feature support and compatibility may vary. Refer to each provider's documentation for details:
 
 * [Appwrite Sites](https://appwrite.io/docs/products/sites/quick-start/nextjs)
 * [AWS Amplify Hosting](https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components)
@@ -5808,9 +5819,8 @@ Refer to each provider's documentation for information on supported Next.js feat
 * [Deno Deploy](https://docs.deno.com/examples/next_tutorial)
 * [Firebase App Hosting](https://firebase.google.com/docs/app-hosting/get-started)
 * [Netlify](https://docs.netlify.com/frameworks/next-js/overview/#next-js-support-on-netlify)
-* [Vercel](https://vercel.com/docs/frameworks/nextjs)
 
-> **Note:** We are working on a [Deployment Adapters API](https://github.com/vercel/next.js/discussions/77740) for all platforms to adopt. After completion, we will add documentation on how to write your own adapters.
+For details on which Next.js features require specific platform capabilities, see [Deploying to Platforms](/docs/app/guides/deploying-to-platforms).
 
 
 ---
@@ -5926,15 +5936,18 @@ version: 16.2.1
  - [Authentication](/docs/app/guides/authentication)
  - [Backend for Frontend](/docs/app/guides/backend-for-frontend)
  - [Caching (Previous Model)](/docs/app/guides/caching-without-cache-components)
+ - [CDN Caching](/docs/app/guides/cdn-caching)
  - [CI Build Caching](/docs/app/guides/ci-build-caching)
  - [Content Security Policy](/docs/app/guides/content-security-policy)
  - [CSS-in-JS](/docs/app/guides/css-in-js)
  - [Custom Server](/docs/app/guides/custom-server)
  - [Data Security](/docs/app/guides/data-security)
  - [Debugging](/docs/app/guides/debugging)
+ - [Deploying to Platforms](/docs/app/guides/deploying-to-platforms)
  - [Draft Mode](/docs/app/guides/draft-mode)
  - [Environment Variables](/docs/app/guides/environment-variables)
  - [Forms](/docs/app/guides/forms)
+ - [How Revalidation Works](/docs/app/guides/how-revalidation-works)
  - [ISR](/docs/app/guides/incremental-static-regeneration)
  - [Instrumentation](/docs/app/guides/instrumentation)
  - [Internationalization](/docs/app/guides/internationalization)
@@ -5950,12 +5963,14 @@ version: 16.2.1
  - [Multi-zones](/docs/app/guides/multi-zones)
  - [OpenTelemetry](/docs/app/guides/open-telemetry)
  - [Package Bundling](/docs/app/guides/package-bundling)
+ - [PPR Platform Guide](/docs/app/guides/ppr-platform-guide)
  - [Prefetching](/docs/app/guides/prefetching)
  - [Preserving UI state](/docs/app/guides/preserving-ui-state)
  - [Production](/docs/app/guides/production-checklist)
  - [PWAs](/docs/app/guides/progressive-web-apps)
  - [Public pages](/docs/app/guides/public-static-pages)
  - [Redirecting](/docs/app/guides/redirecting)
+ - [Rendering Philosophy](/docs/app/guides/rendering-philosophy)
  - [Sass](/docs/app/guides/sass)
  - [Scripts](/docs/app/guides/scripts)
  - [Self-Hosting](/docs/app/guides/self-hosting)
@@ -8903,6 +8918,130 @@ async function Item({ id }) {
 
 
 ---
+title: CDN Caching
+description: Learn how CDN caching works with Next.js, including what works today, cache variability, and the direction toward pathname-based cache keying.
+url: "https://nextjs.org/docs/app/guides/cdn-caching"
+version: 16.2.1
+---
+
+# CDN Caching
+
+Next.js sets standard `Cache-Control` headers that CDNs can use to cache responses at the edge. This page covers what works today, where CDN caching is challenging, and the direction toward eliminating custom-header dependencies.
+
+## What Works Today
+
+### Cache-Control headers
+
+Next.js sets `Cache-Control` headers based on the rendering strategy of each route:
+
+* **Static pages** (no revalidation): `s-maxage=31536000` (one year)
+* **ISR pages** (time-based revalidation): `s-maxage={revalidate}, stale-while-revalidate={expire - revalidate}`. The default `expire` is one year, so `stale-while-revalidate` is included in the response header by default. You can customize this with [`cacheLife`](/docs/app/api-reference/functions/cacheLife).
+* **Dynamic pages** (no caching): `private, no-cache, no-store, max-age=0, must-revalidate`
+
+CDNs that respect `s-maxage` and `stale-while-revalidate` can cache static and ISR pages at the edge. However, CDN-level caching alone does not support on-demand revalidation ([`revalidateTag()`](/docs/app/api-reference/functions/revalidateTag) / [`revalidatePath()`](/docs/app/api-reference/functions/revalidatePath)): those calls invalidate the Next.js server cache, but the CDN will continue serving its cached copy until the `s-maxage` TTL expires. To propagate on-demand revalidation to the CDN, trigger CDN purges alongside your revalidation call. A common pattern is: call `revalidateTag()`/`revalidatePath()` to invalidate the Next.js server cache, then call your CDN purge API for the affected keys (including both HTML and RSC variants).
+
+### Static assets
+
+Static assets (JavaScript, CSS, images, fonts) served from `/_next/static/` include content hashes in their filenames and have a 1 year `max-age` and `immutable` directive: `public,max-age=31536000,immutable`
+
+You can use [`assetPrefix`](/docs/app/api-reference/config/next-config-js/assetPrefix) to serve static assets from a different domain or CDN origin.
+
+### Static prefetches (PPR-enabled routes)
+
+When a route has Partial Prerendering enabled and the `next-router-prefetch` header is set (indicating a static prefetch), the response is deterministic: it returns the same prerendered content regardless of the client's router state. The `next-router-state-tree` header is not parsed for these requests, so it does not affect the response.
+
+For PPR-enabled routes, a CDN can cache static prefetch responses if it:
+
+1. Includes the `_rsc` search parameter in the cache key (to distinguish prefetch variants from HTML responses).
+2. Respects the `Cache-Control` headers Next.js sets on the response.
+
+> **Good to know:** For routes without PPR, the `next-router-state-tree` header is read during prefetch requests to determine which segments to include, which increases cache `vary` as it passes the current router state. When Cache Components is enabled, segment-level prefetches already use pathname-based routes (for example, `/page.segments/_tree.segment.rsc`), and CDNs can cache these with standard pathname-based cache keys.
+
+## Where CDN Caching Is Challenging
+
+App Router responses can vary based on several custom request headers. Next.js sets a `Vary` header on responses to signal this to CDNs:
+
+* `rsc` — whether the request should return a React Server Components (RSC) payload instead of HTML
+* `next-router-state-tree` — the client's current router state, used for targeted segment updates during dynamic navigations
+* `next-router-prefetch` — whether this is a prefetch request
+* `next-router-segment-prefetch` — the specific segment being prefetched
+* `next-url` — added only for routes that use [interception routes](/docs/app/api-reference/file-conventions/intercepting-routes), carries the URL being intercepted
+
+Many CDNs don't support `Vary` without additional configuration. Next.js addresses this with the `_rsc` search parameter: a hash of the relevant request header values that acts as a cache-key, ensuring different response variants get different cache keys. This ensures correct responses even on CDNs that ignore `Vary`.
+
+## Handling Headers at the CDN
+
+### What you can safely ignore
+
+These headers can be omitted in specific cases without causing protocol errors. The server still returns a parseable response, but it may be larger or less targeted to the specific navigation:
+
+**`next-router-state-tree`**: when omitted on non-prefetch RSC requests, the server returns a full payload instead of a targeted segment update.
+
+**`next-router-segment-prefetch`**: when omitted on prefetch requests, the server falls back to a broader prefetch payload instead of a segment-specific one.
+
+**`next-url`**: used for [interception routes](/docs/app/api-reference/file-conventions/intercepting-routes) to vary the response based on the referring page. If omitted, interception routes are not supported as the server doesn't know what original path to match against. The response returned is for regular navigation when `next-url` is omitted: the user sees the target page instead of the intercepted target page.
+
+### What you must preserve
+
+**The `rsc` header** must be forwarded from the client to the server. This header tells the server to return an RSC payload instead of HTML. If a CDN strips it, the server returns HTML when the client-side router expects RSC data, which breaks client-side navigation, causing browser navigations instead. The `Vary` header and `_rsc` parameter exist specifically to prevent CDNs from serving a cached HTML response to an RSC request (or vice versa).
+
+**When `next-router-prefetch` is present, preserve both the prefetch header and the `_rsc` search parameter.** For prefetch flows, `_rsc` is a required cache-busting discriminator and should be treated as mandatory.
+
+**The `_rsc` search parameter** must be included in the cache key. It distinguishes response variants (HTML vs. RSC, different prefetch types). Ensure your CDN does not strip query parameters from cache keys, as some CDNs do this by default. When the `experimental.validateRSCRequestHeaders` option is enabled and a RSC request arrives without the correct `_rsc` value, the server responds with a **307 redirect** to the URL with the correct hash. CDNs should follow this redirect. Platforms that compute the hash upstream can rewrite requests to include the correct `_rsc` before forwarding to avoid an extra round trip.
+
+> **Good to know:** Today, `next-url` is included in the `_rsc` hash even during static prefetches. This means you cannot safely ignore it under the current scheme without potentially getting cache misses. The pathname-based direction described below resolves this gap.
+
+## Direction: Pathname-Based Cache Keying
+
+The Next.js team is working on moving all cache-affecting inputs into the URL pathname, eliminating the need for `Vary` on custom headers and removing the `_rsc` search parameter. This resolves the CDN caching challenges described above.
+
+### How it works
+
+The approach extends the routing scheme that [`output: 'export'`](/docs/app/guides/static-exports) and segment prefetches already use today. File extensions in the pathname identify the response type:
+
+* **Full page RSC**: `/my/page.rsc` returns the RSC payload for the entire page
+* **Segment RSC**: `/my/page.segments/path/to/segment.segment.rsc` returns the RSC payload for a specific segment
+
+Under this model:
+
+* **The pathname determines the cache key.** Anything in the pathname affects which response variant is returned.
+* **Search parameters can be safely dropped** without affecting returned responses.
+* **Standard HTTP cache headers** (`Cache-Control`, `max-age`, etc.) are respected as usual.
+* **No `Vary` support needed** from the CDN.
+
+A CDN would cache Next.js responses by using the pathname as the cache key, ignoring search parameters, and respecting standard `Cache-Control` headers. No need to understand `Vary`, inspect custom headers, or program edge logic.
+
+### What changes for interception routes
+
+Under the current scheme, `next-url` contributes to the `_rsc` hash, so dropping it causes cache misses. Under the pathname-based scheme, interception variability would be encoded in a search parameter (not the pathname):
+
+* If a CDN preserves search params, interception works correctly.
+* If a CDN drops search params, interception is not supported. It would gracefully degrade to the non-intercepted page, client-side navigations won't break.
+
+This makes interception route support an opt-in CDN capability rather than a requirement.
+
+### Current status
+
+This direction extends patterns that are already operational in the codebase (segment prefetch paths, `output: 'export'` mode). It is in active design.
+
+## CDN Feature Compatibility
+
+For a full table showing the infrastructure primitives available on every major CDN (edge compute, key-value storage, blob storage, PPR resuming), see [Deploying to Platforms](/docs/app/guides/deploying-to-platforms#cdn-infrastructure-compatibility).
+
+
+Related guides and references.
+
+- [Deploying to Platforms](/docs/app/guides/deploying-to-platforms)
+  - Understand which Next.js features require specific platform capabilities and how to choose the right deployment target.
+- [Self-Hosting](/docs/app/guides/self-hosting)
+  - Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports).
+- [Streaming](/docs/app/guides/streaming)
+  - Learn how streaming works in Next.js and how to use it to progressively render UI as data becomes available.
+- [assetPrefix](/docs/app/api-reference/config/next-config-js/assetPrefix)
+  - Learn how to use the assetPrefix config option to configure your CDN.
+
+
+---
 title: CI Build Caching
 description: Learn how to configure CI to cache Next.js builds
 url: "https://nextjs.org/docs/app/guides/ci-build-caching"
@@ -10768,6 +10907,109 @@ To learn more about how to use a JavaScript debugger, take a look at the followi
 
 
 ---
+title: Deploying to Platforms
+description: Understand which Next.js features require specific platform capabilities and how to choose the right deployment target.
+url: "https://nextjs.org/docs/app/guides/deploying-to-platforms"
+version: 16.2.1
+---
+
+# Deploying to Platforms
+
+Next.js [treats static and dynamic content as a spectrum](/docs/app/guides/rendering-philosophy) at the component level. Different features in this model require different platform capabilities. This page helps you understand what your platform needs to support and how to configure your deployment.
+
+## Minimum Requirements
+
+To run Next.js, your platform needs **a Node.js server**. That's it.
+
+A single `next start` process handles every Next.js feature correctly: Server Components, ISR, PPR, Cache Components, Server Actions, Proxy, and `after()`. Streaming support is needed for features like PPR and Server Components to deliver content progressively (without it, responses are buffered and sent as a whole, which still works but loses the streaming performance benefit). Additional infrastructure (CDN caching, edge compute, shared cache) primarily improves performance and multi-instance consistency. In multi-instance deployments, shared cache and tag coordination reduce stale divergence between instances. The only additional dependency is the `sharp` package, which is required for [Image Optimization](/docs/app/api-reference/components/image).
+
+## Functional Fidelity vs. Performance Fidelity
+
+When evaluating platform support for Next.js, it helps to distinguish between two levels:
+
+**Functional fidelity** means every Next.js feature works correctly. The [adapter test suite](/docs/app/api-reference/config/next-config-js/adapterPath#testing-adapters) is the contract: if a platform's adapter passes the tests, it supports Next.js. This is binary: it passes or it doesn't.
+
+**Performance fidelity** means features achieve their optimal performance characteristics. Examples include PPR's static shell served at CDN latency rather than origin latency, or ISR serving stale content instantly with sub-second revalidation propagation. Performance fidelity is a spectrum that every platform will achieve differently based on their architecture.
+
+A platform that achieves functional fidelity is a fully supported deployment target for Next.js. Performance fidelity is how platforms differentiate, and it improves incrementally over time.
+
+Use the feature matrix below through this lens: "Streaming Required" and "Shared Cache Recommended" describe what is needed for functional fidelity. "Edge Stitching" is a performance fidelity optimization.
+
+## Feature Support Matrix
+
+Different features require different infrastructure capabilities. The "Edge Stitching" column is a **performance optimization**, not a correctness requirement. All features work correctly from a single origin server.
+
+| Feature                        | Streaming | Shared Cache | Edge Stitching | Notes                                                                                            |
+| ------------------------------ | --------- | ------------ | -------------- | ------------------------------------------------------------------------------------------------ |
+| Server Components              | Required  | No           | No             | Basic streaming support                                                                          |
+| ISR (time-based)               | No        | Recommended  | No             | Works per-instance without shared cache                                                          |
+| ISR (on-demand)                | No        | Recommended  | No             | [Tag propagation](/docs/app/guides/how-revalidation-works) needs shared cache for multi-instance |
+| Partial Prerendering           | Required  | Recommended  | Optional       | [See PPR Platform Guide](/docs/app/guides/ppr-platform-guide)                                    |
+| Cache Components (`use cache`) | Required  | Recommended  | No             | Shared cache enables cross-instance consistency                                                  |
+| Proxy / Middleware             | No        | No           | No             | Runs at edge or origin                                                                           |
+| Server Actions                 | Required  | No           | No             | POST requests with streaming response                                                            |
+| `after()`                      | No        | No           | No             | Requires [graceful shutdown](/docs/app/guides/self-hosting#after) support                        |
+
+**Streaming Required** means the platform must support chunked transfer encoding or HTTP/2 streaming and must not buffer the response before sending it to the client.
+
+**Shared Cache Recommended** means multiple server instances benefit from shared cache backends to coordinate. For ISR and server response caching, use [`cacheHandler`](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath). For `'use cache'` entries, use [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers). Without shared cache, each instance maintains its own cache independently — features still work correctly on each instance, but revalidation events don't propagate across instances.
+
+## CDN Infrastructure Compatibility
+
+The following table maps infrastructure primitives for each major CDN. These are available building blocks, not finished integrations:
+
+| CDN               | Edge Compute | Key-Value / Tags | Blob Storage   | PPR Resuming |
+| ----------------- | ------------ | ---------------- | -------------- | ------------ |
+| Cloudflare        | Workers      | KV               | R2             | Yes (worker) |
+| Akamai            | EdgeWorkers  | EdgeKV           | Object Storage | Yes (worker) |
+| Amazon CloudFront | Lambda@Edge  | KeyValueStore    | S3             | Yes (Lambda) |
+| Fastly            | Compute      | KV Store         | Object Storage | Yes (WASM)   |
+| Azure             | Functions    | Managed Redis    | Blob Storage   | Yes (server) |
+| Google Cloud      | Cloud Run    | Various KV       | Cloud Storage  | Yes (server) |
+
+These are available building blocks, not finished integrations. Most community adapters today deploy Next.js as a Docker container or Node.js server without leveraging CDN-specific primitives like edge KV or PPR resuming. See the [Deploying](/docs/app/getting-started/deploying#adapters) page for the current list of adapters. For CDN-specific caching considerations (including known limitations with `Vary` on custom headers), see [CDN Caching](/docs/app/guides/cdn-caching).
+
+## Adapters
+
+Next.js provides a [Deployment Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath) that lets platforms customize how Next.js applications are built and deployed for their infrastructure. Adapters run at build time and produce platform-specific output from the standard Next.js build. Anyone can build an adapter using the public API with no special access required.
+
+The adapter API plus Next.js caching interfaces form the complete platform integration surface. The adapter handles build-time output, while `cacheHandler` and `cacheHandlers` cover different runtime caching paths. `cacheHandler` (singular) covers server cache paths like ISR, route handlers, patched `fetch`/`unstable_cache`, and image optimization. `cacheHandlers` (plural) configures `'use cache'` directive backends.
+
+### Verified Adapters
+
+A **verified adapter** is one that meets two requirements:
+
+1. **Open source.** The adapter source code is publicly available so the community and the Next.js team can inspect, contribute to, and verify it.
+2. **Runs the compatibility test suite.** The platform provides a way to run the full [Next.js compatibility test suite](/docs/app/api-reference/config/next-config-js/adapterPath#testing-adapters) against their adapter. This gives visibility into which features work, which are in progress, and where gaps remain.
+
+Verified adapters are hosted under the [Next.js GitHub organization](https://github.com/nextjs), listed as supported deployment targets in the Next.js documentation, and maintained by their respective platform teams. There are no private framework hooks or integration paths: Vercel's adapter uses the same public API as every other adapter.
+
+For verified adapters and platforms working toward verified status through the [Ecosystem Working Group](https://nextjs.org/ecosystem-working-group), the Next.js team commits to:
+
+* **Coordinated testing.** Before major releases, we work with platform teams to run the compatibility test suite and surface issues early.
+* **Early access.** Adapter authors receive early access to API changes during RFCs and release candidates.
+* **Direct support.** When the adapter contract needs updating, we work directly with adapter teams.
+
+> **Good to know:** Platforms can build closed-source adapters on the same public API and test suite. However, closed-source adapters will not be listed as verified, since the Next.js team cannot verify what it cannot inspect.
+
+## A Note on Infrastructure Requirements
+
+Next.js's [rendering model](/docs/app/guides/rendering-philosophy) places the static/dynamic boundary at the component level rather than the route level. Finer-grained boundaries provide more flexibility for developers at the cost of broader requirements for hosting platforms. This is a deliberate trade-off: the infrastructure requirements on this page exist because of what the rendering model delivers.
+
+
+Related guides and references.
+
+- [Rendering Philosophy](/docs/app/guides/rendering-philosophy)
+  - Learn how Next.js treats static and dynamic rendering as a spectrum at the component level, and what this means for deployment.
+- [Self-Hosting](/docs/app/guides/self-hosting)
+  - Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports).
+- [Deploying](/docs/app/getting-started/deploying)
+  - Learn how to deploy your Next.js application.
+- [adapterPath](/docs/app/api-reference/config/next-config-js/adapterPath)
+  - Configure a custom adapter for Next.js to hook into the build process.
+
+
+---
 title: Draft Mode
 description: Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App Router here.
 url: "https://nextjs.org/docs/app/guides/draft-mode"
@@ -11761,6 +12003,112 @@ This will trigger the submission of the nearest `<form>` ancestor, which will in
 
 
 ---
+title: How Revalidation Works
+description: A deep dive into how Next.js revalidates cached content, including the tag system, cache consistency, and multi-instance coordination.
+url: "https://nextjs.org/docs/app/guides/how-revalidation-works"
+version: 16.2.1
+---
+
+# How Revalidation Works
+
+The [Caching](/docs/app/getting-started/caching) page covers how to use `use cache`, `cacheTag`, and `cacheLife`. This page explains **how revalidation works internally**, for platform engineers and advanced users who need to understand the system to implement [custom cache handlers](/docs/app/api-reference/config/next-config-js/cacheHandlers) or debug revalidation behavior.
+
+## The Revalidation Model
+
+Most routes in Next.js can be revalidated on demand. This includes App Router routes and Pages Router routes that produce ISR/prerender cache entries. Pages Router routes that are automatically statically optimized (pure static output) are not revalidated on demand. The ability to update cached content without redeploying is a core part of Next.js's [rendering model](/docs/app/guides/rendering-philosophy).
+
+There are two types of revalidation:
+
+* **Time-based revalidation** uses a stale-while-revalidate pattern. The cached content is served immediately, and a background regeneration is triggered when the content's age exceeds the [`cacheLife`](/docs/app/api-reference/functions/cacheLife) or `revalidate` duration. The stale content continues to be served until the fresh content is ready.
+* **On-demand revalidation** explicitly invalidates cached content by calling [`revalidateTag()`](/docs/app/api-reference/functions/revalidateTag) or [`revalidatePath()`](/docs/app/api-reference/functions/revalidatePath). The next request to that content triggers a fresh render.
+
+> **Good to know:** Pages Router on-demand ISR APIs (for example `res.revalidate()` and the `x-prerender-revalidate` flow) are still supported and use the server cache handler (`cacheHandler`, singular). The `cacheHandlers` option (plural) is for `'use cache'` directives.
+
+## What Gets Revalidated
+
+When a route is revalidated, Next.js regenerates **both** the HTML response and the RSC payload (React Server Components payload) from the same React component tree. Both artifacts are stored together in the same cache entry.
+
+This consistency matters because the RSC payload is used for client-side navigations. Browser navigations and client-side navigations should hold the same content.
+
+### What happens if they get out of sync
+
+If a platform's cache serves HTML from one render and an RSC payload from a different render, users may see stale or mismatched content during client-side navigation. The primary mitigation is to cache HTML and RSC responses together with the same TTL and invalidation policy, and to respect the [`Vary` header](/docs/app/guides/cdn-caching) that Next.js sets. See [CDN Caching](/docs/app/guides/cdn-caching) for details.
+
+A separate but related problem is **cross-deployment skew**: during rolling deployments, a client built with deploy A may receive responses from a server running deploy B. [`deploymentId`](/docs/app/api-reference/config/next-config-js/deploymentId) mitigates this: when the client detects a different deployment ID from the server, it triggers a hard navigation to fetch consistent content.
+
+## Tag System Architecture
+
+Next.js uses a tag-based system to track which cached content needs to be invalidated. There are two types of tags:
+
+### Explicit tags
+
+Explicit tags are set by the developer using [`cacheTag()`](/docs/app/api-reference/functions/cacheTag) inside a `use cache` function, or via `next: { tags: [...] }` on a `fetch` call. When [`revalidateTag('my-tag')`](/docs/app/api-reference/functions/revalidateTag) is called, all cache entries with that tag are invalidated.
+
+### Soft tags
+
+Soft tags are automatically generated by Next.js based on the route path, prefixed with `_N_T_`. For example, the route `/blog/hello` generates soft tags like `_N_T_/layout`, `_N_T_/blog/layout`, `_N_T_/blog/hello/layout`, and `_N_T_/blog/hello`. Each segment in the path gets a layout tag, plus the leaf route itself.
+
+Soft tags enable [`revalidatePath()`](/docs/app/api-reference/functions/revalidatePath) to work through the same tag-based system. When `revalidatePath('/blog/hello')` is called, it invalidates cache entries associated with that path's leaf route tag and its ancestor layout soft tags (for example `_N_T_/layout`, `_N_T_/blog/layout`, `_N_T_/blog/hello/layout`, and `_N_T_/blog/hello`).
+
+In the [cache handler API](/docs/app/api-reference/config/next-config-js/cacheHandlers), soft tags are passed to the `get()` method as the `softTags` parameter. Your handler should check whether any soft tag has been invalidated after the cache entry's timestamp. The `getExpiration()` method returns the most recent revalidation timestamp across all provided tags, or `0` if none have been revalidated. Your handler should treat an entry as stale if the returned timestamp is newer than the entry's own timestamp. See the [cache handler API reference](/docs/app/api-reference/config/next-config-js/cacheHandlers#getexpiration) for the full semantics.
+
+## Multi-Instance Considerations
+
+When running multiple Next.js instances behind a load balancer, revalidation events are local by default. Calling `revalidateTag()` on instance A only invalidates the cache on that instance. Other instances continue serving the stale content until they learn about the invalidation.
+
+The cache handler API provides two hooks for distributed coordination:
+
+* **`updateTags()`** is called when `revalidateTag()` is invoked. Your handler should write the invalidation event to shared storage (for example, Redis or a database) so other instances can discover it.
+* **`refreshTags()`** is called periodically, but always before starting a new request. Your handler should check shared storage for recent invalidation events and update its local tag state accordingly.
+
+For implementation details and a Redis example, see [Custom Cache Handlers](/docs/app/api-reference/config/next-config-js/cacheHandlers).
+
+## Implementation Patterns for Platforms
+
+### Single instance
+
+The default file-system cache handles consistency automatically. Cache writes are atomic on the local filesystem, and tag state is maintained in memory. No additional configuration is needed.
+
+### Multi-instance with shared cache
+
+Without coordination, each instance independently serves content and handles revalidation using only its local cache. Different users may see different content depending on which instance serves their request, and on-demand revalidation only takes effect on the instance that received the call.
+
+To reduce this window and ensure revalidation propagates across instances:
+
+1. Store tag invalidation timestamps in a shared service (Redis, DynamoDB, or a simple HTTP API).
+2. Implement `updateTags()` to write to the shared service.
+3. Implement `refreshTags()` to read from the shared service. Your handler must catch errors in `refreshTags()`: if it throws, the exception propagates as a request failure. Catching the error allows requests to continue with the last known local tag state, serving potentially stale content until connectivity is restored.
+4. Store cache entries (HTML + RSC payload) in shared storage. Atomic writes reduce the mismatch window further but are not required for correctness.
+
+### CDN integration
+
+If a CDN caches Next.js responses, it should respect the `Vary` header and the `Cache-Control` directives that Next.js sets. Do not cache HTML and RSC payload responses separately with different TTLs. See [CDN Caching](/docs/app/guides/cdn-caching) for details.
+
+## Graceful Degradation
+
+The revalidation system prioritizes availability over strict consistency. Content is always served, even when infrastructure guarantees cannot be fully met:
+
+* **Cache write failure**: the response is still served to the user because writes are asynchronous. The cache entry is lost, and the next request triggers a fresh render.
+* **Cache read failure**: your handler should catch internal errors and return `undefined` (the cache miss signal). The route is then server-rendered fresh. The framework does not wrap `get()` in a try/catch, so unhandled exceptions will propagate as render errors.
+* **HTML/RSC cache inconsistency**: if a CDN caches HTML and RSC responses with different TTLs or invalidation timing, users may see mismatched content during client-side navigation. Cache them together and respect the `Vary` header to avoid this.
+* **Cross-deployment skew**: during rolling deployments, configure [`deploymentId`](/docs/app/api-reference/config/next-config-js/deploymentId) so that a build ID change triggers a hard navigation to fetch consistent content.
+
+Cache failures result in degraded performance (stale content, extra renders), not broken applications.
+
+
+Related guides and references.
+
+- [Caching](/docs/app/getting-started/caching)
+  - Learn how to cache data and UI in Next.js
+- [ISR](/docs/app/guides/incremental-static-regeneration)
+  - Learn how to create or update static pages at runtime with Incremental Static Regeneration.
+- [cacheHandlers](/docs/app/api-reference/config/next-config-js/cacheHandlers)
+  - Configure custom cache handlers for use cache directives in Next.js.
+- [revalidateTag](/docs/app/api-reference/functions/revalidateTag)
+  - API Reference for the revalidateTag function.
+
+
+---
 title: ISR
 description: Learn how to create or update static pages at runtime with Incremental Static Regeneration.
 url: "https://nextjs.org/docs/app/guides/incremental-static-regeneration"
@@ -12087,6 +12435,9 @@ This will make the Next.js server console log ISR cache hits and misses. You can
 * If you have multiple `fetch` requests in a prerendered route, and each has a different `revalidate` frequency, the lowest time will be used for ISR. However, those revalidate frequencies will still be respected by the [cache](/docs/app/getting-started/caching).
 * If any of the `fetch` requests used on a route have a `revalidate` time of `0`, or an explicit `no-store`, the route will be dynamically rendered.
 * Proxy won't be executed for on-demand ISR requests, meaning any path rewrites or logic in Proxy will not be applied. Ensure you are revalidating the exact path. For example, `/post/1` instead of a rewritten `/post-1`.
+* When running multiple instances, the default file-system cache is per-instance. On-demand revalidation only invalidates the instance that receives the call. Use a shared [custom cache handler](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath) to coordinate across instances. See [How Revalidation Works](/docs/app/guides/how-revalidation-works) for the full architecture.
+* Background regeneration (stale-while-revalidate) runs on the instance that receives the triggering request. On platforms with per-request billing, this background work counts as additional compute.
+* You can use the `x-nextjs-cache` response header to observe cache behavior. Values are `HIT` (served from cache), `STALE` (served from cache, revalidating in background), `MISS` (not in cache, rendered fresh), or `REVALIDATED` (regenerated via on-demand revalidation).
 
 ## Platform Support
 
@@ -17184,6 +17535,130 @@ Learn more about optimizing your application for production.
 
 
 ---
+title: PPR Platform Guide
+description: A guide for platform engineers on implementing PPR support, from basic origin rendering to optimized CDN integration.
+url: "https://nextjs.org/docs/app/guides/ppr-platform-guide"
+version: 16.2.1
+---
+
+# PPR Platform Guide
+
+Partial Prerendering (PPR) combines static and dynamic rendering in a single route. At build time, Next.js generates a static HTML shell and a `postponedState` blob for each PPR-enabled route. At request time, the shell is served immediately and dynamic portions are rendered and streamed to the client.
+
+This page explains how platforms can implement PPR support at different levels of sophistication.
+
+## How PPR Works
+
+### Build time
+
+For each PPR route, Next.js produces:
+
+* A **static HTML shell** containing all the content that can be prerendered, with [Suspense](/docs/app/guides/streaming#what-is-streaming) fallbacks where dynamic content will appear.
+* A **`postponedState`** value: a serialized string. Treat it as opaque: pass it through without parsing or modifying it. Altering `postponedState` produces incorrect dynamic rendering output.
+* An **RSC payload** for the static portions of the page.
+
+### Request time
+
+When a request arrives for a PPR route:
+
+1. The server sends the static HTML shell to the client immediately.
+2. The server resumes rendering the dynamic portions using the postponed state.
+3. Dynamic content is streamed to the client, allowing React to hydrate the deferred Suspense boundaries.
+
+The client sees the static shell instantly, then dynamic content appears as it resolves.
+
+## Storing PPR Artifacts
+
+Each PPR route requires two artifacts to be stored together:
+
+1. The static HTML shell.
+2. The `postponedState` blob.
+
+These must be stored and updated atomically. When a PPR route is revalidated (via [time-based](/docs/app/guides/incremental-static-regeneration) or [on-demand revalidation](/docs/app/api-reference/functions/revalidateTag)), Next.js regenerates both the shell and the postponed state together. Serving a new shell with an old postponed state, or vice versa, will produce incorrect dynamic content.
+
+Use [`requestMeta.onCacheEntryV2`](/docs/app/api-reference/config/next-config-js/adapterPath#implementing-ppr-in-an-adapter) in your adapter to observe cache updates and propagate them to your storage backend.
+
+## Origin-Only Implementation
+
+**This is the simplest approach and works on every platform that supports streaming HTTP responses.**
+
+All requests go directly to the Next.js server. The server reads the shell from its local cache, sends it, then renders and streams the dynamic content. This is what `next start` does by default.
+
+No additional infrastructure is needed. If your platform supports streaming HTTP responses, it supports PPR.
+
+## CDN Shell + Origin Compute
+
+For better TTFB, the static HTML shell can be cached at the CDN edge. When a request arrives:
+
+1. The CDN serves the cached shell immediately (edge latency).
+2. The CDN sends a resume request to the origin server (ideally in parallel with streaming the shell).
+3. The origin server renders only the dynamic portions and streams them back.
+4. The CDN concatenates the shell and dynamic content into a single streaming response to the client.
+
+This requires the CDN to support a mechanism for combining cached and dynamic content in a single streaming response. The static shell TTFB drops to edge latency while dynamic content still streams from origin.
+
+For the lowest possible latency, the shell can be served from edge storage (for example, a KV store populated during `onBuildComplete`) rather than from a CDN cache. This is a platform architecture decision and does not require any changes to the Next.js application.
+
+## The Resume Protocol
+
+The **resume protocol** tells the Next.js handler to skip the shell and render only the dynamic portions. It is used by CDN-to-origin architectures and adapter-based deployments that serve the shell separately.
+
+In standard `next start`, the server handles both the shell and dynamic render in a single pass automatically.
+
+### CDN-to-origin
+
+When the CDN makes an HTTP request to a separate Next.js origin:
+
+* Send a **POST** request to the route with the header `next-resume: 1`.
+* Include the `postponedState` blob as the **request body**.
+* The server will render only the deferred Suspense boundaries and stream the result.
+
+> **Good to know:** When a POST request combines a Server Action with a PPR resume, the request body contains the postponed state followed by the action body. The `x-next-resume-state-length` header carries the byte length of the postponed state prefix so the handler can separate the two. For a pure PPR resume (the common case), the entire request body is the postponed state and this header is not needed.
+
+### Adapter-based
+
+When the platform invokes the handler function directly:
+
+* Call the entrypoint handler with `req.method` set to `'POST'`, the `next-resume: 1` header on the request, and the `postponedState` as the request body. (You can also pass `requestMeta: { postponed: postponedState }` as the third argument to the handler invocation, which is equivalent but bypasses the HTTP layer entirely.)
+* The handler renders only the deferred Suspense boundaries and streams the result to `res`.
+* No HTTP round-trip is needed: the handler is invoked in-process.
+
+### Finding PPR routes in build output
+
+In the [adapter output](/docs/app/api-reference/config/next-config-js/adapterPath#output-types), PPR routes are identified by `renderingMode: 'PARTIALLY_STATIC'` in the prerenders array. Iterate `outputs.prerenders` to find these entries and read `fallback.postponedState`.
+
+`pprChain.headers` contains the headers needed for the resume protocol: `{ 'next-resume': '1' }`.
+
+For detailed implementation with code examples, see [Implementing PPR in an Adapter](/docs/app/api-reference/config/next-config-js/adapterPath#implementing-ppr-in-an-adapter).
+
+## Implementation Checklist
+
+1. **Read PPR outputs at build time.** In your adapter's `onBuildComplete`, identify prerenders with `renderingMode: 'PARTIALLY_STATIC'`. Store the shell HTML and `postponedState` in your cache.
+
+2. **Serve the shell at request time.** For incoming requests to PPR routes, serve the cached shell immediately and begin streaming.
+
+3. **Resume dynamic rendering.** For CDN-to-origin: send a POST request to the Next.js handler with the `next-resume: 1` header and the postponed state as the body. For adapter-based: call the handler directly with POST method and the postponed state in the request body (or pass `requestMeta: { postponed: postponedState }` to the handler). Stream the response back to the client.
+
+4. **Handle cache updates.** Use `requestMeta.onCacheEntryV2` to capture new shell + postponed state pairs after revalidation, and update your cache atomically.
+
+5. **Support graceful degradation.** If the postponed state is unavailable or stale, fall back to a full server render. The user gets a complete page without the shell-first optimization.
+
+For the complete adapter API reference and implementation examples, see the [Deployment Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath).
+
+
+Related guides and references.
+
+- [Rendering Philosophy](/docs/app/guides/rendering-philosophy)
+  - Learn how Next.js treats static and dynamic rendering as a spectrum at the component level, and what this means for deployment.
+- [Streaming](/docs/app/guides/streaming)
+  - Learn how streaming works in Next.js and how to use it to progressively render UI as data becomes available.
+- [Deploying to Platforms](/docs/app/guides/deploying-to-platforms)
+  - Understand which Next.js features require specific platform capabilities and how to choose the right deployment target.
+- [adapterPath](/docs/app/api-reference/config/next-config-js/adapterPath)
+  - Configure a custom adapter for Next.js to hook into the build process.
+
+
+---
 title: Prefetching
 description: Learn how to configure prefetching in Next.js
 url: "https://nextjs.org/docs/app/guides/prefetching"
@@ -19626,6 +20101,91 @@ export function GET(request) {
 
 
 ---
+title: Rendering Philosophy
+description: Learn how Next.js treats static and dynamic rendering as a spectrum at the component level, and what this means for deployment.
+url: "https://nextjs.org/docs/app/guides/rendering-philosophy"
+version: 16.2.1
+---
+
+# Rendering Philosophy
+
+## Static and Dynamic as a Spectrum
+
+Most web frameworks draw a hard line between static and dynamic at the route level. A page is either prerendered at build time or server-rendered at request time. This model is simple to understand and simple to deploy: you upload static files to a CDN and point dynamic routes at a server.
+
+Next.js takes a different approach: **the boundary between static and dynamic is at the component level, not the route level.** A single page can have a static shell that loads instantly and dynamic sections that stream in as they resolve. A cached function can live inside a dynamic route. A static page can be updated without a redeploy.
+
+This is what Partial Prerendering, [Cache Components](/docs/app/getting-started/caching) (`use cache`), and [on-demand revalidation](/docs/app/api-reference/functions/revalidateTag) enable. They are not incremental features: they represent a rendering model that treats static and dynamic as a spectrum rather than a binary choice.
+
+## What This Enables
+
+This model benefits developers and users in concrete ways:
+
+* **Faster perceived load times.** The static shell renders immediately while dynamic content streams in. Users see useful content right away instead of waiting for the entire page to render.
+* **Incremental caching.** Developers can add caching and revalidation incrementally, without deciding upfront at build time whether a route is static or dynamic. Any page can be revalidated on demand, and any function can be cached with [`use cache`](/docs/app/api-reference/directives/use-cache).
+* **Granular caching.** Cache a function with [`use cache`](/docs/app/api-reference/directives/use-cache), not a route. Revalidate a [tag](/docs/app/api-reference/functions/revalidateTag), not a deployment. This means an expensive database query can be cached independently of the rest of the page.
+
+## The Trade-Off
+
+Web frameworks differ in where they place the boundary between static and dynamic content. Each approach makes a different trade-off between developer flexibility and infrastructure complexity.
+
+### Build-time prerendering
+
+Every page is generated at build time. The output is static files that can be served from any CDN or file server with zero runtime infrastructure. Dynamic content, if any, requires client-side fetching after the page loads. This is the simplest model to deploy, but every content change requires a rebuild and redeploy.
+
+### Route-level boundaries
+
+Each route chooses whether it is static or dynamic. Static routes are prerendered at build time, dynamic routes are server-rendered per request. The infrastructure splits cleanly: static files go to a CDN, dynamic routes go to a server. This is straightforward to reason about but the choice is all-or-nothing per route. A mostly-static page with one dynamic element (a user greeting, a live price) must either be fully dynamic or fetch that element on the client after load.
+
+### Component-level boundaries
+
+This is the approach Next.js takes. Static and dynamic content coexist within a single streaming response. A page can have a static shell that loads instantly, a cached function that revalidates independently, and a dynamic section that streams in as it resolves, all without the developer splitting anything into separate routes or client-side fetches.
+
+The trade-off is infrastructure complexity. A finer-grained rendering boundary transfers complexity from application code into the hosting platform. The infrastructure requirements described below exist because of this choice.
+
+## Infrastructure Implications
+
+The component-level rendering model has direct implications for platforms hosting Next.js applications:
+
+* **Streaming** is required because static and dynamic content are served in a single response. The server sends initial content first, then streams dynamic portions as they resolve. See [Streaming](/docs/app/guides/streaming) for details.
+* **Cache coordination** is required when running multiple instances because any cached content can be invalidated on demand via [`revalidateTag()`](/docs/app/api-reference/functions/revalidateTag) or [`revalidatePath()`](/docs/app/api-reference/functions/revalidatePath). See [How Revalidation Works](/docs/app/guides/how-revalidation-works) for the architecture.
+* **Cache consistency** matters because revalidation regenerates both the HTML response and the RSC payload (the serialized React Server Components data used for client-side navigation). If these get out of sync, users may see inconsistent data during navigation. See [How Revalidation Works](/docs/app/guides/how-revalidation-works) for consistency requirements.
+* **PPR shell delivery at CDN latency** can require additional platform integration to store the static shell separately and resume dynamic rendering correctly. See [PPR Platform Guide](/docs/app/guides/ppr-platform-guide) for implementation details.
+
+Each of these infrastructure requirements maps directly to a capability: streaming enables progressive delivery, cache coordination propagates invalidations across instances, cache consistency keeps HTML and RSC aligned, and PPR-at-edge often requires extra shell/resume integration.
+
+## Portability and Fidelity
+
+Next.js runs as a Node.js server process, and a single process handles every feature correctly. Streaming support enables progressive delivery of Server Components and PPR; without it, responses are buffered but features still work. Additional infrastructure investments (CDN caching, edge compute, shared cache) improve performance and, in multi-instance deployments, reduce consistency gaps.
+
+To make this concrete, we distinguish between two types of platform support:
+
+**Functional fidelity** means every Next.js feature works correctly on the platform. The [adapter test suite](/docs/app/api-reference/config/next-config-js/adapterPath#testing-adapters) is the contract: if a platform's adapter passes the tests, it has full functional fidelity. This is binary: it passes or it doesn't. The test suite is open to contributions from platform partners to ensure it is fair and complete.
+
+**Performance fidelity** means features achieve their optimal performance characteristics. For example, PPR's static shell served at CDN latency rather than origin latency, or ISR serving stale content instantly while revalidating in the background with sub-second propagation. Performance fidelity is a spectrum: every platform will achieve different levels based on their architecture, and platforms will improve over time.
+
+A platform that achieves functional fidelity is a fully supported deployment target for Next.js. Performance fidelity is how platforms differentiate. See [Deploying to Platforms](/docs/app/guides/deploying-to-platforms) for the full feature compatibility matrix.
+
+## CDN Feature Compatibility
+
+Many CDNs have useful primitives for deeper Next.js integration (edge compute, key-value storage, blob storage), but end-to-end PPR resume support is still emerging and may require bespoke platform work. Most community adapters today deploy Next.js as a Node.js server without leveraging these CDN-specific primitives. See the [Deploying](/docs/app/getting-started/deploying#adapters) page for the current list of adapters.
+
+See [Deploying to Platforms](/docs/app/guides/deploying-to-platforms#cdn-infrastructure-compatibility) for the full CDN compatibility table and [CDN Caching](/docs/app/guides/cdn-caching) for caching behavior details.
+
+
+Learn more about the features discussed on this page.
+
+- [Caching](/docs/app/getting-started/caching)
+  - Learn how to cache data and UI in Next.js
+- [Streaming](/docs/app/guides/streaming)
+  - Learn how streaming works in Next.js and how to use it to progressively render UI as data becomes available.
+- [Self-Hosting](/docs/app/guides/self-hosting)
+  - Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports).
+- [Deploying to Platforms](/docs/app/guides/deploying-to-platforms)
+  - Understand which Next.js features require specific platform capabilities and how to choose the right deployment target.
+
+
+---
 title: Sass
 description: Style your Next.js application using Sass.
 url: "https://nextjs.org/docs/app/guides/sass"
@@ -20101,14 +20661,16 @@ This allows you to use a singular Docker image that can be promoted through mult
 
 Next.js can cache responses, generated static pages, build outputs, and other static assets like images, fonts, and scripts.
 
-Caching and revalidating pages (with [Incremental Static Regeneration](/docs/app/guides/incremental-static-regeneration)) use the **same shared cache**. By default, this cache is stored to the filesystem (on disk) on your Next.js server. **This works automatically when self-hosting** using both the Pages and App Router.
+Caching and revalidating pages (with [Incremental Static Regeneration](/docs/app/guides/incremental-static-regeneration)) use the **same Next.js server cache**. By default, this cache is stored on the local filesystem (on disk) of each Next.js server instance.
+
+This works automatically for a single self-hosted `next start` instance with persistent local disk. If you run multiple instances, use ephemeral compute, or place a CDN/reverse proxy in front of Next.js, also review [Configuring Caching](#configuring-caching), [Multi-Instance Cache Coordination](#multi-instance-cache-coordination), and [Usage with CDNs](#usage-with-cdns).
 
 You can configure the Next.js cache location if you want to persist cached pages and data to durable storage, or share the cache across multiple containers or instances of your Next.js application.
 
 ### Automatic Caching
 
 * Next.js sets the `Cache-Control` header of `public, max-age=31536000, immutable` to truly immutable assets. It cannot be overridden. These immutable files contain a SHA-hash in the file name, so they can be safely cached indefinitely. For example, [Static Image Imports](/docs/app/getting-started/images#local-images). You can [configure the TTL](/docs/app/api-reference/components/image#minimumcachettl) for images.
-* Incremental Static Regeneration (ISR) sets the `Cache-Control` header of `s-maxage: <revalidate in getStaticProps>, stale-while-revalidate`. This revalidation time is defined in your [`getStaticProps` function](/docs/pages/building-your-application/data-fetching/get-static-props) in seconds. If you set `revalidate: false`, it will default to a one-year cache duration.
+* Incremental Static Regeneration (ISR) sets the `Cache-Control` header of `s-maxage: <revalidate in getStaticProps>, stale-while-revalidate`. This revalidation time is defined in your [`getStaticProps` function](/docs/pages/building-your-application/data-fetching/get-static-props) in seconds. If you set `revalidate: false`, it will default to a one-year cache duration. To leverage this at the CDN layer, your CDN/reverse proxy must respect these directives and cache-key variability ([CDN Caching](/docs/app/guides/cdn-caching)); otherwise, responses may bypass CDN caching or serve stale/mismatched variants during client-side navigation.
 * Dynamically rendered pages set a `Cache-Control` header of `private, no-cache, no-store, max-age=0, must-revalidate` to prevent user-specific data from being cached. This applies to both the App Router and Pages Router. This also includes [Draft Mode](/docs/app/guides/draft-mode).
 
 ### Static Assets
@@ -20119,9 +20681,11 @@ If you want to host static assets on a different domain or CDN, you can use the 
 
 ### Configuring Caching
 
-By default, generated cache assets will be stored in memory (defaults to 50mb) and on disk. If you are hosting Next.js using a container orchestration platform like Kubernetes, each pod will have a copy of the cache. To prevent stale data from being shown since the cache is not shared between pods by default, you can configure the Next.js cache to provide a cache handler and disable in-memory caching.
+By default, generated cache assets will be stored in memory (defaults to 50mb) and on disk. On ephemeral compute platforms (common serverless setups), local disk is often non-persistent or unavailable, so this cache is effectively short-lived and per-instance. If you are hosting Next.js using a container orchestration platform like Kubernetes, each pod will have a copy of the cache. To prevent stale data from being shown since the cache is not shared between pods by default, you can configure the Next.js cache to provide a cache handler and disable in-memory caching.
 
 To configure the cache location when self-hosting, you can configure a custom handler in your `next.config.js` file:
+
+For production deployments, use this as a starting point and extend it with durable storage, eviction policies, error handling, and distributed tag coordination. See [Custom Next.js Cache Handler](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath) and the [Redis `cacheHandler` example](https://github.com/vercel/next.js/tree/canary/examples/cache-handler-redis). If you are configuring backends for `'use cache'` directives, use [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers).
 
 ```jsx filename="next.config.js"
 module.exports = {
@@ -20267,6 +20831,22 @@ module.exports = {
 }
 ```
 
+Beyond nginx, ensure that your entire infrastructure supports streaming end-to-end:
+
+* **Load balancers** must support chunked transfer encoding or HTTP/2 streaming. Some cloud load balancers (for example, AWS ALB with Lambda integration) may buffer responses by default.
+* **Reverse proxies** between the load balancer and Next.js must also pass through chunked responses without buffering.
+* If using [Partial Prerendering](/docs/app/guides/ppr-platform-guide), streaming support is required. Without it, the static shell and dynamic content are delivered together after the full render completes, eliminating PPR's time-to-first-byte advantage.
+
+## Multi-Instance Cache Coordination
+
+In addition to the [multi-server configuration](/docs/app/guides/self-hosting#multi-server-deployments) above (encryption key, deployment ID, shared cache), App Router deployments with multiple instances need cache tag coordination.
+
+By default, calling [`revalidateTag()`](/docs/app/api-reference/functions/revalidateTag) on one instance only invalidates the cache on that instance. Other instances continue serving stale content until they independently discover the invalidation.
+
+To coordinate tag invalidation across instances, implement the [`refreshTags()`](/docs/app/api-reference/config/next-config-js/cacheHandlers#refreshtags) method in your [custom cache handler](/docs/app/api-reference/config/next-config-js/cacheHandlers). This method is called before each request and should sync tag state from shared storage (like Redis) so all instances learn about invalidations promptly.
+
+For a detailed explanation of the tag architecture, see [How Revalidation Works](/docs/app/guides/how-revalidation-works).
+
 ## Cache Components
 
 [Cache Components](/docs/app/getting-started/caching) works by default with Next.js and is not a CDN-only feature. This includes deployment as a Node.js server (through `next start`) and when used with a Docker container.
@@ -20277,13 +20857,13 @@ When using a CDN in front of your Next.js application, the page will include `Ca
 
 If you don't need a mix of both static and dynamic components, you can make your entire route static and cache the output HTML on a CDN. This Automatic Static Optimization is the default behavior when running `next build` if dynamic APIs are not used.
 
-As Partial Prerendering moves to stable, we will provide support through the Deployment Adapters API.
+For detailed guidance on CDN caching behavior, graceful degradation, and cache variability, see [CDN Caching](/docs/app/guides/cdn-caching). For Partial Prerendering support on different platforms, see the [PPR Platform Guide](/docs/app/guides/ppr-platform-guide) and the [Deployment Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath).
 
 ## `after`
 
 [`after`](/docs/app/api-reference/functions/after) is fully supported when self-hosting with `next start`.
 
-When stopping the server, ensure a graceful shutdown by sending `SIGINT` or `SIGTERM` signals and waiting. This allows the Next.js server to wait until after pending callback functions or promises used inside `after` have finished.
+When stopping the server, ensure a graceful shutdown by sending `SIGINT` or `SIGTERM` signals and waiting. The Next.js server will finish in-flight requests and execute any pending `after()` callbacks before exiting. Platforms should allow a configurable drain period (10-30 seconds is recommended) to ensure all background work completes.
 
 
 ---
@@ -21809,6 +22389,8 @@ Related API references and guides.
   - Learn how the built-in navigation optimizations work, including prefetching, prerendering, and client-side navigation, and how to optimize navigation for dynamic routes and slow networks.
 - [Self-Hosting](/docs/app/guides/self-hosting)
   - Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports).
+- [Rendering Philosophy](/docs/app/guides/rendering-philosophy)
+  - Learn how Next.js treats static and dynamic rendering as a spectrum at the component level, and what this means for deployment.
 
 
 ---
@@ -32226,7 +32808,7 @@ An automatically generated hash of the error thrown. It can be used to match the
 
 The cause of an error can sometimes be temporary. In these cases, trying again might resolve the issue.
 
-An error component can use the `unstable_retry()` function to prompt the user to attempt to recover from the error. When executed, the function will try to re-fetch and re-render the error boundary's contents. If successful, the fallback error component is replaced with the result of the re-render.
+An error component can use the `unstable_retry()` function to prompt the user to attempt to recover from the error. When executed, the function will try to re-fetch and re-render the error boundary's children. If successful, the fallback error component is replaced with the result of the re-render.
 
 ```tsx filename="app/dashboard/error.tsx" switcher
 'use client' // Error boundaries must be Client Components
@@ -32262,7 +32844,7 @@ export default function Error({ error, unstable_retry }) {
 
 #### `reset`
 
-In most cases, you should use [`unstable_retry()`](#unstable_retry) instead. However, if you have a specific reason to clear the error state and re-render the error boundary's contents without re-fetching the contents, you can use the `reset()` function.
+In most cases, you should use [`unstable_retry()`](#unstable_retry) instead. However, if you have a specific reason to clear the error state and re-render the error boundary's children without re-fetching the contents, you can use the `reset()` function.
 
 ## Examples
 
@@ -39626,22 +40208,28 @@ version: 16.2.1
 
 The `unstable_catchError` function creates a component that wraps its children in an error boundary. It provides a programmatic alternative to the [`error.js`](/docs/app/api-reference/file-conventions/error) file convention, enabling component-level error recovery anywhere in your component tree.
 
+Compared to a custom React error boundary, `unstable_catchError` is designed to work with Next.js out of the box:
+
+* **Built-in error recovery** — [`unstable_retry()`](/docs/app/api-reference/file-conventions/error#unstable_retry) re-fetches and re-renders the error boundary's children, including Server Components.
+* **Framework-aware integration** — APIs like `redirect()` and `notFound()` work by throwing special errors under the hood. `unstable_catchError` handles these seamlessly, so they're not accidentally caught by your error boundary.
+* **Client navigation handling** — The error state automatically clears when you do a client navigation to a different route.
+
 `unstable_catchError` can be called from [Client Components](/docs/app/getting-started/server-and-client-components).
 
 ```tsx filename="app/custom-error-boundary.tsx" switcher
 'use client'
 
-import { unstable_catchError } from 'next/error'
+import { unstable_catchError, type ErrorInfo } from 'next/error'
 
 function ErrorFallback(
   props: { title: string },
-  { error, unstable_retry: retry }: { error: Error; unstable_retry: () => void }
+  { error, unstable_retry }: ErrorInfo
 ) {
   return (
     <div>
       <h2>{props.title}</h2>
       <p>{error.message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button onClick={() => unstable_retry()}>Try again</button>
     </div>
   )
 }
@@ -39654,12 +40242,12 @@ export default unstable_catchError(ErrorFallback)
 
 import { unstable_catchError } from 'next/error'
 
-function ErrorFallback(props, { error, unstable_retry: retry }) {
+function ErrorFallback(props, { error, unstable_retry }) {
   return (
     <div>
       <h2>{props.title}</h2>
       <p>{error.message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button onClick={() => unstable_retry()}>Try again</button>
     </div>
   )
 }
@@ -39684,11 +40272,11 @@ A function that renders the error UI when an error is caught. It receives two ar
 * `props` — The props passed to the wrapper component (excluding `children`).
 * `errorInfo` — An object containing information about the error:
 
-| Property         | Type                                                                                        | Description                                                                                                                                              |
-| ---------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `error`          | [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) | The error instance that was caught.                                                                                                                      |
-| `unstable_retry` | `() => void`                                                                                | Re-fetches and re-renders the error boundary's contents. If successful, the fallback is replaced with the re-rendered result.                            |
-| `reset`          | `() => void`                                                                                | Resets the error state and re-renders without re-fetching. Use [`retry()`](/docs/app/api-reference/file-conventions/error#unstable_retry) in most cases. |
+| Property         | Type                                                                                        | Description                                                                                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `error`          | [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) | The error instance that was caught.                                                                                                                               |
+| `unstable_retry` | `() => void`                                                                                | Re-fetches and re-renders the error boundary's children. If successful, the fallback is replaced with the re-rendered result.                                     |
+| `reset`          | `() => void`                                                                                | Resets the error state and re-renders without re-fetching. Use [`unstable_retry()`](/docs/app/api-reference/file-conventions/error#unstable_retry) in most cases. |
 
 The `fallback` function must be a Client Component (or defined in a `'use client'` module).
 
@@ -39724,27 +40312,20 @@ export default function Component({ children }) {
 
 ### Recovering from errors
 
-Use `retry()` to prompt the user to recover from the error. When called, the function re-fetches and re-renders the error boundary's contents. If successful, the fallback is replaced with the re-rendered result.
+Use `unstable_retry()` to prompt the user to recover from the error. When called, the function re-fetches and re-renders the error boundary's children. If successful, the fallback is replaced with the re-rendered result.
 
-In most cases, use `retry()` instead of `reset()`. The `reset()` function only clears the error state and re-renders without re-fetching, which means it won't recover from Server Component errors.
+In most cases, use `unstable_retry()` instead of `reset()`. The `reset()` function only clears the error state and re-renders without re-fetching, which means it won't recover from Server Component errors.
 
-```tsx filename="app/custom-error-boundary.tsx" highlight={16,17} switcher
+```tsx filename="app/custom-error-boundary.tsx" switcher
 'use client'
 
-import { unstable_catchError } from 'next/error'
+import { unstable_catchError, type ErrorInfo } from 'next/error'
 
-function ErrorFallback(
-  props: {},
-  {
-    error,
-    unstable_retry: retry,
-    reset,
-  }: { error: Error; unstable_retry: () => void; reset: () => void }
-) {
+function ErrorFallback(props: {}, { error, unstable_retry, reset }: ErrorInfo) {
   return (
     <div>
       <p>{error.message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button onClick={() => unstable_retry()}>Try again</button>
       <button onClick={() => reset()}>Reset</button>
     </div>
   )
@@ -39753,16 +40334,16 @@ function ErrorFallback(
 export default unstable_catchError(ErrorFallback)
 ```
 
-```jsx filename="app/custom-error-boundary.js" highlight={9,10} switcher
+```jsx filename="app/custom-error-boundary.js" switcher
 'use client'
 
 import { unstable_catchError } from 'next/error'
 
-function ErrorFallback(props, { error, unstable_retry: retry, reset }) {
+function ErrorFallback(props, { error, unstable_retry, reset }) {
   return (
     <div>
       <p>{error.message}</p>
-      <button onClick={() => retry()}>Try again</button>
+      <button onClick={() => unstable_retry()}>Try again</button>
       <button onClick={() => reset()}>Reset</button>
     </div>
   )
@@ -39780,8 +40361,7 @@ You can pass server-rendered content as a prop to display data-driven fallback U
 ```tsx filename="app/error-boundary.tsx" switcher
 'use client'
 
-import { unstable_catchError } from 'next/error'
-import type { ErrorInfo } from 'next/error'
+import { unstable_catchError, type ErrorInfo } from 'next/error'
 
 function ErrorFallback(
   props: { fallback: React.ReactNode },
@@ -47705,6 +48285,34 @@ requestMeta.onCacheEntryV2 callback
       return true:  adapter already handled response (short-circuit)
 ```
 
+## Runtime Integration
+
+The Deployment Adapter API is a **build-time** interface. It tells your platform what was built and how to route requests. **Runtime** behavior (request handling, streaming, caching) is handled by the Next.js server itself and by the cache interfaces [`cacheHandler`](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath) and [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers).
+
+Together, the adapter and cache interfaces form the complete platform integration surface:
+
+* **Adapter** (build-time): processes build outputs, configures routing, and sets up platform-specific infrastructure.
+* **Cache Interfaces** (runtime): `cacheHandler` manages ISR/server cache storage and revalidation across instances; `cacheHandlers` configures `'use cache'` directive backends and tag coordination.
+
+### Handler Context
+
+When invoking entrypoints, adapters pass a `ctx` object to the Next.js handler. Key fields include:
+
+* **`ctx.waitUntil`**: a function that accepts a promise. Use this to keep the serverless function alive after the response is sent, allowing background work like cache revalidation to complete.
+* **`requestMeta.onCacheEntryV2`** (set via `addRequestMeta`): a callback that fires when a cache entry is generated or looked up. Use this to observe all cache operations (not just PPR) and propagate cache updates to your platform's storage backend. This callback fires on the instance that handled the request. For multi-instance deployments, your adapter should propagate updates to shared storage. See [How Revalidation Works](/docs/app/guides/how-revalidation-works) for coordination patterns.
+
+### PPR Chain Headers
+
+In the [prerenders output type](#prerenders-outputsprerenders), `pprChain.headers` contains the headers needed for the [resume protocol](#implementing-ppr-in-an-adapter). Specifically, it contains `{ 'next-resume': '1' }`.
+
+When your adapter detects a PPR-enabled route with a cached static shell:
+
+1. Set the `pprChain.headers` on the internal request to the Next.js handler.
+2. Send the request as a **POST** with the `postponedState` as the request body.
+3. The handler will render only the deferred Suspense boundaries and stream the result.
+
+> **Good to know:** In standard `next start`, the server handles both the shell and dynamic render in a single pass automatically. The resume protocol is useful for adapter-based deployments and CDN-to-origin architectures that want to serve the shell separately. See the [PPR Platform Guide](/docs/app/guides/ppr-platform-guide) for the full implementation context.
+
 ## Invoking Entrypoints
 
 Build output entrypoints use a `handler(..., ctx)` interface, with runtime-specific request/response types.
@@ -47932,7 +48540,7 @@ ISR-enabled routes and static prerenders:
   parentOutputId: string  // ID of the source page/route
   groupId: number        // Revalidation group identifier (prerenders with same groupId revalidate together)
   pprChain?: {
-    headers: Record<string, string>  // PPR chain headers (e.g., 'x-nextjs-resume': '1')
+    headers: Record<string, string>  // PPR chain headers (e.g., 'next-resume': '1')
   }
   parentFallbackMode?: false | null | string  // false: no additional paths (fallback: false), null: blocking render, string: path to HTML fallback
   fallback?: {
@@ -48403,10 +49011,10 @@ Retrieve a cache entry for the given cache key.
 get(cacheKey: string, softTags: string[]): Promise<CacheEntry | undefined>
 ```
 
-| Parameter  | Type       | Description                                                  |
-| ---------- | ---------- | ------------------------------------------------------------ |
-| `cacheKey` | `string`   | The unique key for the cache entry.                          |
-| `softTags` | `string[]` | Tags to check for staleness (used in some cache strategies). |
+| Parameter  | Type       | Description                                                                                 |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------- |
+| `cacheKey` | `string`   | The unique key for the cache entry.                                                         |
+| `softTags` | `string[]` | Implicit tags derived from the route path. See [Soft Tags](#soft-tags) for how to use them. |
 
 Returns a `CacheEntry` object if found, or `undefined` if not found or expired.
 
@@ -48734,6 +49342,86 @@ module.exports = {
   },
 }
 ```
+
+## Distributed Tag Coordination
+
+When running multiple Next.js instances, tag invalidation must be coordinated across instances. The default in-memory handler only tracks tags locally, so calling `revalidateTag()` on one instance does not affect others.
+
+To coordinate tags across instances:
+
+1. **`updateTags()`** is called when `revalidateTag()` is invoked. Your handler should write the invalidation timestamp to shared storage.
+2. **`refreshTags()`** is called before each request. Your handler should read recent invalidation events from shared storage and update its local tag state.
+3. **`getExpiration()`** returns the most recent revalidation timestamp across all provided tags. The default implementation returns `Math.max(...timestamps, 0)`.
+
+Here's an example using Redis for distributed tag coordination:
+
+```js filename="cache-handlers/distributed-tags.js"
+const { createClient } = require('redis')
+
+const client = createClient({ url: process.env.REDIS_URL })
+client.connect()
+
+// Local cache of tag timestamps, synced via refreshTags
+const localTagTimestamps = new Map()
+
+module.exports = {
+  // ... get() and set() methods ...
+
+  async refreshTags() {
+    // Sync tag invalidation timestamps from Redis
+    // Using a dedicated set to track tag keys avoids scanning the keyspace
+    const tagKeys = await client.sMembers('revalidated-tags')
+    if (tagKeys.length > 0) {
+      const values = await client.mGet(tagKeys.map((k) => `tag:${k}`))
+      for (let i = 0; i < tagKeys.length; i++) {
+        localTagTimestamps.set(tagKeys[i], Number(values[i]))
+      }
+    }
+  },
+
+  async getExpiration(tags) {
+    const timestamps = tags.map((tag) => localTagTimestamps.get(tag) || 0)
+    return Math.max(...timestamps, 0)
+  },
+
+  async updateTags(tags, durations) {
+    const now = Date.now()
+    const pipeline = client.multi()
+    for (const tag of tags) {
+      pipeline.set(`tag:${tag}`, String(now))
+      pipeline.sAdd('revalidated-tags', tag)
+      localTagTimestamps.set(tag, now)
+    }
+    await pipeline.exec()
+  },
+}
+```
+
+For a full explanation of the tag architecture (including soft tags and multi-instance considerations), see [How Revalidation Works](/docs/app/guides/how-revalidation-works).
+
+## Soft Tags
+
+Soft tags are implicit tags that Next.js automatically generates based on the route path. For example, the route `/blog/hello` generates soft tags for `/`, `/blog`, `/blog/hello`, and their corresponding layout entries. These tags are prefixed internally with `_N_T_`.
+
+Soft tags enable [`revalidatePath()`](/docs/app/api-reference/functions/revalidatePath) to work through the same tag-based cache system. When `revalidatePath('/blog/hello')` is called, it invalidates all cache entries associated with that path's soft tags.
+
+In the cache handler API, soft tags are passed to the [`get()`](#get) method as the `softTags` parameter. Your handler should check whether any soft tag has been invalidated (via `getExpiration()` or direct timestamp comparison) after the cache entry's `timestamp`. If a soft tag was invalidated more recently than the entry was created, the entry should be treated as stale.
+
+## Handling Streams
+
+The `CacheEntry.value` is a [`ReadableStream<Uint8Array>`](https://developer.mozilla.org/docs/Web/API/ReadableStream). When implementing a cache handler that stores entries externally, keep in mind:
+
+* **Use `.tee()`** if you need to both store and return the stream. One branch goes to storage, the other is returned to the caller.
+* **Memory implications**: large pages produce large cache entries. For S3-like storage backends, consider streaming directly to storage without buffering the entire entry in memory.
+* **Partial writes**: the stream may error partway through rendering. Your handler should decide whether to keep partial entries or discard them. Discarding is safer, as partial entries can produce incomplete pages.
+
+## Error Handling
+
+Cache operations should be implemented defensively:
+
+* **`set()` failure**: the response is still served to the user because `set()` is called asynchronously after the response stream is already flowing. The cache entry is lost, and the next request triggers a fresh render.
+* **`get()` failure**: your handler should catch internal errors and return `undefined` (the "cache miss" signal). The framework does not wrap `get()` in a try/catch, so an unhandled exception from `get()` will propagate as a render error.
+* **Partial writes**: if a cache entry is partially written and then read, the behavior is undefined. Use atomic writes or a write-then-rename pattern to avoid serving partial entries.
 
 ## Platform Support
 
@@ -56900,12 +57588,12 @@ router: Pages Router
 
 Next.js can be deployed as a Node.js server, Docker container, static export, or adapted to run on different platforms.
 
-| Deployment Option                | Feature Support   |
-| -------------------------------- | ----------------- |
-| [Node.js server](#nodejs-server) | All               |
-| [Docker container](#docker)      | All               |
-| [Static export](#static-export)  | Limited           |
-| [Adapters](#adapters)            | Platform-specific |
+| Deployment Option                | Feature Support                                                     |
+| -------------------------------- | ------------------------------------------------------------------- |
+| [Node.js server](#nodejs-server) | All                                                                 |
+| [Docker container](#docker)      | All                                                                 |
+| [Static export](#static-export)  | Limited                                                             |
+| [Adapters](#adapters)            | Varies ([verified](#verified-adapters) adapters run the test suite) |
 
 ## Node.js server
 
@@ -56970,9 +57658,20 @@ Running as a [static export](/docs/app/guides/static-exports) **does not** suppo
 
 ## Adapters
 
-Next.js can be adapted to run on different platforms to support their infrastructure capabilities.
+Next.js can be adapted to run on different platforms to support their infrastructure capabilities. The [Deployment Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath) lets platforms customize how Next.js applications are built and deployed.
 
-Refer to each provider's documentation for information on supported Next.js features:
+### Verified Adapters
+
+Verified adapters are open source, run the full [Next.js compatibility test suite](/docs/app/api-reference/config/next-config-js/adapterPath#testing-adapters), and are hosted under the [Next.js GitHub organization](https://github.com/nextjs). The Next.js team coordinates testing with these platforms before major releases. Publicly visible test results for each adapter are coming soon. [Learn more about verified adapters](/docs/app/guides/deploying-to-platforms#verified-adapters).
+
+* [Vercel](https://vercel.com/docs/frameworks/nextjs)
+* [Bun](https://bun.sh/docs/frameworks/nextjs)
+
+Cloudflare and Netlify are working on verified adapters built on the Adapter API. In the meantime, they offer their own Next.js integrations (see below).
+
+### Other Platforms
+
+The following platforms offer their own Next.js integrations. These are not built on the public [Adapter API](/docs/app/api-reference/config/next-config-js/adapterPath) and are not verified by the Next.js team, so feature support and compatibility may vary. Refer to each provider's documentation for details:
 
 * [Appwrite Sites](https://appwrite.io/docs/products/sites/quick-start/nextjs)
 * [AWS Amplify Hosting](https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components)
@@ -56980,9 +57679,8 @@ Refer to each provider's documentation for information on supported Next.js feat
 * [Deno Deploy](https://docs.deno.com/examples/next_tutorial)
 * [Firebase App Hosting](https://firebase.google.com/docs/app-hosting/get-started)
 * [Netlify](https://docs.netlify.com/frameworks/next-js/overview/#next-js-support-on-netlify)
-* [Vercel](https://vercel.com/docs/frameworks/nextjs)
 
-> **Note:** We are working on a [Deployment Adapters API](https://github.com/vercel/next.js/discussions/77740) for all platforms to adopt. After completion, we will add documentation on how to write your own adapters.
+For details on which Next.js features require specific platform capabilities, see [Deploying to Platforms](/docs/app/guides/deploying-to-platforms).
 
 
 
@@ -65432,14 +66130,16 @@ This allows you to use a singular Docker image that can be promoted through mult
 
 Next.js can cache responses, generated static pages, build outputs, and other static assets like images, fonts, and scripts.
 
-Caching and revalidating pages (with [Incremental Static Regeneration](/docs/app/guides/incremental-static-regeneration)) use the **same shared cache**. By default, this cache is stored to the filesystem (on disk) on your Next.js server. **This works automatically when self-hosting** using both the Pages and App Router.
+Caching and revalidating pages (with [Incremental Static Regeneration](/docs/app/guides/incremental-static-regeneration)) use the **same Next.js server cache**. By default, this cache is stored on the local filesystem (on disk) of each Next.js server instance.
+
+This works automatically for a single self-hosted `next start` instance with persistent local disk. If you run multiple instances, use ephemeral compute, or place a CDN/reverse proxy in front of Next.js, also review [Configuring Caching](#configuring-caching), [Multi-Instance Cache Coordination](#multi-instance-cache-coordination), and [Usage with CDNs](#usage-with-cdns).
 
 You can configure the Next.js cache location if you want to persist cached pages and data to durable storage, or share the cache across multiple containers or instances of your Next.js application.
 
 ### Automatic Caching
 
 * Next.js sets the `Cache-Control` header of `public, max-age=31536000, immutable` to truly immutable assets. It cannot be overridden. These immutable files contain a SHA-hash in the file name, so they can be safely cached indefinitely. For example, [Static Image Imports](/docs/app/getting-started/images#local-images). You can [configure the TTL](/docs/app/api-reference/components/image#minimumcachettl) for images.
-* Incremental Static Regeneration (ISR) sets the `Cache-Control` header of `s-maxage: <revalidate in getStaticProps>, stale-while-revalidate`. This revalidation time is defined in your [`getStaticProps` function](/docs/pages/building-your-application/data-fetching/get-static-props) in seconds. If you set `revalidate: false`, it will default to a one-year cache duration.
+* Incremental Static Regeneration (ISR) sets the `Cache-Control` header of `s-maxage: <revalidate in getStaticProps>, stale-while-revalidate`. This revalidation time is defined in your [`getStaticProps` function](/docs/pages/building-your-application/data-fetching/get-static-props) in seconds. If you set `revalidate: false`, it will default to a one-year cache duration. To leverage this at the CDN layer, your CDN/reverse proxy must respect these directives and cache-key variability ([CDN Caching](/docs/app/guides/cdn-caching)); otherwise, responses may bypass CDN caching or serve stale/mismatched variants during client-side navigation.
 * Dynamically rendered pages set a `Cache-Control` header of `private, no-cache, no-store, max-age=0, must-revalidate` to prevent user-specific data from being cached. This applies to both the App Router and Pages Router. This also includes [Draft Mode](/docs/app/guides/draft-mode).
 
 ### Static Assets
@@ -65450,9 +66150,11 @@ If you want to host static assets on a different domain or CDN, you can use the 
 
 ### Configuring Caching
 
-By default, generated cache assets will be stored in memory (defaults to 50mb) and on disk. If you are hosting Next.js using a container orchestration platform like Kubernetes, each pod will have a copy of the cache. To prevent stale data from being shown since the cache is not shared between pods by default, you can configure the Next.js cache to provide a cache handler and disable in-memory caching.
+By default, generated cache assets will be stored in memory (defaults to 50mb) and on disk. On ephemeral compute platforms (common serverless setups), local disk is often non-persistent or unavailable, so this cache is effectively short-lived and per-instance. If you are hosting Next.js using a container orchestration platform like Kubernetes, each pod will have a copy of the cache. To prevent stale data from being shown since the cache is not shared between pods by default, you can configure the Next.js cache to provide a cache handler and disable in-memory caching.
 
 To configure the cache location when self-hosting, you can configure a custom handler in your `next.config.js` file:
+
+For production deployments, use this as a starting point and extend it with durable storage, eviction policies, error handling, and distributed tag coordination. See [Custom Next.js Cache Handler](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath) and the [Redis `cacheHandler` example](https://github.com/vercel/next.js/tree/canary/examples/cache-handler-redis). If you are configuring backends for `'use cache'` directives, use [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers).
 
 ```jsx filename="next.config.js"
 module.exports = {
@@ -79163,6 +79865,34 @@ requestMeta.onCacheEntryV2 callback
       return true:  adapter already handled response (short-circuit)
 ```
 
+## Runtime Integration
+
+The Deployment Adapter API is a **build-time** interface. It tells your platform what was built and how to route requests. **Runtime** behavior (request handling, streaming, caching) is handled by the Next.js server itself and by the cache interfaces [`cacheHandler`](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath) and [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers).
+
+Together, the adapter and cache interfaces form the complete platform integration surface:
+
+* **Adapter** (build-time): processes build outputs, configures routing, and sets up platform-specific infrastructure.
+* **Cache Interfaces** (runtime): `cacheHandler` manages ISR/server cache storage and revalidation across instances; `cacheHandlers` configures `'use cache'` directive backends and tag coordination.
+
+### Handler Context
+
+When invoking entrypoints, adapters pass a `ctx` object to the Next.js handler. Key fields include:
+
+* **`ctx.waitUntil`**: a function that accepts a promise. Use this to keep the serverless function alive after the response is sent, allowing background work like cache revalidation to complete.
+* **`requestMeta.onCacheEntryV2`** (set via `addRequestMeta`): a callback that fires when a cache entry is generated or looked up. Use this to observe all cache operations (not just PPR) and propagate cache updates to your platform's storage backend. This callback fires on the instance that handled the request. For multi-instance deployments, your adapter should propagate updates to shared storage. See [How Revalidation Works](/docs/app/guides/how-revalidation-works) for coordination patterns.
+
+### PPR Chain Headers
+
+In the [prerenders output type](#prerenders-outputsprerenders), `pprChain.headers` contains the headers needed for the [resume protocol](#implementing-ppr-in-an-adapter). Specifically, it contains `{ 'next-resume': '1' }`.
+
+When your adapter detects a PPR-enabled route with a cached static shell:
+
+1. Set the `pprChain.headers` on the internal request to the Next.js handler.
+2. Send the request as a **POST** with the `postponedState` as the request body.
+3. The handler will render only the deferred Suspense boundaries and stream the result.
+
+> **Good to know:** In standard `next start`, the server handles both the shell and dynamic render in a single pass automatically. The resume protocol is useful for adapter-based deployments and CDN-to-origin architectures that want to serve the shell separately. See the [PPR Platform Guide](/docs/app/guides/ppr-platform-guide) for the full implementation context.
+
 ## Invoking Entrypoints
 
 Build output entrypoints use a `handler(..., ctx)` interface, with runtime-specific request/response types.
@@ -79390,7 +80120,7 @@ ISR-enabled routes and static prerenders:
   parentOutputId: string  // ID of the source page/route
   groupId: number        // Revalidation group identifier (prerenders with same groupId revalidate together)
   pprChain?: {
-    headers: Record<string, string>  // PPR chain headers (e.g., 'x-nextjs-resume': '1')
+    headers: Record<string, string>  // PPR chain headers (e.g., 'next-resume': '1')
   }
   parentFallbackMode?: false | null | string  // false: no additional paths (fallback: false), null: blocking render, string: path to HTML fallback
   fallback?: {
