@@ -4,6 +4,8 @@
 
 # Next.js Documentation
 
+> Index of all docs: /docs/llms.txt
+
 @doc-version: >=v16.2.4
 @doc-version-notes: Some features may have extended or refined behavior in minor or patch releases
 @router: App Router
@@ -5628,9 +5630,9 @@ You can consider a `route` the lowest level routing primitive.
 
 | Page                 | Route              | Result                       |
 | -------------------- | ------------------ | ---------------------------- |
-| `app/page.js`        | `app/route.js`     |  Conflict |
-| `app/page.js`        | `app/api/route.js` |  Valid    |
-| `app/[user]/page.js` | `app/api/route.js` |  Valid    |
+| `app/page.js`        | `app/route.js`     | ✗ Conflict |
+| `app/page.js`        | `app/api/route.js` | ✓ Valid    |
+| `app/[user]/page.js` | `app/api/route.js` | ✓ Valid    |
 
 Each `route.js` or `page.js` file takes over all HTTP verbs for that route.
 
@@ -21192,10 +21194,10 @@ Since the initial `fallback` data is automatically handled by Next.js, you can n
 
 |                      | SWR                 | RSC                 | RSC + SWR           |
 | -------------------- | ------------------- | ------------------- | ------------------- |
-| SSR data             |  |  |  |
-| Streaming while SSR  |  |  |  |
-| Deduplicate requests |  |  |  |
-| Client-side features |  |  |  |
+| SSR data             | ✗ | ✓ | ✓ |
+| Streaming while SSR  | ✗ | ✓ | ✓ |
+| Deduplicate requests | ✓ | ✓ | ✓ |
+| Client-side features | ✓ | ✗ | ✓ |
 
 ### SPAs with React Query
 
@@ -27790,7 +27792,7 @@ version: 16.2.4
 
 # use cache: private
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The `'use cache: private'` directive allows functions to access runtime request APIs like `cookies()`, `headers()`, and `searchParams` within a cached scope. However, results are **never stored on the server**, they're cached only in the browser's memory and do not persist across page reloads.
 
@@ -28996,17 +28998,17 @@ export default function RootLayout({ children }) {
 
 | Key                                         | `font/google`       | `font/local`        | Type                       | Required          |
 | ------------------------------------------- | ------------------- | ------------------- | -------------------------- | ----------------- |
-| [`src`](#src)                               |  |  | String or Array of Objects | Yes               |
-| [`weight`](#weight)                         |  |  | String or Array            | Required/Optional |
-| [`style`](#style)                           |  |  | String or Array            | -                 |
-| [`subsets`](#subsets)                       |  |  | Array of Strings           | -                 |
-| [`axes`](#axes)                             |  |  | Array of Strings           | -                 |
-| [`display`](#display)                       |  |  | String                     | -                 |
-| [`preload`](#preload)                       |  |  | Boolean                    | -                 |
-| [`fallback`](#fallback)                     |  |  | Array of Strings           | -                 |
-| [`adjustFontFallback`](#adjustfontfallback) |  |  | Boolean or String          | -                 |
-| [`variable`](#variable)                     |  |  | String                     | -                 |
-| [`declarations`](#declarations)             |  |  | Array of Objects           | -                 |
+| [`src`](#src)                               | ✗ | ✓ | String or Array of Objects | Yes               |
+| [`weight`](#weight)                         | ✓ | ✓ | String or Array            | Required/Optional |
+| [`style`](#style)                           | ✓ | ✓ | String or Array            | -                 |
+| [`subsets`](#subsets)                       | ✓ | ✗ | Array of Strings           | -                 |
+| [`axes`](#axes)                             | ✓ | ✗ | Array of Strings           | -                 |
+| [`display`](#display)                       | ✓ | ✓ | String                     | -                 |
+| [`preload`](#preload)                       | ✓ | ✓ | Boolean                    | -                 |
+| [`fallback`](#fallback)                     | ✓ | ✓ | Array of Strings           | -                 |
+| [`adjustFontFallback`](#adjustfontfallback) | ✓ | ✓ | Boolean or String          | -                 |
+| [`variable`](#variable)                     | ✓ | ✓ | String                     | -                 |
+| [`declarations`](#declarations)             | ✗ | ✓ | Array of Objects           | -                 |
 
 ### `src`
 
@@ -33497,7 +33499,7 @@ version: 16.2.4
 
 # forbidden.js
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The **forbidden** file is used to render UI when the [`forbidden`](/docs/app/api-reference/functions/forbidden) function is invoked during authentication. Along with allowing you to customize the UI, Next.js will return a `403` status code.
 
@@ -37732,7 +37734,7 @@ version: 16.2.4
 
 # unauthorized.js
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The **unauthorized** file is used to render UI when the [`unauthorized`](/docs/app/api-reference/functions/unauthorized) function is invoked during authentication. Along with allowing you to customize the UI, Next.js will return a `401` status code.
 
@@ -41541,7 +41543,7 @@ version: 16.2.4
 
 # forbidden
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The `forbidden` function throws an error that renders a Next.js 403 error page. It's useful for handling authorization errors in your application. You can customize the UI using the [`forbidden.js` file](/docs/app/api-reference/file-conventions/forbidden).
 
@@ -45768,7 +45770,7 @@ version: 16.2.4
 
 # unauthorized
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The `unauthorized` function throws an error that renders a Next.js 401 error page. It's useful for handling authorization errors in your application. You can customize the UI using the [`unauthorized.js` file](/docs/app/api-reference/file-conventions/unauthorized).
 
@@ -46112,7 +46114,7 @@ version: 16.2.4
 
 # unstable_noStore
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 **In version 15, we recommend using [`connection`](/docs/app/api-reference/functions/connection) instead of `unstable_noStore`.**
 
@@ -46166,7 +46168,7 @@ version: 16.2.4
 
 # unstable_rethrow
 
-> This feature is currently unstable and subject to change, it is not recommended for production.
+> This feature is currently unstable and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 `unstable_rethrow` can be used to avoid catching internal errors thrown by Next.js when attempting to handle errors thrown in your application code.
 
@@ -48293,7 +48295,7 @@ version: 16.2.4
 
 # appDir
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 > **Good to know**: This option is **no longer** needed as of Next.js 13.4. The App Router is now stable.
 
@@ -48368,7 +48370,7 @@ version: 16.2.4
 
 # authInterrupts
 
-> This feature is currently available in the canary channel and subject to change.
+> This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/getting-started/upgrading#canary-version), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The `authInterrupts` configuration option allows you to use [`forbidden`](/docs/app/api-reference/functions/forbidden) and [`unauthorized`](/docs/app/api-reference/functions/unauthorized) APIs in your application. While these functions are experimental, you must enable the `authInterrupts` option in your `next.config.js` file to use them:
 
@@ -49199,7 +49201,7 @@ version: 16.2.4
 
 # cssChunking
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 CSS Chunking is a strategy used to improve the performance of your web application by splitting and re-ordering CSS files into chunks. This allows you to load only the CSS that is needed for a specific route, instead of loading all the application's CSS at once.
 
@@ -49400,7 +49402,7 @@ version: 16.2.4
 
 # env
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 > Since the release of [Next.js 9.4](https://nextjs.org/blog/next-9-4) we now have a more intuitive and ergonomic experience for [adding environment variables](/docs/app/guides/environment-variables). Give it a try!
 
@@ -49475,7 +49477,7 @@ version: 16.2.4
 
 # exportPathMap
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 > This feature is exclusive to `next export` and currently **deprecated** in favor of `getStaticPaths` with `pages` or `generateStaticParams` with `app`.
 
@@ -50575,7 +50577,7 @@ version: 16.2.4
 
 # inlineCss
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 ## Usage
 
@@ -50814,7 +50816,7 @@ version: 16.2.4
 
 # mdxRs
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 For experimental use with `@next/mdx`. Compiles MDX files using the new Rust compiler.
 
@@ -50867,7 +50869,7 @@ version: 16.2.4
 
 # optimizePackageImports
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 Some packages can export hundreds or thousands of modules, which can cause performance issues in development and production.
 
@@ -51136,7 +51138,7 @@ version: 16.2.4
 
 # proxyClientMaxBodySize
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 When proxy is used, Next.js automatically clones the request body and buffers it in memory to enable multiple reads - both in proxy and the underlying route handler. To prevent excessive memory usage, this configuration option sets a size limit on the buffered body.
 
@@ -52246,7 +52248,7 @@ version: 16.2.4
 
 # serverComponentsHmrCache
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The experimental `serverComponentsHmrCache` option allows you to cache `fetch` responses in Server Components across Hot Module Replacement (HMR) refreshes in local development. This results in faster responses and reduced costs for billed API calls.
 
@@ -52398,7 +52400,7 @@ version: 16.2.4
 
 # staleTimes
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 `staleTimes` is an experimental feature that enables caching of page segments in the [Client Cache](/docs/app/glossary#client-cache).
 
@@ -52448,7 +52450,7 @@ version: 16.2.4
 
 # staticGeneration*
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The `staticGeneration*` options allow you to configure the Static Generation process for advanced use cases.
 
@@ -52496,7 +52498,7 @@ version: 16.2.4
 
 # taint
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 ## Usage
 
@@ -53516,7 +53518,7 @@ version: 16.2.4
 
 # urlImports
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 URL imports are an experimental feature that allows you to import modules directly from external servers (instead of from the local disk).
 
@@ -53613,7 +53615,7 @@ version: 16.2.4
 
 # useLightningcss
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 Experimental support for using [Lightning CSS](https://lightningcss.dev) with webpack. Lightning CSS is a fast CSS transformer and minifier, written in Rust.
 
@@ -53746,7 +53748,7 @@ version: 16.2.4
 
 # viewTransition
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 `viewTransition` enables React's [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) integration in Next.js. This lets you animate navigations, loading states, and content changes using the native browser View Transitions API.
 
@@ -53869,7 +53871,7 @@ version: 16.2.4
 
 # webVitalsAttribution
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 When debugging issues related to Web Vitals, it is often helpful if we can pinpoint the source of the problem.
 For example, in the case of Cumulative Layout Shift (CLS), we might want to know the first element that shifted when the single largest layout shift occurred.
@@ -54439,27 +54441,27 @@ The `@next/eslint-plugin-next` rules included are:
 
 | Enabled in recommended config | Rule                                                                                                                     | Description                                                                                                      |
 | :---------------------------: | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-|            | [@next/next/google-font-display](/docs/messages/google-font-display)                                                     | Enforce font-display behavior with Google Fonts.                                                                 |
-|            | [@next/next/google-font-preconnect](/docs/messages/google-font-preconnect)                                               | Ensure `preconnect` is used with Google Fonts.                                                                   |
-|            | [@next/next/inline-script-id](/docs/messages/inline-script-id)                                                           | Enforce `id` attribute on `next/script` components with inline content.                                          |
-|            | [@next/next/next-script-for-ga](/docs/messages/next-script-for-ga)                                                       | Prefer `next/script` component when using the inline script for Google Analytics.                                |
-|            | [@next/next/no-assign-module-variable](/docs/messages/no-assign-module-variable)                                         | Prevent assignment to the `module` variable.                                                                     |
-|            | [@next/next/no-async-client-component](/docs/messages/no-async-client-component)                                         | Prevent Client Components from being async functions.                                                            |
-|            | [@next/next/no-before-interactive-script-outside-document](/docs/messages/no-before-interactive-script-outside-document) | Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.                   |
-|            | [@next/next/no-css-tags](/docs/messages/no-css-tags)                                                                     | Prevent manual stylesheet tags.                                                                                  |
-|            | [@next/next/no-document-import-in-page](/docs/messages/no-document-import-in-page)                                       | Prevent importing `next/document` outside of `pages/_document.js`.                                               |
-|            | [@next/next/no-duplicate-head](/docs/messages/no-duplicate-head)                                                         | Prevent duplicate usage of `<Head>` in `pages/_document.js`.                                                     |
-|            | [@next/next/no-head-element](/docs/messages/no-head-element)                                                             | Prevent usage of `<head>` element.                                                                               |
-|            | [@next/next/no-head-import-in-document](/docs/messages/no-head-import-in-document)                                       | Prevent usage of `next/head` in `pages/_document.js`.                                                            |
-|            | [@next/next/no-html-link-for-pages](/docs/messages/no-html-link-for-pages)                                               | Prevent usage of `<a>` elements to navigate to internal Next.js pages.                                           |
-|            | [@next/next/no-img-element](/docs/messages/no-img-element)                                                               | Prevent usage of `<img>` element due to slower LCP and higher bandwidth.                                         |
-|            | [@next/next/no-page-custom-font](/docs/messages/no-page-custom-font)                                                     | Prevent page-only custom fonts.                                                                                  |
-|            | [@next/next/no-script-component-in-head](/docs/messages/no-script-component-in-head)                                     | Prevent usage of `next/script` in `next/head` component.                                                         |
-|            | [@next/next/no-styled-jsx-in-document](/docs/messages/no-styled-jsx-in-document)                                         | Prevent usage of `styled-jsx` in `pages/_document.js`.                                                           |
-|            | [@next/next/no-sync-scripts](/docs/messages/no-sync-scripts)                                                             | Prevent synchronous scripts.                                                                                     |
-|            | [@next/next/no-title-in-document-head](/docs/messages/no-title-in-document-head)                                         | Prevent usage of `<title>` with `Head` component from `next/document`.                                           |
-|            | @next/next/no-typos                                                                                                      | Prevent common typos in [Next.js's data fetching functions](/docs/pages/building-your-application/data-fetching) |
-|            | [@next/next/no-unwanted-polyfillio](/docs/messages/no-unwanted-polyfillio)                                               | Prevent duplicate polyfills from Polyfill.io.                                                                    |
+|      ✓      | [@next/next/google-font-display](/docs/messages/google-font-display)                                                     | Enforce font-display behavior with Google Fonts.                                                                 |
+|      ✓      | [@next/next/google-font-preconnect](/docs/messages/google-font-preconnect)                                               | Ensure `preconnect` is used with Google Fonts.                                                                   |
+|      ✓      | [@next/next/inline-script-id](/docs/messages/inline-script-id)                                                           | Enforce `id` attribute on `next/script` components with inline content.                                          |
+|      ✓      | [@next/next/next-script-for-ga](/docs/messages/next-script-for-ga)                                                       | Prefer `next/script` component when using the inline script for Google Analytics.                                |
+|      ✓      | [@next/next/no-assign-module-variable](/docs/messages/no-assign-module-variable)                                         | Prevent assignment to the `module` variable.                                                                     |
+|      ✓      | [@next/next/no-async-client-component](/docs/messages/no-async-client-component)                                         | Prevent Client Components from being async functions.                                                            |
+|      ✓      | [@next/next/no-before-interactive-script-outside-document](/docs/messages/no-before-interactive-script-outside-document) | Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.                   |
+|      ✓      | [@next/next/no-css-tags](/docs/messages/no-css-tags)                                                                     | Prevent manual stylesheet tags.                                                                                  |
+|      ✓      | [@next/next/no-document-import-in-page](/docs/messages/no-document-import-in-page)                                       | Prevent importing `next/document` outside of `pages/_document.js`.                                               |
+|      ✓      | [@next/next/no-duplicate-head](/docs/messages/no-duplicate-head)                                                         | Prevent duplicate usage of `<Head>` in `pages/_document.js`.                                                     |
+|      ✓      | [@next/next/no-head-element](/docs/messages/no-head-element)                                                             | Prevent usage of `<head>` element.                                                                               |
+|      ✓      | [@next/next/no-head-import-in-document](/docs/messages/no-head-import-in-document)                                       | Prevent usage of `next/head` in `pages/_document.js`.                                                            |
+|      ✓      | [@next/next/no-html-link-for-pages](/docs/messages/no-html-link-for-pages)                                               | Prevent usage of `<a>` elements to navigate to internal Next.js pages.                                           |
+|      ✓      | [@next/next/no-img-element](/docs/messages/no-img-element)                                                               | Prevent usage of `<img>` element due to slower LCP and higher bandwidth.                                         |
+|      ✓      | [@next/next/no-page-custom-font](/docs/messages/no-page-custom-font)                                                     | Prevent page-only custom fonts.                                                                                  |
+|      ✓      | [@next/next/no-script-component-in-head](/docs/messages/no-script-component-in-head)                                     | Prevent usage of `next/script` in `next/head` component.                                                         |
+|      ✓      | [@next/next/no-styled-jsx-in-document](/docs/messages/no-styled-jsx-in-document)                                         | Prevent usage of `styled-jsx` in `pages/_document.js`.                                                           |
+|      ✓      | [@next/next/no-sync-scripts](/docs/messages/no-sync-scripts)                                                             | Prevent synchronous scripts.                                                                                     |
+|      ✓      | [@next/next/no-title-in-document-head](/docs/messages/no-title-in-document-head)                                         | Prevent usage of `<title>` with `Head` component from `next/document`.                                           |
+|      ✓      | @next/next/no-typos                                                                                                      | Prevent common typos in [Next.js's data fetching functions](/docs/pages/building-your-application/data-fetching) |
+|      ✓      | [@next/next/no-unwanted-polyfillio](/docs/messages/no-unwanted-polyfillio)                                               | Prevent duplicate polyfills from Polyfill.io.                                                                    |
 
 We recommend using an appropriate [integration](https://eslint.org/docs/user-guide/integrations#editors) to view warnings and errors directly in your code editor during development.
 
@@ -65651,7 +65653,7 @@ router: Pages Router
 
 # Preview Mode
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 > **Note**: This feature is superseded by [Draft Mode](/docs/pages/guides/draft-mode).
 
@@ -72637,17 +72639,17 @@ export default function MyApp({ Component, pageProps }) {
 
 | Key                                         | `font/google`       | `font/local`        | Type                       | Required          |
 | ------------------------------------------- | ------------------- | ------------------- | -------------------------- | ----------------- |
-| [`src`](#src)                               |  |  | String or Array of Objects | Yes               |
-| [`weight`](#weight)                         |  |  | String or Array            | Required/Optional |
-| [`style`](#style)                           |  |  | String or Array            | -                 |
-| [`subsets`](#subsets)                       |  |  | Array of Strings           | -                 |
-| [`axes`](#axes)                             |  |  | Array of Strings           | -                 |
-| [`display`](#display)                       |  |  | String                     | -                 |
-| [`preload`](#preload)                       |  |  | Boolean                    | -                 |
-| [`fallback`](#fallback)                     |  |  | Array of Strings           | -                 |
-| [`adjustFontFallback`](#adjustfontfallback) |  |  | Boolean or String          | -                 |
-| [`variable`](#variable)                     |  |  | String                     | -                 |
-| [`declarations`](#declarations)             |  |  | Array of Objects           | -                 |
+| [`src`](#src)                               | ✗ | ✓ | String or Array of Objects | Yes               |
+| [`weight`](#weight)                         | ✓ | ✓ | String or Array            | Required/Optional |
+| [`style`](#style)                           | ✓ | ✓ | String or Array            | -                 |
+| [`subsets`](#subsets)                       | ✓ | ✗ | Array of Strings           | -                 |
+| [`axes`](#axes)                             | ✓ | ✗ | Array of Strings           | -                 |
+| [`display`](#display)                       | ✓ | ✓ | String                     | -                 |
+| [`preload`](#preload)                       | ✓ | ✓ | Boolean                    | -                 |
+| [`fallback`](#fallback)                     | ✓ | ✓ | Array of Strings           | -                 |
+| [`adjustFontFallback`](#adjustfontfallback) | ✓ | ✓ | Boolean or String          | -                 |
+| [`variable`](#variable)                     | ✓ | ✓ | String                     | -                 |
+| [`declarations`](#declarations)             | ✗ | ✓ | Array of Objects           | -                 |
 
 ### `src`
 
@@ -74730,7 +74732,7 @@ router: Pages Router
 
 # Image (Legacy)
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 Starting with Next.js 13, the `next/image` component was rewritten to improve both the performance and developer experience. In order to provide a backwards compatible upgrade solution, the old `next/image` was renamed to `next/legacy/image`.
 
@@ -80485,7 +80487,7 @@ router: Pages Router
 
 # env
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 > Since the release of [Next.js 9.4](https://nextjs.org/blog/next-9-4) we now have a more intuitive and ergonomic experience for [adding environment variables](/docs/pages/guides/environment-variables). Give it a try!
 
@@ -80536,7 +80538,7 @@ router: Pages Router
 
 # exportPathMap
 
-> This is a legacy API and no longer recommended. It is still supported for backward compatibility.
+> This is a legacy API and no longer recommended. It's still supported for backward compatibility.
 
 > This feature is exclusive to `next export` and currently **deprecated** in favor of `getStaticPaths` with `pages` or `generateStaticParams` with `app`.
 
@@ -81658,7 +81660,7 @@ router: Pages Router
 
 # optimizePackageImports
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 Some packages can export hundreds or thousands of modules, which can cause performance issues in development and production.
 
@@ -81950,7 +81952,7 @@ router: Pages Router
 
 # experimental.proxyClientMaxBodySize
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 When proxy is used, Next.js automatically clones the request body and buffers it in memory to enable multiple reads - both in proxy and the underlying route handler. To prevent excessive memory usage, this configuration option sets a size limit on the buffered body.
 
@@ -83519,7 +83521,7 @@ router: Pages Router
 
 # urlImports
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 URL imports are an experimental feature that allows you to import modules directly from external servers (instead of from the local disk).
 
@@ -83617,7 +83619,7 @@ router: Pages Router
 
 # useLightningcss
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 Experimental support for using [Lightning CSS](https://lightningcss.dev) with webpack. Lightning CSS is a fast CSS transformer and minifier, written in Rust.
 
@@ -83830,7 +83832,7 @@ router: Pages Router
 
 # webVitalsAttribution
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 When debugging issues related to Web Vitals, it is often helpful if we can pinpoint the source of the problem.
 For example, in the case of Cumulative Layout Shift (CLS), we might want to know the first element that shifted when the single largest layout shift occurred.
@@ -84400,27 +84402,27 @@ The `@next/eslint-plugin-next` rules included are:
 
 | Enabled in recommended config | Rule                                                                                                                     | Description                                                                                                      |
 | :---------------------------: | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-|            | [@next/next/google-font-display](/docs/messages/google-font-display)                                                     | Enforce font-display behavior with Google Fonts.                                                                 |
-|            | [@next/next/google-font-preconnect](/docs/messages/google-font-preconnect)                                               | Ensure `preconnect` is used with Google Fonts.                                                                   |
-|            | [@next/next/inline-script-id](/docs/messages/inline-script-id)                                                           | Enforce `id` attribute on `next/script` components with inline content.                                          |
-|            | [@next/next/next-script-for-ga](/docs/messages/next-script-for-ga)                                                       | Prefer `next/script` component when using the inline script for Google Analytics.                                |
-|            | [@next/next/no-assign-module-variable](/docs/messages/no-assign-module-variable)                                         | Prevent assignment to the `module` variable.                                                                     |
-|            | [@next/next/no-async-client-component](/docs/messages/no-async-client-component)                                         | Prevent Client Components from being async functions.                                                            |
-|            | [@next/next/no-before-interactive-script-outside-document](/docs/messages/no-before-interactive-script-outside-document) | Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.                   |
-|            | [@next/next/no-css-tags](/docs/messages/no-css-tags)                                                                     | Prevent manual stylesheet tags.                                                                                  |
-|            | [@next/next/no-document-import-in-page](/docs/messages/no-document-import-in-page)                                       | Prevent importing `next/document` outside of `pages/_document.js`.                                               |
-|            | [@next/next/no-duplicate-head](/docs/messages/no-duplicate-head)                                                         | Prevent duplicate usage of `<Head>` in `pages/_document.js`.                                                     |
-|            | [@next/next/no-head-element](/docs/messages/no-head-element)                                                             | Prevent usage of `<head>` element.                                                                               |
-|            | [@next/next/no-head-import-in-document](/docs/messages/no-head-import-in-document)                                       | Prevent usage of `next/head` in `pages/_document.js`.                                                            |
-|            | [@next/next/no-html-link-for-pages](/docs/messages/no-html-link-for-pages)                                               | Prevent usage of `<a>` elements to navigate to internal Next.js pages.                                           |
-|            | [@next/next/no-img-element](/docs/messages/no-img-element)                                                               | Prevent usage of `<img>` element due to slower LCP and higher bandwidth.                                         |
-|            | [@next/next/no-page-custom-font](/docs/messages/no-page-custom-font)                                                     | Prevent page-only custom fonts.                                                                                  |
-|            | [@next/next/no-script-component-in-head](/docs/messages/no-script-component-in-head)                                     | Prevent usage of `next/script` in `next/head` component.                                                         |
-|            | [@next/next/no-styled-jsx-in-document](/docs/messages/no-styled-jsx-in-document)                                         | Prevent usage of `styled-jsx` in `pages/_document.js`.                                                           |
-|            | [@next/next/no-sync-scripts](/docs/messages/no-sync-scripts)                                                             | Prevent synchronous scripts.                                                                                     |
-|            | [@next/next/no-title-in-document-head](/docs/messages/no-title-in-document-head)                                         | Prevent usage of `<title>` with `Head` component from `next/document`.                                           |
-|            | @next/next/no-typos                                                                                                      | Prevent common typos in [Next.js's data fetching functions](/docs/pages/building-your-application/data-fetching) |
-|            | [@next/next/no-unwanted-polyfillio](/docs/messages/no-unwanted-polyfillio)                                               | Prevent duplicate polyfills from Polyfill.io.                                                                    |
+|      ✓      | [@next/next/google-font-display](/docs/messages/google-font-display)                                                     | Enforce font-display behavior with Google Fonts.                                                                 |
+|      ✓      | [@next/next/google-font-preconnect](/docs/messages/google-font-preconnect)                                               | Ensure `preconnect` is used with Google Fonts.                                                                   |
+|      ✓      | [@next/next/inline-script-id](/docs/messages/inline-script-id)                                                           | Enforce `id` attribute on `next/script` components with inline content.                                          |
+|      ✓      | [@next/next/next-script-for-ga](/docs/messages/next-script-for-ga)                                                       | Prefer `next/script` component when using the inline script for Google Analytics.                                |
+|      ✓      | [@next/next/no-assign-module-variable](/docs/messages/no-assign-module-variable)                                         | Prevent assignment to the `module` variable.                                                                     |
+|      ✓      | [@next/next/no-async-client-component](/docs/messages/no-async-client-component)                                         | Prevent Client Components from being async functions.                                                            |
+|      ✓      | [@next/next/no-before-interactive-script-outside-document](/docs/messages/no-before-interactive-script-outside-document) | Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.                   |
+|      ✓      | [@next/next/no-css-tags](/docs/messages/no-css-tags)                                                                     | Prevent manual stylesheet tags.                                                                                  |
+|      ✓      | [@next/next/no-document-import-in-page](/docs/messages/no-document-import-in-page)                                       | Prevent importing `next/document` outside of `pages/_document.js`.                                               |
+|      ✓      | [@next/next/no-duplicate-head](/docs/messages/no-duplicate-head)                                                         | Prevent duplicate usage of `<Head>` in `pages/_document.js`.                                                     |
+|      ✓      | [@next/next/no-head-element](/docs/messages/no-head-element)                                                             | Prevent usage of `<head>` element.                                                                               |
+|      ✓      | [@next/next/no-head-import-in-document](/docs/messages/no-head-import-in-document)                                       | Prevent usage of `next/head` in `pages/_document.js`.                                                            |
+|      ✓      | [@next/next/no-html-link-for-pages](/docs/messages/no-html-link-for-pages)                                               | Prevent usage of `<a>` elements to navigate to internal Next.js pages.                                           |
+|      ✓      | [@next/next/no-img-element](/docs/messages/no-img-element)                                                               | Prevent usage of `<img>` element due to slower LCP and higher bandwidth.                                         |
+|      ✓      | [@next/next/no-page-custom-font](/docs/messages/no-page-custom-font)                                                     | Prevent page-only custom fonts.                                                                                  |
+|      ✓      | [@next/next/no-script-component-in-head](/docs/messages/no-script-component-in-head)                                     | Prevent usage of `next/script` in `next/head` component.                                                         |
+|      ✓      | [@next/next/no-styled-jsx-in-document](/docs/messages/no-styled-jsx-in-document)                                         | Prevent usage of `styled-jsx` in `pages/_document.js`.                                                           |
+|      ✓      | [@next/next/no-sync-scripts](/docs/messages/no-sync-scripts)                                                             | Prevent synchronous scripts.                                                                                     |
+|      ✓      | [@next/next/no-title-in-document-head](/docs/messages/no-title-in-document-head)                                         | Prevent usage of `<title>` with `Head` component from `next/document`.                                           |
+|      ✓      | @next/next/no-typos                                                                                                      | Prevent common typos in [Next.js's data fetching functions](/docs/pages/building-your-application/data-fetching) |
+|      ✓      | [@next/next/no-unwanted-polyfillio](/docs/messages/no-unwanted-polyfillio)                                               | Prevent duplicate polyfills from Polyfill.io.                                                                    |
 
 We recommend using an appropriate [integration](https://eslint.org/docs/user-guide/integrations#editors) to view warnings and errors directly in your code editor during development.
 
@@ -87909,6 +87911,10 @@ The following icons are available for use in the docs:
 
 **Output:**
 
+✓
+
+✗
+
 We do not use emojis in the docs.
 
 ## Notes
@@ -88032,7 +88038,7 @@ version: 16.2.4
 
 # Rspack
 
-> This feature is currently experimental and subject to change, it is not recommended for production.
+> This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
 
 The Rspack team has created a community plugin for Next.js, which is part of a [partnering effort](https://rspack.rs/blog/rspack-next-partner) with the Rspack team.
 
