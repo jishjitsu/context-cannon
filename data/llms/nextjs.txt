@@ -1621,7 +1621,11 @@ export default function Counter() {
 
 `"use client"` is used to declare a **boundary** between the Server and Client module graphs (trees).
 
-Once a file is marked with `"use client"`, **all its imports and child components are considered part of the client bundle**. This means you don't need to add the directive to every component that is intended for the client.
+Once a file is marked with `"use client"`, **all of its imports and the components it directly renders are included in the client bundle**. This means you don’t need to add the directive to every component that is intended for the client.
+
+This behavior applies to components that are part of the Client Component’s [module graph](/docs/app/glossary#module-graph), which includes the modules it imports and the components it renders directly. It does not apply to Server Components passed as children or other props. Those components are not imported into the Client Component’s module graph. They are rendered on the server and passed to the Client Component as rendered output.
+
+See [Interleaving Server and Client Components](/docs/app/getting-started/server-and-client-components#interleaving-server-and-client-components) for how Server and Client Components can be combined.
 
 ### Reducing JS bundle size
 
@@ -1786,7 +1790,7 @@ export default function Page() {
 }
 ```
 
-In this pattern, all Server Components will be rendered on the server ahead of time, including those as props. The resulting RSC payload will contain references of where Client Components should be rendered within the component tree.
+In this pattern, Server Components are rendered on the server ahead of time, even when passed as props to Client Components. The React Server Component Payload contains the rendered result of those Server Components, plus placeholders for where Client Components should be rendered and references to their JavaScript files.
 
 ### Context providers
 
@@ -3486,9 +3490,11 @@ export default function Page() {
 
 The fallback (`<p>Loading posts...</p>`) is included in the static shell, while the component's content streams in at request time.
 
+`<Suspense>` provides a fallback UI while async work completes, but it does not itself opt a component into dynamic rendering. If a component only performs synchronous work, it will complete during prerendering regardless of whether it is wrapped in `<Suspense>`.
+
 ## Working with runtime APIs
 
-Request-time APIs require information that is only available when a user makes a request. These include:
+Runtime APIs require information that is only available when a user makes a request. These include:
 
 * [`cookies`](/docs/app/api-reference/functions/cookies) - User's cookie data
 * [`headers`](/docs/app/api-reference/functions/headers) - Request headers
@@ -3552,6 +3558,8 @@ async function CachedContent({ sessionId }: { sessionId: string }) {
 
 At request time, `CachedContent` executes if no matching cache entry is found, and stores the result for future requests with the same `sessionId`.
 
+By default, `use cache` stores entries [in-memory](/docs/app/api-reference/directives/use-cache#runtime-caching-considerations). In serverless environments where memory doesn't persist across requests, `CachedContent` may re-evaluate on every request. Consider [`'use cache: remote'`](/docs/app/api-reference/directives/use-cache-remote) for durable, shared caching.
+
 ## Working with non-deterministic operations
 
 Operations like `Math.random()`, `Date.now()`, or `crypto.randomUUID()` produce different values each time they execute. Cache Components requires you to explicitly handle these.
@@ -3611,6 +3619,8 @@ export default async function Page() {
   )
 }
 ```
+
+> **Good to know:** This includes queries to embedded databases with synchronous APIs, such as `better-sqlite3` or Node.js's built-in [`node:sqlite`](https://nodejs.org/api/sqlite.html). If you need per-request data from a synchronous source, call [`connection()`](/docs/app/api-reference/functions/connection) before the query.
 
 ## How rendering works
 
@@ -3767,6 +3777,8 @@ Learn more about revalidation and the APIs mentioned on this page.
   - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents)
   - Learn how to enable the cacheComponents flag in Next.js.
+- [Preserving UI state](/docs/app/guides/preserving-ui-state)
+  - Learn how React's Activity component preserves UI state across navigations in Next.js and how to control what resets.
 
 
 ---
@@ -3958,6 +3970,8 @@ See the [`revalidatePath` API reference](/docs/app/api-reference/functions/reval
 Cache data that doesn't depend on [runtime data](/docs/app/getting-started/caching#working-with-runtime-apis) and that you're OK serving from cache for a period of time. Use `use cache` with `cacheLife` to describe that behavior.
 
 For content management systems with update mechanisms, use tags with longer cache durations and rely on `revalidateTag` to refresh content when it actually changes, rather than expiring the cache preemptively.
+
+> **Good to know:** In serverless environments, in-memory cache entries may not persist across revalidations. See [runtime caching considerations](/docs/app/api-reference/directives/use-cache#runtime-caching-considerations) for details.
 ## API Reference
 
 Learn more about the APIs mentioned on this page.
@@ -5857,7 +5871,7 @@ Next.js can be adapted to run on different platforms to support their infrastruc
 Verified adapters are open source, run the full [Next.js compatibility test suite](/docs/app/api-reference/adapters/testing-adapters), and are hosted under the [Next.js GitHub organization](https://github.com/nextjs). The Next.js team coordinates testing with these platforms before major releases. Publicly visible test results for each adapter are coming soon. [Learn more about verified adapters](/docs/app/guides/deploying-to-platforms#verified-adapters).
 
 * [Vercel](https://vercel.com/docs/frameworks/nextjs)
-* [Bun](https://bun.sh/docs/frameworks/nextjs)
+* [Bun](https://bun.com/docs/guides/ecosystem/nextjs)
 
 Cloudflare and Netlify are working on verified adapters built on the Adapter API. In the meantime, they offer their own Next.js integrations (see below).
 
@@ -6018,6 +6032,7 @@ version: 16.2.6
  - [PPR Platform Guide](/docs/app/guides/ppr-platform-guide)
  - [Prefetching](/docs/app/guides/prefetching)
  - [Preserving UI state](/docs/app/guides/preserving-ui-state)
+ - [Preventing Flash](/docs/app/guides/preventing-flash-before-hydration)
  - [Production](/docs/app/guides/production-checklist)
  - [PWAs](/docs/app/guides/progressive-web-apps)
  - [Public pages](/docs/app/guides/public-static-pages)
@@ -10408,6 +10423,16 @@ This prevents the tainted objects or values from being passed to the client. How
 
 To prevent server-only code from being executed on the client, you can mark a module with the [`server-only`](https://www.npmjs.com/package/server-only) package:
 
+```ts filename="lib/data.ts"
+import 'server-only'
+
+//...
+```
+
+This ensures that proprietary code or internal business logic stays on the server by causing a build error if the module is imported in the client environment.
+
+Next.js handles `server-only` imports internally. The contents of these packages from NPM are not used. However, if your linting rules flag extraneous dependencies, you may install them to avoid issues.
+
 ```bash package="npm"
 npm install server-only
 ```
@@ -10424,13 +10449,7 @@ pnpm add server-only
 bun add server-only
 ```
 
-```ts filename="lib/data.ts"
-import 'server-only'
-
-//...
-```
-
-This ensures that proprietary code or internal business logic stays on the server by causing a build error if the module is imported in the client environment.
+Read more about `server-only` in the [preventing environment poisoning](/docs/app/getting-started/server-and-client-components#preventing-environment-poisoning) section.
 
 ## Mutating Data
 
@@ -11277,6 +11296,70 @@ export default async function Page() {
 ```
 
 If you access the draft Route Handler (with `secret` and `slug`) from your headless CMS or manually using the URL, you should now be able to see the draft content. And, if you update your draft without publishing, you should be able to view the draft.
+
+## Draft Mode with Cache Components
+
+When using [caching directives](/docs/app/api-reference/directives/use-cache), Draft Mode forces all cached functions and components to produce fresh results on every request. You do not need to add any special handling to your caching code.
+
+When Draft Mode is enabled:
+
+* All functions and components under a caching directive scope re-execute on every request instead of serving from cache.
+* Results are not saved to the cache, so draft requests do not pollute cached content.
+* `fetch()` calls inside cached scopes use the original `fetch` implementation directly, without the Next.js fetch cache.
+* Response headers are set to `private, no-cache, no-store, max-age=0, must-revalidate`.
+
+You can read if Draft Mode is enabled inside a caching directive scope, so you can conditionally fetch draft or published content:
+
+```tsx filename="app/post/[slug]/page.tsx" switcher
+import { draftMode } from 'next/headers'
+
+async function Post({ slug }: { slug: string }) {
+  'use cache'
+
+  const { isEnabled } = await draftMode()
+
+  // Fetch draft or published content based on draft mode status
+  const post = isEnabled
+    ? await fetchDraftPost(slug)
+    : await fetchPublishedPost(slug)
+
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <div>{post.content}</div>
+    </article>
+  )
+}
+```
+
+```jsx filename="app/post/[slug]/page.js" switcher
+import { draftMode } from 'next/headers'
+
+async function Post({ slug }) {
+  'use cache'
+
+  const { isEnabled } = await draftMode()
+
+  // Fetch draft or published content based on draft mode status
+  const post = isEnabled
+    ? await fetchDraftPost(slug)
+    : await fetchPublishedPost(slug)
+
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <div>{post.content}</div>
+    </article>
+  )
+}
+```
+
+> **Good to know:**
+>
+> * You can await the `draftMode()` promise inside a caching directive scope to read `isEnabled`, but other runtime APIs like `cookies()` and `headers()` are not allowed and will throw an error, even when Draft Mode is active. (The [`"use cache: private"`](/docs/app/api-reference/directives/use-cache-private) directive does allow access to `cookies()` and `headers()`.)
+> * You cannot call `draftMode().enable()` or `draftMode().disable()` inside a caching directive scope. Draft Mode can only be toggled in [Route Handlers](/docs/app/api-reference/file-conventions/route) or [Server Actions](/docs/app/getting-started/mutating-data).
+
+If your cached function needs values from `cookies()` or `headers()`, read them outside the caching directive scope and [pass them as arguments](/docs/app/getting-started/caching#passing-runtime-values-to-cached-functions).
 ## Next Steps
 
 See the API reference for more information on how to use Draft Mode.
@@ -16807,6 +16890,26 @@ export default async function Page() {
 
 **Not supported.** Cache Components requires the Node.js runtime. Switch to the Node.js runtime (the default) by removing the `runtime = 'edge'` export. If you need edge behavior for specific routes, use [Proxy](/docs/app/api-reference/file-conventions/proxy) instead.
 
+## UI state preservation
+
+**Component state now persists across navigations.** With Cache Components, Next.js preserves routes using React's [`<Activity>`](https://react.dev/reference/react/Activity) component in [`"hidden"`](https://react.dev/reference/react/Activity#activity) mode instead of unmounting them. Effects clean up and re-run normally, but `useState` values, form inputs, and scroll position are no longer reset when navigating away and back.
+
+If your code relied on unmounting to clear state, you may need to add explicit reset logic:
+
+* **Dropdowns and popovers** — stay open when navigating back. Close them in a `useLayoutEffect` cleanup function.
+* **Dialogs with initialization logic** — Effects that depend on dialog state (like focusing an input) won't re-fire if the state was preserved. Derive dialog state from the URL instead.
+* **Forms after submission** — input values and `useActionState` results (success/error messages) persist when returning. Reset in the submit handler or user action when possible, otherwise use a cleanup effect.
+
+See [Preserving UI state across navigations](/docs/app/guides/preserving-ui-state) for detailed examples of each pattern.
+## Next Steps
+
+Learn about other behavior changes when Cache Components is enabled.
+
+- [Preserving UI state](/docs/app/guides/preserving-ui-state)
+  - Learn how React's Activity component preserves UI state across navigations in Next.js and how to control what resets.
+- [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents)
+  - Learn how to enable the cacheComponents flag in Next.js.
+
 
 ---
 title: Multi-tenant
@@ -18089,7 +18192,7 @@ export function HoverPrefetchLink({ href, children }) {
 
 ---
 title: Preserving UI state
-description: Learn how to control which UI state is preserved and which resets when navigating between pages.
+description: "Learn how React's Activity component preserves UI state across navigations in Next.js and how to control what resets."
 url: "https://nextjs.org/docs/app/guides/preserving-ui-state"
 version: 16.2.6
 ---
@@ -18100,7 +18203,7 @@ version: 16.2.6
 
 Before Cache Components, preserving page-level state across navigations required workarounds like hoisting state to a [shared layout](/docs/app/getting-started/layouts-and-pages#nesting-layouts) or using an external store. With Cache Components, Next.js preserves state and DOM out of the box.
 
-Instead of unmounting pages on navigation, Next.js hides them using React's [`<Activity>`](https://react.dev/reference/react/Activity) component. The DOM nodes stay in the document (hidden with `display: none`), so both React state and DOM state are preserved: form drafts, scroll positions, expanded `<details>` elements, video playback progress, and more.
+Instead of unmounting pages on navigation, Next.js hides them using React's [`<Activity>`](https://react.dev/reference/react/Activity) component. Activity keeps the DOM in the document (hidden with `display: none`), so both React state and DOM state are preserved: form drafts, scroll positions, expanded `<details>` elements, video playback progress, and more.
 
 Next.js preserves up to 3 routes. Beyond that, the oldest route is evicted and will re-render fresh.
 
@@ -18227,95 +18330,114 @@ function ProductTab() {
 
 With this approach, `isDialogOpen` derives from the URL rather than component state. When navigating away and returning, the search param is cleared (the URL changed), so `isDialogOpen` becomes `false`. Opening the dialog sets the param, which changes `isDialogOpen` and triggers the Effect.
 
-### Form input values
+### Forms, inputs, and state
 
-Activity preserves form input values: text typed into fields, selected options, checkbox states.
+Activity preserves form input values (text fields, selected options, checkbox states), submission results, and status messages across navigations.
 
 **When to keep it:** A search page with filters, a draft the user was composing, or a settings form with unsaved changes. Preserving input state is one of the biggest UX wins because the user doesn't lose work.
 
-**When to reset it:** A "create new item" page where returning should start fresh, or a contact form after successful submission.
-
-To reset form fields when Activity hides the component, use a callback ref:
-
-```tsx
-<form
-  ref={(form) => {
-    // Cleanup function - runs when Activity hides this component
-    return () => form?.reset()
-  }}
->
-  {/* fields */}
-</form>
-```
-
-This resets the form whenever the user navigates away.
-
-### Action state (`useActionState`)
-
-Activity preserves [`useActionState`](https://react.dev/reference/react/useActionState) results: success messages, error messages, and any other state returned by the action.
-
-**When to keep it:** A ticket redemption form showing "Ticket redeemed successfully", or a settings form showing "Changes saved". Seeing the result of a previous action when returning to the page is useful confirmation so the user can see what happened.
-
 **When to reset it:** A "new transaction" flow where each visit should start fresh, or a form where stale success/error messages would be confusing in a new context.
 
-You can think of `useActionState` as a `useReducer` that allows side effects. It doesn't have to only handle form submissions; you can dispatch any action to it. Adding a `RESET` action gives you a clean way to clear state when Activity hides the component (see [Reset state](https://react.dev/reference/react/useActionState#reset-state) in the React docs):
+#### Resetting form state on submit
 
-```tsx highlight={5-6,9-21,26-35}
+Consider a page where the user creates a new item. After submitting, `router.push` navigates to the new record. Since Activity preserves the page, navigating back shows the previous name still in the form. Reset state in the event handler to keep the form fresh:
+
+```tsx filename="app/new/page.tsx" highlight={13}
 'use client'
 
-import { useActionState, useLayoutEffect, useRef, startTransition } from 'react'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
-type Action = { type: 'SUBMIT'; data: FormData } | { type: 'RESET' }
-type State = { success: boolean; error: string | null }
+export default function NewItemPage() {
+  const [name, setName] = useState('')
+  const router = useRouter()
 
-function CommentForm() {
-  const [state, dispatch, isPending] = useActionState(
-    async (prev: State, action: Action) => {
-      if (action.type === 'RESET') {
-        return { success: false, error: null }
-      }
-      // Handle the form submission
-      const res = await saveComment(action.data)
-      if (!res.ok) return { success: false, error: res.message }
-      shouldReset.current = true
-      return { success: true, error: null }
-    },
-    { success: false, error: null }
-  )
-
-  const shouldReset = useRef(false)
-
-  // Dispatch RESET when Activity hides this component
-  useLayoutEffect(() => {
-    return () => {
-      if (shouldReset.current) {
-        shouldReset.current = false
-        startTransition(() => {
-          dispatch({ type: 'RESET' })
-        })
-      }
-    }
-  }, [dispatch])
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const item = await createItem({ name })
+    setName('')
+    router.push(`/items/${item.id}`)
+  }
 
   return (
-    <form action={(formData) => dispatch({ type: 'SUBMIT', data: formData })}>
-      <textarea name="comment" />
-      <button type="submit" disabled={isPending}>
-        {isPending ? 'Posting...' : 'Post Comment'}
-      </button>
-      {state.success && <p>Comment posted!</p>}
-      {state.error && <p>{state.error}</p>}
+    <form onSubmit={handleSubmit}>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <button type="submit">Create</button>
     </form>
   )
 }
 ```
 
-Here's what happens step by step:
+#### Resetting stale status messages
 
-1. The user submits the form. The reducer receives a `SUBMIT` action with the `FormData`, calls `saveComment`, and returns `{ success: true }`. It also sets `shouldReset.current = true` to mark that a reset is needed.
-2. The user navigates away. Activity hides the component and runs the `useLayoutEffect` cleanup. Because `shouldReset.current` is `true`, it dispatches a `RESET` action.
-3. The reducer receives `RESET` and returns the initial state (`{ success: false, error: null }`). The stale success message is cleared.
-4. If the user navigates back, the form is ready for a new submission. If they never submitted (step 1 didn't happen), `shouldReset.current` is still `false`, so no `RESET` is dispatched. The form stays as-is.
+If after submitting you set a status into state to render a feedback message, there's often not a reliable user-initiated event to clear it.
+
+The user might navigate via `next/link` elements out of your control, or via browser controls.
+
+Navigating back to the form shows a stale message. In this case, you may use a `useLayoutEffect` cleanup to reset the form and state:
+
+```tsx highlight={17-26}
+'use client'
+
+import { useState, useRef, useLayoutEffect } from 'react'
+
+function ContactForm() {
+  const [name, setName] = useState('')
+  const [status, setStatus] = useState<'idle' | 'success'>('idle')
+  const shouldReset = useRef(false)
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    await sendMessage({ name })
+    setStatus('success')
+    shouldReset.current = true
+  }
+
+  // Reset stale success message when Activity hides this component
+  useLayoutEffect(() => {
+    return () => {
+      if (shouldReset.current) {
+        shouldReset.current = false
+        setStatus('idle')
+        setName('')
+      }
+    }
+  }, [])
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <button type="submit">Send</button>
+      {status === 'success' && <p>Message sent!</p>}
+    </form>
+  )
+}
+```
+
+The `shouldReset` ref ensures the cleanup only runs after a successful submission. If the user navigates away mid-draft without submitting, their input is preserved.
+
+If you use [`useActionState`](https://react.dev/reference/react/useActionState), the same approach applies. See [Reset state](https://react.dev/reference/react/useActionState#reset-state) in the React docs for how to add a `RESET` action to your reducer.
+
+<details>
+<summary>Resetting all form fields with a callback ref</summary>
+
+You can use a callback ref to call `form.reset()` when Activity hides the component:
+
+```tsx
+<form
+  ref={(form) => {
+    return () => form?.reset()
+  }}
+>
+  <input name="email" />
+  <input name="message" />
+  <button type="submit">Send</button>
+</form>
+```
+
+This resets all fields whenever the user navigates away.
+
+</details>
 
 ## State and authentication
 
@@ -18594,6 +18716,476 @@ Learn more about Cache Components and preserving UI state.
 
 - [Caching](/docs/app/getting-started/caching)
   - Learn how to cache data and UI in Next.js
+- [Migrating to Cache Components](/docs/app/guides/migrating-to-cache-components)
+  - Learn how to migrate from route segment configs to Cache Components in Next.js.
+
+
+---
+title: Preventing Flash
+description: Learn how to correct server-rendered content before the browser paints, avoiding visible flash when the page hydrates.
+url: "https://nextjs.org/docs/app/guides/preventing-flash-before-hydration"
+version: 16.2.6
+---
+
+# Preventing Flash
+
+User preferences, browser settings, and client-side storage aren't available during server rendering. The server emits a reasonable default, but any UI that depends on client-only state (locale, timezone, theme, persisted interactions) needs to be updated before the user sees it.
+
+Some common approaches to this problem:
+
+* A Client Component that re-renders with client values causes a hydration error.
+* Deferring to `useEffect` avoids the error but introduces a visible flash.
+* Rendering only on the server means giving up on client-specific formatting entirely.
+
+Using an **inline script** that runs synchronously as the browser parses the HTML, you can update the DOM **before the first paint**. This guide covers dates, themes, and persisted UI state.
+
+## Example
+
+The companion [demo](https://preventing-flash-before-hydration.labs.vercel.dev/) ([source](https://github.com/vercel-labs/preventing-flash-before-hydration)) is built with `LANG=ja_JP.UTF-8` to simulate a server/client locale mismatch. It lets you compare:
+
+* Inline script date formatting with no flash and no hydration error
+* A Client Component that calls `toLocaleDateString()` directly, showing the hydration error
+* An accordion that persists its open section to `localStorage` using a lazy `useState` initializer
+
+Use Chrome DevTools [Sensors](https://developer.chrome.com/docs/devtools/sensors) to override your locale (e.g. `ru-RU`) and see how each approach behaves.
+
+## Dates and formatting
+
+A UTC timestamp like `2026-06-15T18:00:00Z` represents a fixed point in time, but how it is formatted for display depends on the user's locale and timezone. `toLocaleDateString()` and `Intl.DateTimeFormat` on the server use the server's settings, which may not match the user's.
+
+### The problem
+
+A natural approach is a Client Component that formats the date:
+
+```tsx filename="app/components/event-date.tsx" switcher
+'use client'
+
+export function EventDate({ date }: { date: string }) {
+  return <p>{new Date(date).toLocaleDateString()}</p>
+}
+```
+
+```jsx filename="app/components/event-date.js" switcher
+'use client'
+
+export function EventDate({ date }) {
+  return <p>{new Date(date).toLocaleDateString()}</p>
+}
+```
+
+During SSR, `toLocaleDateString()` runs in Node.js and formats using the server's locale (e.g. `6/15/2026`). On hydration, React re-executes the component in the browser and produces the user's locale (e.g. `2026/6/15`). React detects the mismatch, throws a hydration error, and the user sees a flash.
+
+You could work around this with `useEffect` to update the date after hydration, but the user still sees the server-formatted date first. A Server Component avoids the error entirely, but the date is permanently in the server's locale.
+
+> **Good to know:** This issue is easy to miss in local development if your machine's locale matches your browser's. Run your dev server with `TZ` and `LANG` set differently from your browser to catch mismatches early (e.g. `TZ=UTC LANG=ja_JP.UTF-8 next dev`). `TZ=UTC` is a good default since most servers run in UTC.
+
+### Fixing it with an inline script
+
+1. The server renders the date with its locale into a `<p>`.
+2. Place a `<script>` (via [`dangerouslySetInnerHTML`](https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html)) after the element. The browser runs it **synchronously** during HTML parsing, before the first paint.
+3. Add [`suppressHydrationWarning`](https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors) to the element, since the inline script changes the text before React hydrates. See [Understanding `suppressHydrationWarning`](#understanding-suppresshydrationwarning) below.
+
+```tsx filename="app/events/page.tsx" switcher
+import { getEvent } from '@/app/lib/events'
+
+export default async function Page() {
+  const event = await getEvent('nextjs-conf')
+
+  return (
+    <section>
+      <h1>{event.name}</h1>
+      <p id="event-date" suppressHydrationWarning>
+        {new Date(event.date).toLocaleDateString()}
+      </p>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.getElementById("event-date").textContent=new Date("${event.date}").toLocaleDateString()`,
+        }}
+      />
+    </section>
+  )
+}
+```
+
+```jsx filename="app/events/page.js" switcher
+import { getEvent } from '@/app/lib/events'
+
+export default async function Page() {
+  const event = await getEvent('nextjs-conf')
+
+  return (
+    <section>
+      <h1>{event.name}</h1>
+      <p id="event-date" suppressHydrationWarning>
+        {new Date(event.date).toLocaleDateString()}
+      </p>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.getElementById("event-date").textContent=new Date("${event.date}").toLocaleDateString()`,
+        }}
+      />
+    </section>
+  )
+}
+```
+
+This works on full page loads (direct visits, refreshes). For client-side navigations via `<Link>`, see [Extracting a reusable component](#extracting-a-reusable-component).
+
+### Understanding `suppressHydrationWarning`
+
+When React hydrates and finds a text mismatch:
+
+* **Without `suppressHydrationWarning`**: React treats it as a hydration error and recovers by client-rendering from the nearest error or Suspense boundary. This causes a flash, and inline script corrections on **other components within that boundary are lost** because the scripts don't re-execute when React rebuilds the DOM.
+* **With `suppressHydrationWarning`**: React keeps whatever is in the DOM and discards the client's output for that element. The DOM wins.
+
+The inline script puts the correct value in the DOM before React hydrates. Even for Server Components, React compares the DOM against the RSC payload during hydration, and the inline script has changed the text. `suppressHydrationWarning` tells React to accept the DOM rather than the payload.
+
+### Extracting a reusable component
+
+Scripts inserted via DOM updates don't execute in the browser. On client-side navigations, React renders the component from the RSC payload and the script won't run. Making the component a Client Component solves this: `toLocaleDateString()` runs directly in the browser on soft navigations, while the inline script handles hard navigations. [`useId`](https://react.dev/reference/react/useId) generates a stable unique ID for each instance.
+
+React also warns in development when rendering produces `<script>` tags. To avoid this, wrap the script in a helper that sets `type="text/javascript"` on the server and `type="text/plain"` on the client. `suppressHydrationWarning` handles the type mismatch.
+
+```tsx filename="app/components/inline-script.tsx" switcher
+export function InlineScript({ html }: { html: string }) {
+  return (
+    <script
+      type={typeof window === 'undefined' ? 'text/javascript' : 'text/plain'}
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
+}
+```
+
+```jsx filename="app/components/inline-script.js" switcher
+export function InlineScript({ html }) {
+  return (
+    <script
+      type={typeof window === 'undefined' ? 'text/javascript' : 'text/plain'}
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
+}
+```
+
+```tsx filename="app/components/local-date.tsx" switcher
+'use client'
+
+import { useId } from 'react'
+import { InlineScript } from './inline-script'
+
+export function LocalDate({
+  date,
+  options,
+}: {
+  date: string
+  options?: Intl.DateTimeFormatOptions
+}) {
+  const id = useId()
+
+  return (
+    <>
+      <time id={id} dateTime={date} suppressHydrationWarning>
+        {new Date(date).toLocaleDateString(undefined, options)}
+      </time>
+      <InlineScript
+        html={`{var n=document.getElementById("${id}");if(n)n.textContent=new Date("${date}").toLocaleDateString(undefined,${JSON.stringify(options)})}`}
+      />
+    </>
+  )
+}
+```
+
+```jsx filename="app/components/local-date.js" switcher
+'use client'
+
+import { useId } from 'react'
+import { InlineScript } from './inline-script'
+
+export function LocalDate({ date, options }) {
+  const id = useId()
+
+  return (
+    <>
+      <time id={id} dateTime={date} suppressHydrationWarning>
+        {new Date(date).toLocaleDateString(undefined, options)}
+      </time>
+      <InlineScript
+        html={`{var n=document.getElementById("${id}");if(n)n.textContent=new Date("${date}").toLocaleDateString(undefined,${JSON.stringify(options)})}`}
+      />
+    </>
+  )
+}
+```
+
+* **Hard navigation** (initial load, refresh): The script executes during HTML parsing and corrects the date. `suppressHydrationWarning` tells React to accept the DOM.
+* **Client-side navigation** (via `<Link>`): `toLocaleDateString()` runs in the browser as part of the Client Component render. The script is `text/plain` and ignored.
+
+```tsx filename="app/events/page.tsx" switcher
+import { LocalDate } from '@/app/components/local-date'
+import { getEvent } from '@/app/lib/events'
+
+export default async function Page() {
+  const event = await getEvent('nextjs-conf')
+
+  return (
+    <section>
+      <h1>{event.name}</h1>
+      <LocalDate
+        date={event.date}
+        options={{ year: 'numeric', month: 'long', day: 'numeric' }}
+      />
+    </section>
+  )
+}
+```
+
+```jsx filename="app/events/page.js" switcher
+import { LocalDate } from '@/app/components/local-date'
+import { getEvent } from '@/app/lib/events'
+
+export default async function Page() {
+  const event = await getEvent('nextjs-conf')
+
+  return (
+    <section>
+      <h1>{event.name}</h1>
+      <LocalDate
+        date={event.date}
+        options={{ year: 'numeric', month: 'long', day: 'numeric' }}
+      />
+    </section>
+  )
+}
+```
+
+> **Good to know:**
+>
+> * Use a [`<time>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time) element with a `dateTime` attribute so search engines and screen readers can parse the ISO string regardless of the displayed text.
+> * Inline scripts with `dangerouslySetInnerHTML` are blocked by strict [Content Security Policies](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) that don't allow `'unsafe-inline'`. If your app uses a CSP, you'll need to add a [nonce](/docs/app/guides/content-security-policy).
+
+## Themes
+
+Your page may be server-rendered with a default theme (e.g. light), but the user has a saved preference in `localStorage`. The same inline script technique works: read the value and set a `data-theme` attribute on `<html>` before the browser paints.
+
+```tsx filename="app/layout.tsx" switcher
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" data-theme="light" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" data-theme="light" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```css filename="app/globals.css"
+[data-theme='light'] {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+[data-theme='dark'] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+```
+
+The script runs in `<head>`, so the correct theme is applied before any content is painted. The `try/catch` handles cases where `localStorage` is unavailable.
+
+## Syncing with React state
+
+When a Client Component manages interactive state (like which accordion section is open), React's initial state must match the DOM that the inline script set. Use a **lazy state initializer** that reads from the same source as the script.
+
+```tsx filename="app/components/accordion.tsx" switcher
+'use client'
+
+import { useState, useCallback } from 'react'
+import { InlineScript } from './inline-script'
+
+const STORAGE_KEY = 'open-section'
+
+const sections = [
+  {
+    id: 'setup',
+    title: 'Setup',
+    content: 'Install dependencies and create your project.',
+  },
+  {
+    id: 'usage',
+    title: 'Usage',
+    content: 'Import the component and pass your data.',
+  },
+  {
+    id: 'deploy',
+    title: 'Deploy',
+    content: 'Push to your Git provider and deploy.',
+  },
+]
+
+const DEFAULT_ID = sections[0].id
+const SECTION_IDS = sections.map((s) => s.id)
+
+export function Accordion() {
+  const [openId, setOpenId] = useState(() => {
+    if (typeof window === 'undefined') return DEFAULT_ID
+    return localStorage.getItem(STORAGE_KEY) ?? DEFAULT_ID
+  })
+
+  const handleToggle = useCallback(
+    (id: string) => (e: React.ToggleEvent<HTMLDetailsElement>) => {
+      if (e.newState === 'open') {
+        setOpenId(id)
+        localStorage.setItem(STORAGE_KEY, id)
+      }
+    },
+    []
+  )
+
+  return (
+    <div>
+      {sections.map((section) => (
+        <details
+          key={section.id}
+          name="accordion"
+          id={`section-${section.id}`}
+          open={openId === section.id}
+          onToggle={handleToggle(section.id)}
+        >
+          <summary>{section.title}</summary>
+          <p>{section.content}</p>
+        </details>
+      ))}
+      <InlineScript
+        html={`{var id=localStorage.getItem("${STORAGE_KEY}")??"${DEFAULT_ID}";${JSON.stringify(SECTION_IDS)}.forEach(function(s){var el=document.getElementById("section-"+s);if(el){if(s===id)el.setAttribute("open","");else el.removeAttribute("open")}})}`}
+      />
+    </div>
+  )
+}
+```
+
+```jsx filename="app/components/accordion.js" switcher
+'use client'
+
+import { useState, useCallback } from 'react'
+import { InlineScript } from './inline-script'
+
+const STORAGE_KEY = 'open-section'
+
+const sections = [
+  {
+    id: 'setup',
+    title: 'Setup',
+    content: 'Install dependencies and create your project.',
+  },
+  {
+    id: 'usage',
+    title: 'Usage',
+    content: 'Import the component and pass your data.',
+  },
+  {
+    id: 'deploy',
+    title: 'Deploy',
+    content: 'Push to your Git provider and deploy.',
+  },
+]
+
+const DEFAULT_ID = sections[0].id
+const SECTION_IDS = sections.map((s) => s.id)
+
+export function Accordion() {
+  const [openId, setOpenId] = useState(() => {
+    if (typeof window === 'undefined') return DEFAULT_ID
+    return localStorage.getItem(STORAGE_KEY) ?? DEFAULT_ID
+  })
+
+  const handleToggle = useCallback(
+    (id) => (e) => {
+      if (e.newState === 'open') {
+        setOpenId(id)
+        localStorage.setItem(STORAGE_KEY, id)
+      }
+    },
+    []
+  )
+
+  return (
+    <div>
+      {sections.map((section) => (
+        <details
+          key={section.id}
+          name="accordion"
+          id={`section-${section.id}`}
+          open={openId === section.id}
+          onToggle={handleToggle(section.id)}
+        >
+          <summary>{section.title}</summary>
+          <p>{section.content}</p>
+        </details>
+      ))}
+      <InlineScript
+        html={`{var id=localStorage.getItem("${STORAGE_KEY}")??"${DEFAULT_ID}";${JSON.stringify(SECTION_IDS)}.forEach(function(s){var el=document.getElementById("section-"+s);if(el){if(s===id)el.setAttribute("open","");else el.removeAttribute("open")}})}`}
+      />
+    </div>
+  )
+}
+```
+
+The inline script and the lazy `useState` initializer both read from `localStorage`. They always agree, so React's initial state matches the DOM.
+
+## When to use other approaches
+
+| Situation                                       | Approach                                                                                                                                                             |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Date depends on request data (cookies, headers) | Use [`headers()`](/docs/app/api-reference/functions/headers) or [`cookies()`](/docs/app/api-reference/functions/cookies) to read request data and format server-side |
+| Date updates live (countdown timers, clocks)    | Use a Client Component with `useEffect` and `suppressHydrationWarning`                                                                                               |
+| Page is already fully dynamic                   | Format the date on the server using the `Accept-Language` header                                                                                                     |
+| Translating content between languages           | Use [internationalization](/docs/app/guides/internationalization) with per-locale static builds or dynamic rendering                                                 |
+
+### Why not `useEffect`?
+
+`useEffect` runs after hydration and paint. The user sees the server value first, then the correction. Setting state in an effect also triggers a re-render, which can reactivate parent Suspense boundaries.
+
+`useLayoutEffect` runs before paint but after hydration. It prevents the flash between hydration and paint, but not the flash between the HTML arriving and React hydrating. On slow connections, the browser paints the server HTML before React has loaded. The inline script runs during HTML **parsing**, before React is involved.
+
+### Why not read from headers or cookies at request time?
+
+Reading `Accept-Language` with `await headers()` lets the server format per-request. With Cache Components, you can wrap just the date in a Suspense fallback so the rest of the page stays static. But you'd need to show a fallback instead of immediate content, and `Accept-Language` doesn't include timezone information.
+
+## Next steps
+
+* [Read cookies](/docs/app/api-reference/functions/cookies) or [headers](/docs/app/api-reference/functions/headers) when you need to format based on request data.
+* [Configure internationalization](/docs/app/guides/internationalization) for multi-language support.
+* [React hydration error](/docs/messages/react-hydration-error) for solutions to other common causes of hydration mismatches.
 
 
 ---
@@ -19418,6 +20010,8 @@ export default async function Page() {
 #### Static components
 
 The `<Header />` component doesn't depend on any inputs that change between requests, such as: external data, request headers, route params, the current time, or random values.
+
+> **Good to know**: If you need to display locale-aware dates or times without a visible flash, see [Preventing flash before hydration](/docs/app/guides/preventing-flash-before-hydration).
 
 Since its output never changes and can be determined ahead of time, this kind of component is called a **static** component. With no reason to wait for a request, Next.js can safely **prerender** the page at [build time](/docs/app/glossary#build-time).
 
@@ -22434,6 +23028,7 @@ The key decisions are **what to cache** and **where to place Suspense boundaries
 * [Streams API on web.dev](https://web.dev/articles/streams) - introduction to the Web Streams API that underpins streaming in Route Handlers
 * [Chunked transfer encoding (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Transfer-Encoding) - the HTTP/1.1 mechanism that enables streaming responses
 * [browser.engineering](https://browser.engineering/) - deep dive into how browsers handle network responses, rendering, and progressive display
+* [Preventing flash before hydration](/docs/app/guides/preventing-flash-before-hydration) - how to update server-rendered HTML with client-specific values (locale, theme, persisted state) before the browser paints
 
 
 Related API references and guides.
@@ -26366,14 +26961,21 @@ The following options have been removed from [`devIndicators`](/docs/app/api-ref
 
 The indicator itself remains available.
 
-### `experimental.dynamicIO`
+### `experimental.dynamicIO` and `experimental.useCache`
 
-The `experimental.dynamicIO` flag has been renamed to `cacheComponents`:
-
-Update your Next config file, by removing the `dynamicIO` flag.
+The `experimental.dynamicIO` and `experimental.useCache` flags are deprecated. Use top-level [`cacheComponents`](/docs/app/api-reference/config/next-config-js/cacheComponents) instead.
 
 ```js filename="next.config.js"
-// Next.js 15 - experimental.dynamicIO is now removed
+// Before: experimental.useCache
+module.exports = {
+  experimental: {
+    useCache: true,
+  },
+}
+```
+
+```js filename="next.config.js"
+// Before: experimental.dynamicIO
 module.exports = {
   experimental: {
     dynamicIO: true,
@@ -26381,14 +26983,25 @@ module.exports = {
 }
 ```
 
-Add the [`cacheComponents`](/docs/app/api-reference/config/next-config-js/cacheComponents) flag set to true.
+```ts filename="next.config.ts" switcher
+import type { NextConfig } from 'next'
 
-```js filename="next.config.js"
-// Next.js 16 - use cacheComponents instead
+// After
+const nextConfig: NextConfig = {
+  cacheComponents: true,
+}
+
+export default nextConfig
+```
+
+```js filename="next.config.js" switcher
+// After
 module.exports = {
   cacheComponents: true,
 }
 ```
+
+For more on Cache Components, see [Migrating to Cache Components](/docs/app/guides/migrating-to-cache-components).
 
 ### `unstable_rootParams`
 
@@ -26712,6 +27325,8 @@ const nextConfig: NextConfig = {
 export default nextConfig
 ```
 
+App Router uses [React canary releases](https://react.dev/blog/2023/05/03/react-canaries), which contain all stable React 19 changes as well as newer features like `ViewTransition`. You do not need to install `react@canary` yourself.
+
 > \[!NOTE]
 > The View Transitions API is supported in all major browsers, though some animations may behave differently in Safari. Without browser support, your application works normally, the transitions simply do not animate.
 
@@ -26772,7 +27387,7 @@ If we click a thumbnail now, the image scales and repositions from its grid cell
 
 #### Customizing the morph animation
 
-To control the morph CSS, add `share="morph"`. This assigns the `morph` class to the view transition, which you can target with CSS pseudo-elements. For example, to soften the morph mid-flight with a [`blur`](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/blur) keyframe:
+The morph works without any CSS. To customize it, add `share="morph"`. This assigns the `morph` class to the view transition, which you can target with CSS pseudo-elements. For example, to soften the morph mid-flight with a [`blur`](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/blur) keyframe:
 
 ```tsx
 <ViewTransition name={`photo-${photo.id}`} share="morph">
@@ -27063,7 +27678,7 @@ For API details and more patterns:
 
 * [View transition configuration](/docs/app/api-reference/config/next-config-js/viewTransition)
 * [Link `transitionTypes` prop](/docs/app/api-reference/components/link#transitiontypes)
-* [`useRouter`](/docs/app/api-reference/functions/use-router) — also supports `transitionTypes` in `push()` and `replace()`
+* [`useRouter`](/docs/app/api-reference/functions/use-router), which also supports `transitionTypes` in `push()` and `replace()`
 * [React `ViewTransition` component](https://react.dev/reference/react/ViewTransition)
 * [Complete CSS from this guide](https://github.com/vercel-labs/react-view-transitions-demo/blob/main/src/app/globals.css) — all keyframes and view transition rules in one file
 
@@ -27305,12 +27920,38 @@ Runtime cache behavior depends on your hosting environment:
 
 | Environment     | Runtime Caching Behavior                                                                                                                                          |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Serverless**  | Cache entries typically don't persist across requests (each request can be a different instance). Build-time caching works normally.                              |
+| **Serverless**  | Cache entries typically don't persist across requests (each request can be a different instance), or during revalidation. Build-time caching works normally.      |
 | **Self-hosted** | Cache entries persist across requests. Control cache size with [`cacheMaxMemorySize`](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath). |
+
+For example, in a serverless environment, a cached function shared by two pages executes on each static shell revalidation, whereas in self-hosted or environments with persistent memory, the cached output is reused if it's still fresh.
 
 If the default in-memory cache isn't enough, consider **[`use cache: remote`](/docs/app/api-reference/directives/use-cache-remote)** which allows platforms to provide a dedicated cache handler (like Redis or KV database). This helps reduce hits against data sources not scaled to your total traffic, though it comes with costs (storage, network latency, platform fees).
 
 Very rarely, for compliance requirements or when you can't refactor your code to pass runtime data as arguments to a `use cache` scope, you might need [`use cache: private`](/docs/app/api-reference/directives/use-cache-private).
+
+### Draft Mode
+
+When [Draft Mode](/docs/app/guides/draft-mode) is enabled, all cached functions and components re-execute on every request, and results are not saved to the cache. This ensures draft content is always fresh without requiring any changes to your caching code.
+
+You can read `isEnabled` from [`draftMode()`](/docs/app/api-reference/functions/draft-mode) inside a `use cache` scope, however, other runtime APIs like `cookies()` and `headers()` are not allowed, even when Draft Mode is active. See [Passing runtime values to cached functions](/docs/app/getting-started/caching#passing-runtime-values-to-cached-functions) for the recommended pattern.
+
+```tsx filename="app/components/content.tsx"
+import { draftMode } from 'next/headers'
+
+async function Content() {
+  'use cache'
+
+  const { isEnabled } = await draftMode()
+  const url = isEnabled
+    ? 'https://draft.example.com/content'
+    : 'https://production.example.com/content'
+
+  const data = await fetch(url)
+  return <article>{/* ... */}</article>
+}
+```
+
+Calling `enable()` or `disable()` inside a caching directive scope will also throw an error. Draft Mode can only be toggled in [Route Handlers](/docs/app/api-reference/file-conventions/route) or [Server Actions](/docs/app/getting-started/mutating-data).
 
 ### React.cache isolation
 
@@ -32304,6 +32945,7 @@ When a user tries to navigate away using `CustomLink` while the form has unsaved
 
 | Version   | Changes                                                                                                                                                                      |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v16.2.0` | Add `transitionTypes` prop.                                                                                                                                                  |
 | `v15.4.0` | Add `auto` as an alias to the default `prefetch` behavior.                                                                                                                   |
 | `v15.3.0` | Add `onNavigate` API                                                                                                                                                         |
 | `v13.0.0` | No longer requires a child `<a>` tag. A [codemod](/docs/app/guides/upgrading/codemods#remove-a-tags-from-link-components) is provided to automatically update your codebase. |
@@ -35965,7 +36607,11 @@ Optionally, a config object can be exported alongside the Proxy function. This o
 
 ### Matcher
 
-The `matcher` option allows you to target specific paths for the Proxy to run on. You can specify these paths in several ways:
+The `matcher` option allows you to target specific paths for the Proxy to run on.
+
+Without a `matcher`, Proxy runs on **every request**, including static files (`_next/static`), image optimizations (`_next/image`), and assets in the `public/` folder. Consider using a [negative match pattern](#negative-matching) to exclude these paths, otherwise auth logic or redirects can unintentionally block CSS, JS, or images from loading.
+
+You can specify paths in several ways:
 
 * For a single path: Directly use a string to define the path, like `'/about'`.
 * For multiple paths: Use an array to list multiple paths, such as `matcher: ['/about', '/contact']`, which applies the Proxy to both `/about` and `/contact`.
@@ -36618,7 +37264,7 @@ Next.js is moving forward to provide better APIs with better ergonomics so that 
 
 ### Why "Proxy"
 
-The name Proxy clarifies what Middleware is capable of. The term "proxy" implies that it has a network boundary in front of the app, which is the behavior of Middleware. Also, Middleware defaults to run at the [Edge Runtime](/docs/app/api-reference/edge), which can run closer to the client, separated from the app's region. These behaviors align better with the term "proxy" and provide a clearer purpose of the feature.
+The name Proxy clarifies what Middleware is capable of. The term "proxy" implies a network boundary in front of the app, which is how this feature behaves. It can run outside of your application’s main runtime and handle requests before they reach your app. These characteristics align better with the term "proxy" and provide a clearer purpose for the feature.
 
 ### How to Migrate
 
@@ -36645,7 +37291,7 @@ The codemod will rename the file and the function name from `middleware` to `pro
 
 | Version   | Changes                                                                                       |
 | --------- | --------------------------------------------------------------------------------------------- |
-| `v16.0.0` | Middleware is deprecated and renamed to Proxy                                                 |
+| `v16.0.0` | Middleware is deprecated and renamed to Proxy. Proxy defaults to the Node.js runtime          |
 | `v15.5.0` | Middleware can now use the Node.js runtime (stable)                                           |
 | `v15.2.0` | Middleware can now use the Node.js runtime (experimental)                                     |
 | `v13.1.0` | Advanced Middleware flags added                                                               |
@@ -39897,12 +40543,17 @@ const nextConfig = {
 export default nextConfig
 ```
 
-`cacheLife` requires the `use cache` directive, which must be placed at the file level or at the top of an async function or component.
+`cacheLife` can only be used within a cache directive scope.
+
+Add a cache directive (for example, `use cache`) at the file level or at the top of an async function or component.
+
+`cacheLife` cannot be used at module scope. Calling it at the top level of a file will throw an error.
 
 > **Good to know**:
 >
-> * If used, `cacheLife` should be placed within the function whose output is being cached, even when the `use cache` directive is at file level
-> * Only one `cacheLife` call should execute per function invocation. You can call `cacheLife` in different control flow branches, but ensure only one executes per run. See the [conditional cache lifetimes](#conditional-cache-lifetimes) example
+> * Calling `cacheLife` is optional. If omitted, a default cache lifetime is applied.
+> * Call `cacheLife` in the same function or component where caching is defined. Avoid abstracting it into shared utilities so the cache behavior remains explicit and easy to reason about.
+> * If you call `cacheLife`, ensure only one call executes per function invocation. You can call it in different control flow branches, but only one should run per request. See the [conditional cache lifetimes](#conditional-cache-lifetimes) example.
 
 ### Using preset profiles
 
@@ -40513,7 +41164,12 @@ export async function getData() {
 }
 ```
 
-You can then purge the cache on-demand using [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) API in another function, for example, a [route handler](/docs/app/api-reference/file-conventions/route) or [Server Action](/docs/app/getting-started/mutating-data):
+You can then purge the cache on-demand from a [Server Function](/docs/app/getting-started/mutating-data) or [Route Handler](/docs/app/api-reference/file-conventions/route):
+
+* Use [`updateTag`](/docs/app/api-reference/functions/updateTag) inside a Server Function for read-your-own-writes scenarios, where a user makes a change and the next read should fetch fresh data immediately.
+* Use [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) when it is acceptable to serve stale data while revalidation happens in the background, or when revalidating from a route handler.
+
+The example below uses `revalidateTag`:
 
 ```tsx filename="app/action.ts" switcher
 'use server'
@@ -40546,7 +41202,7 @@ export default async function submit() {
 cacheTag('tag-one', 'tag-two')
 ```
 
-* **Limits**: The max length for a custom tag is 256 characters and the max tag items is 128.
+* **Limits**: A single `cacheTag()` call accepts up to 128 tags, each with a maximum length of 256 characters. Tags longer than 256 characters are skipped, and any tags past the 128th in one call are dropped. Both cases log a console warning.
 
 ## Examples
 
@@ -40661,6 +41317,8 @@ View related API references.
   - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [revalidateTag](/docs/app/api-reference/functions/revalidateTag)
   - API Reference for the revalidateTag function.
+- [updateTag](/docs/app/api-reference/functions/updateTag)
+  - API Reference for the updateTag function.
 - [cacheLife](/docs/app/api-reference/functions/cacheLife)
   - Learn how to use the cacheLife function to set the cache expiration time for a cached function or component.
 
@@ -40678,7 +41336,7 @@ The `unstable_catchError` function creates a component that wraps its children i
 
 Compared to a custom React error boundary, `unstable_catchError` is designed to work with Next.js out of the box:
 
-* **Built-in error recovery** — [`unstable_retry()`](/docs/app/api-reference/file-conventions/error#unstable_retry) re-fetches and re-renders the error boundary's children, including Server Components.
+* **Built-in error recovery** — [`unstable_retry()`](/docs/app/api-reference/file-conventions/error#unstable_retry) re-renders the page inside a [Transition](https://react.dev/reference/react/startTransition), preserving Client Components state outside of the error boundary.
 * **Framework-aware integration** — APIs like `redirect()` and `notFound()` work by throwing special errors under the hood. `unstable_catchError` handles these seamlessly, so they're not accidentally caught by your error boundary.
 * **Client navigation handling** — The error state automatically clears when you do a client navigation to a different route.
 
@@ -40907,14 +41565,14 @@ version: 16.2.6
 
 The `connection()` function allows you to indicate rendering should wait for an incoming user request before continuing.
 
-It's useful when a component doesn't use [Request-time APIs](/docs/app/glossary#request-time-apis), but you want it to be rendered at runtime and not prerendered at build time. This usually occurs when you access external information that you intentionally want to change the result of a render, such as `Math.random()` or `new Date()`.
+It's useful when a component doesn't use [Request-time APIs](/docs/app/glossary#request-time-apis) like `cookies` or `headers`, but still needs to produce different output per request, such as `Math.random()` or `new Date()`.
 
 ```ts filename="app/page.tsx" switcher
 import { connection } from 'next/server'
 
 export default async function Page() {
-  await connection()
-  // Everything below will be excluded from prerendering
+  await connection() // prerendering stops here
+  // the following code only runs at request time
   const rand = Math.random()
   return <span>{rand}</span>
 }
@@ -40924,12 +41582,44 @@ export default async function Page() {
 import { connection } from 'next/server'
 
 export default async function Page() {
-  await connection()
-  // Everything below will be excluded from prerendering
+  await connection() // prerendering stops here
+  // the following code only runs at request time
   const rand = Math.random()
   return <span>{rand}</span>
 }
 ```
+
+## Examples
+
+### Synchronous database drivers
+
+Queries from synchronous database drivers like `better-sqlite3` complete during prerendering. If you are not already using Request-time APIs, call `connection()` before your query to exclude them from prerendering:
+
+```ts filename="app/lib/data.ts" switcher
+import { connection } from 'next/server'
+import Database from 'better-sqlite3'
+
+const db = new Database('app.db')
+
+export async function getVisitorCount() {
+  await connection()
+  return db.prepare('SELECT value FROM counters WHERE name = ?').get('visitors')
+}
+```
+
+```js filename="app/lib/data.js" switcher
+import { connection } from 'next/server'
+import Database from 'better-sqlite3'
+
+const db = new Database('app.db')
+
+export async function getVisitorCount() {
+  await connection()
+  return db.prepare('SELECT value FROM counters WHERE name = ?').get('visitors')
+}
+```
+
+Now any component that calls `getVisitorCount()` will be excluded from prerendering, along with the rest of its output.
 
 ## Reference
 
@@ -41306,10 +41996,13 @@ The following methods and properties are available:
 
 ## Good to know
 
-* `draftMode` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function.
+* `draftMode` is an **asynchronous** function that returns a promise. You must use `async/await` or React’s [`use`](https://react.dev/reference/react/use) function.
   * In version 14 and earlier, `draftMode` was a synchronous function. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
 * A new bypass cookie value will be generated each time you run `next build`. This ensures that the bypass cookie can’t be guessed.
 * To test Draft Mode locally over HTTP, your browser will need to allow third-party cookies and local storage access.
+* [`isEnabled`](#checking-if-draft-mode-is-enabled) is readable inside a [caching directive](/docs/app/api-reference/directives/use-cache) scope. Other runtime APIs like `cookies()` and `headers()` are not allowed inside caching directive scopes, even when Draft Mode is active.
+* Calling `enable()` or `disable()` inside a caching directive scope will throw an error.
+* When Draft Mode is enabled, all functions and components under a caching directive scope re-execute on every request and results are not saved to the cache. This ensures draft content is always fresh.
 
 ## Examples
 
@@ -46766,7 +47459,7 @@ For example, a Client Component with `usePathname` will be rendered into HTML on
 <details>
 <summary>Compatibility with Pages Router</summary>
 
-If you have components that use `usePathname` and they are imported into routes within the Pages Router, be aware that `usePathname` may return `null` if the router is not yet initialized. This can occur in cases such as [fallback routes](/docs/pages/api-reference/functions/get-static-paths#fallback-true) or during [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/static#automatic-static-optimization) in the Pages Router.
+If you have components that use `usePathname` and they are imported into routes within the Pages Router, be aware that `usePathname` may return `null` if the router is not yet initialized. This can occur in cases such as [fallback routes](/docs/pages/api-reference/functions/get-static-paths#fallback-true) or during [Automatic Static Optimization](/docs/pages/building-your-application/rendering/automatic-static-optimization) in the Pages Router.
 
 To enhance compatibility between routing systems, if your project contains both an `app` and a `pages` directory, Next.js will automatically adjust the return type of `usePathname`.
 
@@ -48485,11 +49178,7 @@ version: 16.2.6
 
 # cacheComponents
 
-The `cacheComponents` flag is a feature in Next.js that causes data fetching operations in the App Router to be excluded from prerenders unless they are explicitly cached. This can be useful for optimizing the performance of uncached data fetching in Server Components.
-
-It is useful if your application requires fresh data fetching during runtime rather than serving from a prerendered cache.
-
-It is expected to be used in conjunction with [`use cache`](/docs/app/api-reference/directives/use-cache) so that your data fetching happens at runtime by default unless you define specific parts of your application to be cached with `use cache` at the page, function, or component level.
+Cache Components enables component and function-level caching using the [`use cache`](/docs/app/api-reference/directives/use-cache) directive. Data fetching is dynamic by default, and you choose what to cache at the page, component, or function level. Next.js prerenders a static HTML shell that is served immediately while dynamic content streams in when ready, letting you mix static and dynamic content within a single route.
 
 ## Usage
 
@@ -48510,6 +49199,14 @@ When `cacheComponents` is enabled, you can use the following cache functions and
 * The [`use cache` directive](/docs/app/api-reference/directives/use-cache)
 * The [`cacheLife` function](/docs/app/api-reference/config/next-config-js/cacheLife) with `use cache`
 * The [`cacheTag` function](/docs/app/api-reference/functions/cacheTag)
+
+> **Good to know**: If you used `experimental.useCache` or `experimental.dynamicIO`, migrate using the [Version 16 upgrade guide](/docs/app/guides/upgrading/version-16#experimentaldynamicio-and-experimentalusecache). To migrate route segment configs and other caching patterns, see [Migrating to Cache Components](/docs/app/guides/migrating-to-cache-components).
+
+Additionally, `cacheComponents` implements **[Partial Prerendering (PPR)](/docs/app/glossary#partial-prerendering-ppr)** as the default behavior in the App Router. This means the `experimental.ppr` configuration flag and the `experimental_ppr` route segment configuration are no longer necessary and have been removed.
+
+Read [How rendering works](/docs/app/getting-started/caching#how-rendering-works) for how the static shell and streaming fit together.
+
+> **Good to know**: If you used experimental PPR in Next.js 15, refer to the [Partial Prerendering (PPR)](/docs/app/guides/upgrading/version-16#partial-prerendering-ppr) section of the Version 16 upgrade guide when migrating.
 
 ## Navigation with Activity
 
@@ -49325,16 +50022,29 @@ version: 16.2.6
 
 `devIndicators` allows you to configure the on-screen indicator that gives context about the current route you're viewing during development.
 
-```ts filename="Types"
-  devIndicators: false | {
-    position?: 'bottom-right'
-    | 'bottom-left'
-    | 'top-right'
-    | 'top-left', // defaults to 'bottom-left',
+Open `next.config.ts` and set `position` to choose where the indicator renders. The default is `bottom-left`.
+
+```ts filename="next.config.ts"
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  devIndicators: {
+    position: 'bottom-right', // 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right'
   },
+}
+
+export default nextConfig
 ```
 
-Setting `devIndicators` to `false` will hide the indicator, however Next.js will continue to surface any build or runtime errors that were encountered.
+To hide the indicator entirely, set `devIndicators` to `false`. Next.js will still surface any compile or runtime errors that were encountered.
+
+```ts filename="next.config.ts"
+const nextConfig: NextConfig = {
+  devIndicators: false,
+}
+
+export default nextConfig
+```
 
 ## Troubleshooting
 
@@ -55228,6 +55938,9 @@ next build --debug-build-paths="app/page.tsx"
 # Build more than one route
 next build --debug-build-paths="app/page.tsx,pages/index.tsx"
 
+# Include route group folders in the path
+next build --debug-build-paths="app/(marketing)/about/page.tsx"
+
 # Use glob patterns
 next build --debug-build-paths="app/**/page.tsx"
 next build --debug-build-paths="pages/*.tsx"
@@ -58378,7 +59091,7 @@ Next.js can be adapted to run on different platforms to support their infrastruc
 Verified adapters are open source, run the full [Next.js compatibility test suite](/docs/app/api-reference/adapters/testing-adapters), and are hosted under the [Next.js GitHub organization](https://github.com/nextjs). The Next.js team coordinates testing with these platforms before major releases. Publicly visible test results for each adapter are coming soon. [Learn more about verified adapters](/docs/app/guides/deploying-to-platforms#verified-adapters).
 
 * [Vercel](https://vercel.com/docs/frameworks/nextjs)
-* [Bun](https://bun.sh/docs/frameworks/nextjs)
+* [Bun](https://bun.com/docs/guides/ecosystem/nextjs)
 
 Cloudflare and Netlify are working on verified adapters built on the Adapter API. In the meantime, they offer their own Next.js integrations (see below).
 
@@ -71768,7 +72481,6 @@ Data fetching in Next.js allows you to render your content in different ways, de
 
  - [getStaticProps](/docs/pages/building-your-application/data-fetching/get-static-props)
  - [getStaticPaths](/docs/pages/building-your-application/data-fetching/get-static-paths)
- - [Forms and Mutations](/docs/pages/building-your-application/data-fetching/forms-and-mutations)
  - [getServerSideProps](/docs/pages/building-your-application/data-fetching/get-server-side-props)
  - [Client-side Fetching](/docs/pages/building-your-application/data-fetching/client-side)
 
@@ -72130,119 +72842,6 @@ export async function getStaticPaths() {
 
 
 ---
-title: Forms and Mutations
-description: Learn how to handle form submissions and data mutations with Next.js.
-url: "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations"
-version: 16.2.6
-router: Pages Router
----
-
-# Forms and Mutations
-
-Forms enable you to create and update data in web applications. Next.js provides a powerful way to handle form submissions and data mutations using **API Routes**.
-
-> **Good to know:**
->
-> * We will soon recommend [incrementally adopting](/docs/app/guides/migrating/app-router-migration) the App Router and using [Server Actions](/docs/app/getting-started/mutating-data) for handling form submissions and data mutations. Server Actions allow you to define asynchronous server functions that can be called directly from your components, without needing to manually create an API Route.
-> * API Routes [do not specify CORS headers](https://developer.mozilla.org/docs/Web/HTTP/CORS), meaning they are same-origin only by default.
-> * Since API Routes run on the server, we're able to use sensitive values (like API keys) through [Environment Variables](/docs/pages/guides/environment-variables) without exposing them to the client. This is critical for the security of your application.
-
-## Examples
-
-### Redirecting
-
-If you would like to redirect the user to a different route after a mutation, you can [`redirect`](/docs/pages/building-your-application/routing/api-routes#response-helpers) to any absolute or relative URL:
-
-```ts filename="pages/api/submit.ts" switcher
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const id = await addPost()
-  res.redirect(307, `/post/${id}`)
-}
-```
-
-```js filename="pages/api/submit.js" switcher
-export default async function handler(req, res) {
-  const id = await addPost()
-  res.redirect(307, `/post/${id}`)
-}
-```
-
-### Setting cookies
-
-You can set cookies inside an API Route using the `setHeader` method on the response:
-
-```ts filename="pages/api/cookie.ts" switcher
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  res.setHeader('Set-Cookie', 'username=lee; Path=/; HttpOnly')
-  res.status(200).send('Cookie has been set.')
-}
-```
-
-```js filename="pages/api/cookie.js" switcher
-export default async function handler(req, res) {
-  res.setHeader('Set-Cookie', 'username=lee; Path=/; HttpOnly')
-  res.status(200).send('Cookie has been set.')
-}
-```
-
-### Reading cookies
-
-You can read cookies inside an API Route using the [`cookies`](/docs/pages/building-your-application/routing/api-routes#request-helpers) request helper:
-
-```ts filename="pages/api/cookie.ts" switcher
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const auth = req.cookies.authorization
-  // ...
-}
-```
-
-```js filename="pages/api/cookie.js" switcher
-export default async function handler(req, res) {
-  const auth = req.cookies.authorization
-  // ...
-}
-```
-
-### Deleting cookies
-
-You can delete cookies inside an API Route using the `setHeader` method on the response:
-
-```ts filename="pages/api/cookie.ts" switcher
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  res.setHeader('Set-Cookie', 'username=; Path=/; HttpOnly; Max-Age=0')
-  res.status(200).send('Cookie has been deleted.')
-}
-```
-
-```js filename="pages/api/cookie.js" switcher
-export default async function handler(req, res) {
-  res.setHeader('Set-Cookie', 'username=; Path=/; HttpOnly; Max-Age=0')
-  res.status(200).send('Cookie has been deleted.')
-}
-```
-
-
----
 title: getServerSideProps
 description: "Fetch data on each request with `getServerSideProps`."
 url: "https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props"
@@ -72463,10 +73062,6 @@ This documentation explains how you can handle development, server-side, and cli
 ## Handling Errors in Development
 
 When there is a runtime error during the development phase of your Next.js application, you will encounter an **overlay**. It is a modal that covers the webpage. It is **only** visible when the development server runs using `next dev` via `pnpm dev`, `npm run dev`, `yarn dev`, or `bun dev` and will not be shown in production. Fixing the error will automatically dismiss the overlay.
-
-Here is an example of an overlay:
-
-![Example of an overlay when in development mode](https://assets.vercel.com/image/upload/v1645118290/docs-assets/static/docs/error-handling/overlay.png)
 
 ## Handling Server Errors
 
@@ -76025,6 +76620,7 @@ export default function Home() {
 
 | Version   | Changes                                                                                                                                                                      |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v16.2.0` | Add `transitionTypes` prop.                                                                                                                                                  |
 | `v15.4.0` | Add `auto` as an alias to the default `prefetch` behavior.                                                                                                                   |
 | `v15.3.0` | Add `onNavigate` API                                                                                                                                                         |
 | `v13.0.0` | No longer requires a child `<a>` tag. A [codemod](/docs/app/guides/upgrading/codemods#remove-a-tags-from-link-components) is provided to automatically update your codebase. |
@@ -76573,7 +77169,11 @@ Optionally, a config object can be exported alongside the Proxy function. This o
 
 ### Matcher
 
-The `matcher` option allows you to target specific paths for the Proxy to run on. You can specify these paths in several ways:
+The `matcher` option allows you to target specific paths for the Proxy to run on.
+
+Without a `matcher`, Proxy runs on **every request**, including static files (`_next/static`), image optimizations (`_next/image`), and assets in the `public/` folder. Consider using a [negative match pattern](#negative-matching) to exclude these paths, otherwise auth logic or redirects can unintentionally block CSS, JS, or images from loading.
+
+You can specify paths in several ways:
 
 * For a single path: Directly use a string to define the path, like `'/about'`.
 * For multiple paths: Use an array to list multiple paths, such as `matcher: ['/about', '/contact']`, which applies the Proxy to both `/about` and `/contact`.
@@ -77222,7 +77822,7 @@ Next.js is moving forward to provide better APIs with better ergonomics so that 
 
 ### Why "Proxy"
 
-The name Proxy clarifies what Middleware is capable of. The term "proxy" implies that it has a network boundary in front of the app, which is the behavior of Middleware. Also, Middleware defaults to run at the [Edge Runtime](/docs/app/api-reference/edge), which can run closer to the client, separated from the app's region. These behaviors align better with the term "proxy" and provide a clearer purpose of the feature.
+The name Proxy clarifies what Middleware is capable of. The term "proxy" implies a network boundary in front of the app, which is how this feature behaves. It can run outside of your application’s main runtime and handle requests before they reach your app. These characteristics align better with the term "proxy" and provide a clearer purpose for the feature.
 
 ### How to Migrate
 
@@ -77249,7 +77849,7 @@ The codemod will rename the file and the function name from `middleware` to `pro
 
 | Version   | Changes                                                                                       |
 | --------- | --------------------------------------------------------------------------------------------- |
-| `v16.0.0` | Middleware is deprecated and renamed to Proxy                                                 |
+| `v16.0.0` | Middleware is deprecated and renamed to Proxy. Proxy defaults to the Node.js runtime          |
 | `v15.5.0` | Middleware can now use the Node.js runtime (stable)                                           |
 | `v15.2.0` | Middleware can now use the Node.js runtime (experimental)                                     |
 | `v13.1.0` | Advanced Middleware flags added                                                               |
@@ -80413,16 +81013,29 @@ router: Pages Router
 
 `devIndicators` allows you to configure the on-screen indicator that gives context about the current route you're viewing during development.
 
-```ts filename="Types"
-  devIndicators: false | {
-    position?: 'bottom-right'
-    | 'bottom-left'
-    | 'top-right'
-    | 'top-left', // defaults to 'bottom-left',
+Open `next.config.ts` and set `position` to choose where the indicator renders. The default is `bottom-left`.
+
+```ts filename="next.config.ts"
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  devIndicators: {
+    position: 'bottom-right', // 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right'
   },
+}
+
+export default nextConfig
 ```
 
-Setting `devIndicators` to `false` will hide the indicator, however Next.js will continue to surface any build or runtime errors that were encountered.
+To hide the indicator entirely, set `devIndicators` to `false`. Next.js will still surface any compile or runtime errors that were encountered.
+
+```ts filename="next.config.ts"
+const nextConfig: NextConfig = {
+  devIndicators: false,
+}
+
+export default nextConfig
+```
 
 ## Troubleshooting
 
@@ -85192,6 +85805,9 @@ next build --debug-build-paths="app/page.tsx"
 # Build more than one route
 next build --debug-build-paths="app/page.tsx,pages/index.tsx"
 
+# Include route group folders in the path
+next build --debug-build-paths="app/(marketing)/about/page.tsx"
+
 # Use glob patterns
 next build --debug-build-paths="app/**/page.tsx"
 next build --debug-build-paths="pages/*.tsx"
@@ -87836,17 +88452,17 @@ Most examples in the docs are written in `tsx` and `jsx`, and a few in `bash`. H
 
 When writing JavaScript code blocks, we use the following language and extension combinations.
 
-|                                | Language | Extension |
-| ------------------------------ | -------- | --------- |
-| JavaScript files with JSX code | `jsx   | .js       |
-| JavaScript files without JSX   | `js    | .js       |
-| TypeScript files with JSX      | `tsx   | .tsx      |
-| TypeScript files without JSX   | `ts    | .ts       |
+|                                | Language   | Extension |
+| ------------------------------ | ---------- | --------- |
+| JavaScript files with JSX code | ` ```jsx ` | .js       |
+| JavaScript files without JSX   | ` ```js `  | .js       |
+| TypeScript files with JSX      | ` ```tsx ` | .tsx      |
+| TypeScript files without JSX   | ` ```ts `  | .ts       |
 
 > **Good to know**:
 >
 > * Make sure to use **`.js`** extension for JavaScript files with **JSX** code.
-> * For example, \`\`\`jsx filename="app/layout.js"
+> * For example, ` ```jsx filename="app/layout.js" `
 
 ### TS and JS Switcher
 

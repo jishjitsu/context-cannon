@@ -485,7 +485,7 @@ Use the `@variant` directive to apply a Tailwind variant within custom CSS:
 
 </CodeExampleStack>
 
-If you need to apply multiple variants at the same time, use nesting:
+If you need to apply multiple variants at the same time, stack them using the same syntax you would in HTML:
 
 <CodeExampleStack>
 
@@ -494,11 +494,9 @@ If you need to apply multiple variants at the same time, use nesting:
 .my-element {
   background: white;
 
-  /* [!code highlight:6] */
-  @variant dark {
-    @variant hover {
-      background: black;
-    }
+  /* [!code highlight:4] */
+  @variant hover:focus {
+    background: black;
   }
 }
 ```
@@ -508,13 +506,50 @@ If you need to apply multiple variants at the same time, use nesting:
 .my-element {
   background: white;
 
-  /* [!code highlight:7] */
-  @media (prefers-color-scheme: dark) {
-    &:hover {
-      @media (hover: hover) {
+  /* [!code highlight:8] */
+  &:hover {
+    @media (hover: hover) {
+      &:focus {
         background: black;
       }
     }
+  }
+}
+```
+
+</CodeExampleStack>
+
+To apply the same styles for multiple variants, separate each variant with a comma:
+
+<CodeExampleStack>
+
+```css
+/* [!code filename:app.css] */
+.my-element {
+  background: white;
+
+  /* [!code highlight:4] */
+  @variant hover, focus {
+    background: black;
+  }
+}
+```
+
+```css
+/* [!code filename:Compiled CSS] */
+.my-element {
+  background: white;
+
+  /* [!code highlight:6] */
+  &:hover {
+    @media (hover: hover) {
+      background: black;
+    }
+  }
+
+  /* [!code highlight:4] */
+  &:focus {
+    background: black;
   }
 }
 ```
@@ -701,6 +736,45 @@ The `--value()` function can also take multiple arguments and resolve them left 
   opacity: --value(--opacity-*, [percentage]);
 }
 ```
+
+#### Default values
+
+Use `--default()` inside `--value()` to support a default value when the utility is used without an explicit value:
+
+```css
+/* [!code filename:CSS] */
+/* [!code word:--default(4)] */
+@utility tab-* {
+  tab-size: --value(integer, --default(4));
+}
+```
+
+This matches both `tab-2` and `tab-4`, as well as just `tab` which uses the default value of `4`:
+
+```css
+/* [!code filename:Compiled CSS] */
+/* [!code highlight:4] */
+.tab {
+  tab-size: 4;
+}
+
+.tab-2 {
+  tab-size: 2;
+}
+```
+
+The `--default()` function can also be used inside `--modifier()` to provide a default value when no modifier is present:
+
+```css
+/* [!code filename:CSS] */
+/* [!code word:--default(1)] */
+@utility tab-* {
+  tab-size: --value(integer);
+  line-height: --modifier(integer, --default(1));
+}
+```
+
+This matches `tab-2/3` with a line-height of `3`, and `tab-2` with a line-height of `1`.
 
 #### Negative values
 
@@ -8220,6 +8294,22 @@ Here's a full list of utilities that use your color palette:
       </td>
       <td>
         Sets the <a href="/docs/caret-color">caret color</a> in form controls
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>scrollbar-thumb-*</code>
+      </td>
+      <td>
+        Sets the <a href="/docs/scrollbar-color">thumb color</a> of an element's scrollbar
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>scrollbar-track-*</code>
+      </td>
+      <td>
+        Sets the <a href="/docs/scrollbar-color">track color</a> of an element's scrollbar
       </td>
     </tr>
     <tr>
@@ -30688,7 +30778,7 @@ Learn more about arbitrary value support in the [arbitrary values](/docs/adding-
 
 ### Basic example
 
-Use the `@container` class to mark an element as a container, then use variants like `@sm` and `@md` to style child elements based on the size of the container:
+Use the `@container` class to mark an element as an inline-size container, then use variants like `@sm` and `@md` to style child elements based on the size of the container:
 
 ```html
 <!-- [!code filename:HTML] -->
@@ -30749,6 +30839,23 @@ For complex designs that use multiple nested containers, you can name containers
 
 This makes it possible to style something based on the size of a distant container, rather than just the nearest container.
 
+### Using size containers
+
+Use `@container-size` to mark an element as a size container instead of an inline-size container when you need to use container query length units that depend on the block size, like `cqb`:
+
+```html
+<!-- [!code filename:HTML] -->
+<!-- [!code word:@container-size] -->
+<!-- [!code word:h-\[50cqb\]] -->
+<div class="@container-size">
+  <div class="h-[50cqb]">
+    <!-- ... -->
+  </div>
+</div>
+```
+
+You can also name size containers using `@container-size/{name}`.
+
 ### Using custom container sizes
 
 Use the `--container-*` theme variables to customize your container sizes:
@@ -30796,17 +30903,19 @@ Use variants like `@min-[475px]` and `@max-[960px]` for one-off container query 
 
 ### Using container query units
 
-Use [container query length units](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#container_query_length_units) like `cqw` as arbitrary values in other utility classes to reference the container size:
+Use [container query length units](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#container_query_length_units) like `cqw` and `cqi` as arbitrary values in other utility classes to reference the container size:
 
 ```html
 <!-- [!code filename:HTML] -->
-<!-- [!code word:w-\[50cqw\] -->
+<!-- [!code word:w-\[50cqw\]] -->
 <div class="@container">
   <div class="w-[50cqw]">
     <!-- ... -->
   </div>
 </div>
 ```
+
+For units that need more than the inline size, like `cqb` and `cqh`, use `@container-size` to make the full size of the container available.
 
 ### Container size reference
 
@@ -32979,6 +33088,384 @@ Use the `snap-proximity` utility to make a snap container come to rest on snap p
 <ResponsiveDesign property="scroll-snap-type" defaultClass="snap-none" featuredClass="snap-x" />
 
 
+--- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/scrollbar-color.mdx ---
+
+import { ApiTable } from "@/components/api-table.tsx";
+import { CustomizingYourThemeColors, ResponsiveDesign, TargetingSpecificStates } from "@/components/content.tsx";
+import { Example } from "@/components/example.tsx";
+import { Figure } from "@/components/figure.tsx";
+import colors from "./utils/colors";
+
+export const title = "scrollbar-color";
+export const description = "Utilities for controlling the color of an element's scrollbar.";
+
+<ApiTable
+  rows={[
+    [
+      "scrollbar-thumb-inherit",
+      "--tw-scrollbar-thumb: inherit;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-thumb-current",
+      "--tw-scrollbar-thumb: currentColor;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-thumb-transparent",
+      "--tw-scrollbar-thumb: transparent;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    ...Object.entries(colors).map(([name, value]) => [
+      `scrollbar-thumb-${name}`,
+      `--tw-scrollbar-thumb: var(--color-${name}); /* ${value} */\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);`,
+    ]),
+    [
+      "scrollbar-thumb-(<custom-property>)",
+      "--tw-scrollbar-thumb: var(<custom-property>);\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-thumb-[<value>]",
+      "--tw-scrollbar-thumb: <value>;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-track-inherit",
+      "--tw-scrollbar-track: inherit;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-track-current",
+      "--tw-scrollbar-track: currentColor;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-track-transparent",
+      "--tw-scrollbar-track: transparent;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    ...Object.entries(colors).map(([name, value]) => [
+      `scrollbar-track-${name}`,
+      `--tw-scrollbar-track: var(--color-${name}); /* ${value} */\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);`,
+    ]),
+    [
+      "scrollbar-track-(<custom-property>)",
+      "--tw-scrollbar-track: var(<custom-property>);\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+    [
+      "scrollbar-track-[<value>]",
+      "--tw-scrollbar-track: <value>;\nscrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);",
+    ],
+  ]}
+/>
+
+## Examples
+
+### Setting the scrollbar color
+
+Use utilities like `scrollbar-thumb-sky-700` and `scrollbar-track-sky-100` to control the colors of a scrollbar:
+
+<Figure hint="Scroll vertically">
+
+<Example>
+  {
+    <div className="mx-auto h-72 max-w-sm scrollbar-thumb-sky-700 scrollbar-track-sky-100 overflow-auto rounded-xl bg-white p-6 text-sm/6 text-gray-600 shadow-lg ring-1 ring-black/5 dark:scrollbar-thumb-sky-400 dark:scrollbar-track-gray-700 dark:bg-gray-800 dark:text-gray-300">
+      <div className="space-y-4">
+        <p>
+          The Cerulean Archives occupy three narrow floors above the old observatory, each lined with drawers of star
+          maps, expedition notes, and brass instruments cataloged by hand.
+        </p>
+        <p>
+          On winter mornings, the staff rolls ladders between the shelves while pale light cuts through the roof windows
+          and settles on the reading tables.
+        </p>
+        <p>
+          Visitors can request anything from the collection, but most come for the atlases that chart coastlines no
+          longer found on modern maps.
+        </p>
+        <p>
+          Every returned volume is inspected, dusted, and wrapped before being carried back into the stacks for the next
+          researcher.
+        </p>
+      </div>
+    </div>
+  }
+</Example>
+
+```html
+<!-- [!code classes:scrollbar-thumb-sky-700,scrollbar-track-sky-100] -->
+<div class="scrollbar-thumb-sky-700 scrollbar-track-sky-100 overflow-auto ...">
+  <!-- ... -->
+</div>
+```
+
+</Figure>
+
+You can set the thumb and track colors independently. If you set one without the other, the unset color defaults to transparent.
+
+### Changing the opacity
+
+Use the color opacity modifier to control the opacity of an element's scrollbar colors:
+
+<Figure hint="Scroll vertically">
+
+<Example>
+  {
+    <div className="mx-auto h-72 max-w-sm scrollbar-thumb-slate-900/60 scrollbar-track-slate-900/10 overflow-auto rounded-xl bg-white p-6 text-sm/6 text-gray-600 shadow-lg ring-1 ring-black/5 dark:scrollbar-thumb-white/40 dark:scrollbar-track-white/10 dark:bg-gray-800 dark:text-gray-300">
+      <div className="space-y-4">
+        <p>
+          The Cerulean Archives occupy three narrow floors above the old observatory, each lined with drawers of star
+          maps, expedition notes, and brass instruments cataloged by hand.
+        </p>
+        <p>
+          On winter mornings, the staff rolls ladders between the shelves while pale light cuts through the roof windows
+          and settles on the reading tables.
+        </p>
+        <p>
+          Visitors can request anything from the collection, but most come for the atlases that chart coastlines no
+          longer found on modern maps.
+        </p>
+        <p>
+          Every returned volume is inspected, dusted, and wrapped before being carried back into the stacks for the next
+          researcher.
+        </p>
+      </div>
+    </div>
+  }
+</Example>
+
+```html
+<!-- [!code word:/60] -->
+<!-- [!code word:/10] -->
+<div class="scrollbar-thumb-slate-900/60 scrollbar-track-slate-900/10 ...">
+  <!-- ... -->
+</div>
+```
+
+</Figure>
+
+### Using a custom value
+
+Use utilities like `scrollbar-thumb-[<value>]` and `scrollbar-track-[<value>]` to set scrollbar colors based on
+completely custom values:
+
+```html
+<!-- [!code classes:scrollbar-thumb-[#0f766e],scrollbar-track-[#ccfbf1]] -->
+<div class="scrollbar-thumb-[#0f766e] scrollbar-track-[#ccfbf1] ...">
+  <!-- ... -->
+</div>
+```
+
+For CSS variables, you can also use the `scrollbar-thumb-(<custom-property>)` and
+`scrollbar-track-(<custom-property>)` syntax:
+
+```html
+<!-- [!code classes:scrollbar-thumb-(--my-scrollbar-thumb),scrollbar-track-(--my-scrollbar-track)] -->
+<div class="scrollbar-thumb-(--my-scrollbar-thumb) scrollbar-track-(--my-scrollbar-track) ...">
+  <!-- ... -->
+</div>
+```
+
+### Applying on hover
+
+<TargetingSpecificStates property="scrollbar-color">
+
+```html
+<!-- [!code classes:hover:scrollbar-thumb-sky-500] -->
+<div class="scrollbar-thumb-sky-700 hover:scrollbar-thumb-sky-500 ...">
+  <!-- ... -->
+</div>
+```
+
+</TargetingSpecificStates>
+
+### Responsive design
+
+<ResponsiveDesign
+  property="scrollbar-color"
+  defaultClass="scrollbar-thumb-slate-900 scrollbar-track-slate-200"
+  featuredClass="scrollbar-thumb-sky-700"
+/>
+
+## Customizing your theme
+
+<CustomizingYourThemeColors utilities={["scrollbar-thumb", "scrollbar-track"]} />
+
+
+--- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/scrollbar-gutter.mdx ---
+
+import { ApiTable } from "@/components/api-table.tsx";
+import { ResponsiveDesign } from "@/components/content.tsx";
+import { Example } from "@/components/example.tsx";
+import { Figure } from "@/components/figure.tsx";
+
+export const title = "scrollbar-gutter";
+export const description = "Utilities for controlling the gutter space reserved for an element's scrollbar.";
+
+<ApiTable
+  rows={[
+    ["scrollbar-gutter-auto", "scrollbar-gutter: auto;"],
+    ["scrollbar-gutter-stable", "scrollbar-gutter: stable;"],
+    ["scrollbar-gutter-both", "scrollbar-gutter: stable both-edges;"],
+  ]}
+/>
+
+## Examples
+
+### Reserving space for the scrollbar
+
+Use the `scrollbar-gutter-stable` utility to reserve space for the scrollbar even when an element isn't overflowing:
+
+<Figure>
+
+<Example>
+  {
+    <div className="mx-auto grid max-w-xl grid-cols-1 gap-6 text-sm/6 text-gray-600 sm:grid-cols-2 dark:text-gray-300">
+      <div>
+        <p className="mb-3 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">scrollbar-gutter-auto</p>
+        <div className="h-40 overflow-auto rounded-lg bg-gray-50 py-4 scrollbar-gutter-auto dark:bg-white/5">
+          <p className="text-justify">
+            Hey everyone! It’s almost 2027 and we still don’t know if there are aliens living among us, or do we? Maybe
+            the person writing this is an alien. You will never know.
+          </p>
+        </div>
+      </div>
+      <div>
+        <p className="mb-3 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">scrollbar-gutter-stable</p>
+        <div className="relative h-40 rounded-lg bg-gray-50 py-4 pr-4 scrollbar-gutter-stable dark:bg-white/5">
+          <p className="text-justify">
+            Hey everyone! It’s almost 2027 and we still don’t know if there are aliens living among us, or do we? Maybe
+            the person writing this is an alien. You will never know.
+          </p>
+          <div className="absolute top-0 right-0 bottom-0 w-4 rounded-r-lg border bg-[image:repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-[size:8px_8px] bg-top-left text-black/10 dark:text-white/12.5"></div>
+        </div>
+      </div>
+    </div>
+  }
+</Example>
+
+```html
+<!-- [!code classes:scrollbar-gutter-stable] -->
+<div class="overflow-auto scrollbar-gutter-stable ...">
+  <!-- ... -->
+</div>
+```
+
+</Figure>
+
+### Reserving space on both sides
+
+Use the `scrollbar-gutter-both` utility to reserve matching gutter space on both sides of the element:
+
+```html
+<!-- [!code classes:scrollbar-gutter-both] -->
+<div class="overflow-auto scrollbar-gutter-both ...">
+  <!-- ... -->
+</div>
+```
+
+### Using the default gutter
+
+Use the `scrollbar-gutter-auto` utility to only reserve gutter space when the browser would normally show a scrollbar:
+
+```html
+<!-- [!code classes:scrollbar-gutter-auto] -->
+<div class="overflow-auto scrollbar-gutter-auto ...">
+  <!-- ... -->
+</div>
+```
+
+### Responsive design
+
+<ResponsiveDesign
+  property="scrollbar-gutter"
+  defaultClass="scrollbar-gutter-auto"
+  featuredClass="scrollbar-gutter-stable"
+/>
+
+
+--- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/scrollbar-width.mdx ---
+
+import { ApiTable } from "@/components/api-table.tsx";
+import { ResponsiveDesign } from "@/components/content.tsx";
+import { Example } from "@/components/example.tsx";
+import { Figure } from "@/components/figure.tsx";
+
+export const title = "scrollbar-width";
+export const description = "Utilities for controlling the width of an element's scrollbar.";
+
+<ApiTable
+  rows={[
+    ["scrollbar-auto", "scrollbar-width: auto;"],
+    ["scrollbar-thin", "scrollbar-width: thin;"],
+    ["scrollbar-none", "scrollbar-width: none;"],
+  ]}
+/>
+
+## Examples
+
+### Using the default scrollbar width
+
+Use the `scrollbar-auto` utility to use the browser's default scrollbar width:
+
+```html
+<!-- [!code classes:scrollbar-auto] -->
+<div class="scrollbar-auto overflow-auto ...">
+  <!-- ... -->
+</div>
+```
+
+### Using a thin scrollbar
+
+Use the `scrollbar-thin` utility to use a thinner scrollbar:
+
+<Figure hint="Scroll vertically">
+
+<Example>
+  {
+    <div className="mx-auto h-72 max-w-sm scrollbar-thin overflow-auto rounded-xl bg-white p-6 text-sm/6 text-gray-600 shadow-lg ring-1 ring-black/5 dark:bg-gray-800 dark:text-gray-300">
+      <div className="space-y-4">
+        <p>
+          The Cerulean Archives occupy three narrow floors above the old observatory, each lined with drawers of star
+          maps, expedition notes, and brass instruments cataloged by hand.
+        </p>
+        <p>
+          On winter mornings, the staff rolls ladders between the shelves while pale light cuts through the roof windows
+          and settles on the reading tables.
+        </p>
+        <p>
+          Visitors can request anything from the collection, but most come for the atlases that chart coastlines no
+          longer found on modern maps.
+        </p>
+        <p>
+          Every returned volume is inspected, dusted, and wrapped before being carried back into the stacks for the next
+          researcher.
+        </p>
+      </div>
+    </div>
+  }
+</Example>
+
+```html
+<!-- [!code classes:scrollbar-thin] -->
+<div class="scrollbar-thin overflow-auto ...">
+  <!-- ... -->
+</div>
+```
+
+</Figure>
+
+### Hiding scrollbars
+
+Use the `scrollbar-none` utility to hide scrollbars while still allowing an element to scroll:
+
+```html
+<!-- [!code classes:scrollbar-none] -->
+<div class="scrollbar-none overflow-auto ...">
+  <!-- ... -->
+</div>
+```
+
+These utilities only support the browser keywords `auto`, `thin`, and `none`.
+
+### Responsive design
+
+<ResponsiveDesign property="scrollbar-width" defaultClass="scrollbar-none" featuredClass="scrollbar-auto" />
+
+
 --- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/skew.mdx ---
 
 import { ApiTable } from "@/components/api-table.tsx";
@@ -34542,6 +35029,77 @@ If your project has class names that conflict with Tailwind CSS utilities, you c
 ```
 
 </CodeExampleStack>
+
+
+--- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/tab-size.mdx ---
+
+import { ApiTable } from "@/components/api-table.tsx";
+import { ResponsiveDesign, UsingACustomValue } from "@/components/content.tsx";
+import { Example } from "@/components/example.tsx";
+import { Figure } from "@/components/figure.tsx";
+
+export const title = "tab-size";
+export const description = "Utilities for controlling the size of tab characters.";
+
+<ApiTable
+  rows={[
+    ["tab-<number>", "tab-size: <number>;"],
+    ["tab-(<custom-property>)", "tab-size: var(<custom-property>);"],
+    ["tab-[<value>]", "tab-size: <value>;"],
+  ]}
+/>
+
+## Examples
+
+### Basic example
+
+Use `tab-<number>` utilities like `tab-2` and `tab-8` to control the size of tab characters:
+
+<Figure>
+
+<Example>
+  <div className="grid gap-6 sm:grid-cols-2">
+    <div className="tab-2">
+      <span className="mb-3 block font-mono text-xs font-medium text-gray-500 dark:text-gray-400">tab-2</span>
+
+{/* prettier-ignore */}
+```jsx
+function indent() {
+	return 'tabbed';
+}
+```
+
+    </div>
+    <div className="tab-8">
+      <span className="mb-3 block font-mono text-xs font-medium text-gray-500 dark:text-gray-400">tab-8</span>
+
+{/* prettier-ignore */}
+```jsx
+function indent() {
+	return 'tabbed';
+}
+```
+
+    </div>
+
+  </div>
+</Example>
+
+```html
+<!-- [!code classes:tab-2,tab-8] -->
+<pre class="tab-2 ...">function indent() {&#10;&#9;return 'tabbed'&#10;}</pre>
+<pre class="tab-8 ...">function indent() {&#10;&#9;return 'tabbed'&#10;}</pre>
+```
+
+</Figure>
+
+### Using a custom value
+
+<UsingACustomValue element="pre" utility="tab" name="tab size" value="12px" variable="tab-size" />
+
+### Responsive design
+
+<ResponsiveDesign element="pre" property="tab-size" defaultClass="tab-4" featuredClass="tab-8" />
 
 
 --- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/table-layout.mdx ---
@@ -36288,6 +36846,14 @@ Defining new theme variables in these namespaces will make new corresponding uti
     </tr>
     <tr>
       <td className="whitespace-nowrap">
+        <code>--tab-size-*</code>
+      </td>
+      <td>
+        Tab size utilities like <code>tab-github</code>
+      </td>
+    </tr>
+    <tr>
+      <td className="whitespace-nowrap">
         <code>--breakpoint-*</code>
       </td>
       <td>
@@ -36356,6 +36922,14 @@ Defining new theme variables in these namespaces will make new corresponding uti
       </td>
       <td>
         Perspective utilities like <code>perspective-near</code>
+      </td>
+    </tr>
+    <tr>
+      <td className="whitespace-nowrap">
+        <code>--zoom-*</code>
+      </td>
+      <td>
+        Zoom utilities like <code>zoom-compact</code>
       </td>
     </tr>
     <tr>
@@ -41170,3 +41744,55 @@ To use a negative z-index value, prefix the class name with a dash to convert it
 ### Responsive design
 
 <ResponsiveDesign property="z-index" defaultClass="z-0" featuredClass="z-50" />
+
+
+--- SOURCE: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/zoom.mdx ---
+
+import { ApiTable } from "@/components/api-table.tsx";
+import {
+  ResponsiveDesign,
+  TargetingSpecificStates,
+  UsingACustomValue,
+} from "@/components/content.tsx";
+
+export const title = "zoom";
+export const description = "Utilities for scaling elements using zoom.";
+
+<ApiTable
+  rows={[
+    ["zoom-<number>", "zoom: <number>%;"],
+    ["zoom-(<custom-property>)", "zoom: var(<custom-property>);"],
+    ["zoom-[<value>]", "zoom: <value>;"],
+  ]}
+/>
+
+## Examples
+
+### Basic example
+
+Use `zoom-<number>` utilities like `zoom-75` and `zoom-125` to scale an element using the CSS `zoom` property:
+
+```html
+<!-- [!code classes:zoom-75,zoom-100,zoom-125] -->
+<div class="zoom-75 ...">
+  <!-- ... -->
+</div>
+<div class="zoom-100 ...">
+  <!-- ... -->
+</div>
+<div class="zoom-125 ...">
+  <!-- ... -->
+</div>
+```
+
+### Using a custom value
+
+<UsingACustomValue utility="zoom" value="1.1" />
+
+### Applying on hover
+
+<TargetingSpecificStates property="zoom" defaultClass="zoom-100" featuredClass="zoom-125" />
+
+### Responsive design
+
+<ResponsiveDesign property="zoom" defaultClass="zoom-100" featuredClass="zoom-125" />
