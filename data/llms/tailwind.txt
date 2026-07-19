@@ -1359,7 +1359,7 @@ Use the `items-baseline-last` utility to align items along the container's cross
       <div className="grid grid-cols-[1fr_auto] items-baseline-last gap-x-4 px-4 py-6">
         <div className="grid grid-cols-[auto_1fr] gap-x-4 max-sm:grid-cols-1">
           <img
-            className="size-[2rem] rounded-full"
+            className="size-8 rounded-full"
             src="https://spotlight.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar.51a13c67.jpg&w=128&q=80"
             alt=""
           />
@@ -1376,7 +1376,7 @@ Use the `items-baseline-last` utility to align items along the container's cross
       <div className="grid grid-cols-[1fr_auto] items-baseline-last gap-x-4 px-4 py-6">
         <div className="grid grid-cols-[auto_1fr] gap-x-4 max-sm:grid-cols-1">
           <img
-            className="size-[2rem] rounded-full"
+            className="size-8 rounded-full"
             src="https://images.unsplash.com/photo-1590895340509-793cb98788c9?q=80&w=256&h=256&&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
@@ -1658,7 +1658,7 @@ Use the `self-baseline-last` utility to align an item along the container's cros
     <div className="mx-auto grid max-w-md divide-y divide-gray-100 border-x border-x-gray-200 text-gray-700 dark:divide-gray-800 dark:border-x-gray-800 dark:bg-gray-950/10 dark:text-gray-300">
       <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 px-4 py-6">
         <img
-          className="size-[2rem] rounded-full"
+          className="size-8 rounded-full"
           src="https://spotlight.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Favatar.51a13c67.jpg&w=128&q=80"
           alt=""
         />
@@ -1675,7 +1675,7 @@ Use the `self-baseline-last` utility to align an item along the container's cros
       </div>
       <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 px-4 py-6">
         <img
-          className="size-[2rem] rounded-full"
+          className="size-8 rounded-full"
           src="https://images.unsplash.com/photo-1590895340509-793cb98788c9?q=80&w=256&h=256&&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
@@ -3524,7 +3524,7 @@ Use the `bg-fixed` utility to fix the background image relative to the viewport:
 
 <Example padding={false}>
   {
-    <div className="mx-auto h-80 overflow-y-scroll border-x border-x-gray-200 bg-[url('https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=800&q=80')] bg-cover bg-[center_-100px] dark:border-gray-800">
+    <div className="mx-auto h-80 overflow-y-scroll border-x border-x-gray-200 bg-[url('https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=800&q=80')] bg-cover bg-position-[center_-100px] dark:border-gray-800">
       <div className="mt-45">
         <div className="border-x border-x-gray-200 bg-white p-4 text-gray-500 sm:p-8 dark:border-x-gray-800 dark:bg-gray-900 dark:text-gray-400">
           <div className="font-inter text-2xl font-extrabold tracking-tight text-black dark:text-white">
@@ -4154,7 +4154,7 @@ Use utilities like `from-indigo-500`, `via-purple-500`, and `to-pink-500` to set
 <Example>
   {
     <div className="mx-5">
-      <div className="relative h-[3.625rem]">
+      <div className="relative h-14.5">
         <div className="absolute top-0 left-px -ml-4 flex h-12 flex-col items-center">
           <svg viewBox="0 0 32 34" className="w-8 flex-none fill-indigo-500 drop-shadow">
             <use href="#gradient-color-stop" />
@@ -4195,7 +4195,7 @@ Use utilities like `from-10%`, `via-30%`, and `to-90%` to set more precise posit
 <Example>
   {
     <div className="mx-5">
-      <div className="relative h-[3.625rem]">
+      <div className="relative h-14.5">
         <div className="absolute top-0 left-[10%] -ml-4 flex h-12 flex-col items-center">
           <svg viewBox="0 0 32 34" className="w-8 flex-none fill-indigo-500 drop-shadow">
             <use href="#gradient-color-stop" />
@@ -4442,7 +4442,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-top-left
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-top-left outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-top-left outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute top-0 left-0 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4454,7 +4454,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-top
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-top outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-top outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute top-0 -left-6 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4466,7 +4466,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-top-right
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-top-right outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-top-right outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute top-0 right-0 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4478,7 +4478,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-left
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-left outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-left outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute -top-6 left-0 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4490,7 +4490,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-center
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-center outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-center outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute -top-6 -left-6 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4502,7 +4502,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-right
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-right outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-right outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute -top-6 right-0 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4514,7 +4514,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-bottom-left
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-bottom-left outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-bottom-left outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute -top-12 left-0 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4526,7 +4526,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-bottom
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-bottom outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-bottom outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute -top-12 -left-6 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -4538,7 +4538,7 @@ Use utilities like `bg-center`, `bg-right`, and `bg-top-left` to control the pos
             bg-bottom-right
           </p>
           <div className="group relative mx-auto h-20 w-20 rounded-lg">
-            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-bottom-right outline -outline-offset-1 outline-black/10"></div>
+            <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-bottom-right outline -outline-offset-1 outline-black/10"></div>
             <img
               className="absolute -top-12 right-0 h-32 w-32 max-w-none overflow-hidden rounded-md opacity-0 sm:group-hover:opacity-25"
               src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -6493,7 +6493,7 @@ Use the `box-decoration-slice` and `box-decoration-clone` utilities to control w
       <div className="flex flex-col">
         <p className="mb-3 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">box-decoration-slice</p>
         <div className="font-sans text-5xl leading-none font-extrabold tracking-tight">
-          <span className="bg-linear-to-r from-indigo-600 to-pink-500 box-decoration-slice px-2 leading-[3.5rem] text-white">
+          <span className="bg-linear-to-r from-indigo-600 to-pink-500 box-decoration-slice px-2 leading-14 text-white">
             Hello
             <br />
             World
@@ -6503,7 +6503,7 @@ Use the `box-decoration-slice` and `box-decoration-clone` utilities to control w
       <div className="flex flex-col">
         <p className="mb-3 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">box-decoration-clone</p>
         <div className="font-sans text-5xl leading-none font-extrabold tracking-tight">
-          <span className="bg-linear-to-r from-indigo-600 to-pink-500 box-decoration-clone px-2 leading-[3.5rem] text-white">
+          <span className="bg-linear-to-r from-indigo-600 to-pink-500 box-decoration-clone px-2 leading-14 text-white">
             Hello
             <br />
             World
@@ -7093,13 +7093,13 @@ This means a 100px &times; 100px element with a 2px border and 4px of padding on
         {/* h-measure indicator */}
         <div className="absolute top-0 right-2 bottom-0 flex w-3">
           {/* Vertical line */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-[0.5px] bg-sky-400"></div>
+          <div className="absolute top-0 bottom-0 left-1/2 w-px translate-x-[-0.5px] bg-sky-400"></div>
           {/* Top chip */}
           <div className="w-full">
             <div className="absolute top-0 left-1/2 h-px w-2 -translate-x-1 -translate-y-px rounded-full bg-sky-400"></div>
           </div>
           {/* Badge */}
-          <div className="relative flex h-3 flex-auto -translate-x-[1.15rem] translate-y-14 -rotate-90 items-center justify-center bg-white px-1.5 font-mono text-xs leading-none font-bold text-sky-600 dark:bg-gray-900 dark:text-sky-400">
+          <div className="relative flex h-3 flex-auto translate-x-[-1.15rem] translate-y-14 -rotate-90 items-center justify-center bg-white px-1.5 font-mono text-xs leading-none font-bold text-sky-600 dark:bg-gray-900 dark:text-sky-400">
             128px
           </div>
           {/* Bottom chip */}
@@ -7171,13 +7171,13 @@ This means a 100px &times; 100px element with a 2px border and 4px of padding on
         {/* h-measure indicator */}
         <div className="absolute top-0 right-2 bottom-0 flex w-3 -translate-x-5">
           {/* Vertical line */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-[0.5px] bg-blue-400"></div>
+          <div className="absolute top-0 bottom-0 left-1/2 w-px translate-x-[-0.5px] bg-blue-400"></div>
           {/* Top chip */}
           <div className="w-full">
             <div className="absolute top-0 left-1/2 h-px w-2 -translate-x-1 -translate-y-px rounded-full bg-blue-400"></div>
           </div>
           {/* Badge */}
-          <div className="relative flex h-3 flex-auto -translate-x-[1.15rem] translate-y-14 -rotate-90 items-center justify-center bg-white px-1.5 font-mono text-xs leading-none font-bold text-blue-600 dark:bg-gray-900 dark:text-blue-400">
+          <div className="relative flex h-3 flex-auto translate-x-[-1.15rem] translate-y-14 -rotate-90 items-center justify-center bg-white px-1.5 font-mono text-xs leading-none font-bold text-blue-600 dark:bg-gray-900 dark:text-blue-400">
             128px
           </div>
           {/* Bottom chip */}
@@ -7635,7 +7635,7 @@ Use the `clear-left` utility to position an element below any preceding left-flo
   {
     <>
       <img
-        className="float-left mr-6 mb-4 aspect-16/9 w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-left mr-6 mb-4 aspect-video w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <img
@@ -7679,7 +7679,7 @@ Use the `clear-right` utility to position an element below any preceding right-f
         src="https://images.unsplash.com/photo-1434394354979-a235cd36269d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <img
-        className="float-right mb-4 ml-6 aspect-16/9 w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-right mb-4 ml-6 aspect-video w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=formathttps://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <p className="clear-right text-justify">
@@ -7715,7 +7715,7 @@ Use the `clear-both` utility to position an element below all preceding floated 
   {
     <>
       <img
-        className="float-left mr-6 mb-4 aspect-16/9 w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-left mr-6 mb-4 aspect-video w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=formathttps://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <img
@@ -7755,7 +7755,7 @@ Use the `clear-start` and `clear-end` utilities, which use [logical properties](
   {
     <div dir="rtl">
       <img
-        className="float-left mr-6 mb-4 aspect-16/9 w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-left mr-6 mb-4 aspect-video w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <img
@@ -7799,7 +7799,7 @@ Use the `clear-none` utility to reset any clears that are applied to an element:
         src="https://images.unsplash.com/photo-1434394354979-a235cd36269d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <img
-        className="float-right ml-6 aspect-16/9 w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-right ml-6 aspect-video w-1/4 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=formathttps://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <p className="text-justify">
@@ -7862,21 +7862,21 @@ Use utilities like `scheme-light` and `scheme-light-dark` to control how element
 <Example>
   {
     <div className="flex justify-between gap-8 text-sm max-sm:flex-col">
-      <div className="flex flex-grow flex-col items-center gap-3 text-center scheme-light">
+      <div className="flex grow flex-col items-center gap-3 text-center scheme-light">
         <p className="font-mono font-medium text-gray-500 dark:text-gray-400">scheme-light</p>
         <input
           type="date"
           className="w-full rounded-lg border border-gray-950/10 bg-[Field] px-3 py-2 text-[FieldText] dark:border-white/10"
         />
       </div>
-      <div className="flex flex-grow flex-col items-center gap-3 text-center scheme-dark">
+      <div className="flex grow flex-col items-center gap-3 text-center scheme-dark">
         <p className="font-mono font-medium text-gray-500 dark:text-gray-400">scheme-dark</p>
         <input
           type="date"
           className="w-full rounded-lg border border-gray-950/10 bg-[Field] px-3 py-2 text-[FieldText] dark:border-white/10"
         />
       </div>
-      <div className="flex flex-grow flex-col items-center gap-3 text-center scheme-light-dark">
+      <div className="flex grow flex-col items-center gap-3 text-center scheme-light-dark">
         <p className="font-medium text-gray-500 dark:text-gray-400">scheme-light-dark</p>
         <input
           type="date"
@@ -9042,7 +9042,7 @@ Use `columns-<number>` utilities like `columns-3` to set the number of columns t
         <Stripes border="x" />
         <Stripes border="x" />
       </div>
-      <div className="relative -mb-[5cqw] columns-3 gap-[5cqw] *:mb-[5cqw]">
+      <div className="relative mb-[-5cqw] columns-3 gap-[5cqw] *:mb-[5cqw]">
         <img
           className="aspect-3/2 rounded-lg bg-black/5 object-cover outline -outline-offset-1 outline-black/10 dark:outline-0"
           src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80"
@@ -13164,7 +13164,7 @@ Use the `float-right` utility to float an element to the right of its container:
   {
     <>
       <img
-        className="float-right ml-6 aspect-16/9 w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-right ml-6 aspect-video w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <p className="text-justify">
@@ -13199,7 +13199,7 @@ Use the `float-left` utility to float an element to the left of its container:
   {
     <>
       <img
-        className="float-left mr-6 aspect-16/9 w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="float-left mr-6 aspect-video w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <p className="text-justify">
@@ -13237,7 +13237,7 @@ Use the `float-start` and `float-end` utilities, which use [logical properties](
         <p className="mb-4 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">left-to-right</p>
         <div>
           <img
-            className="float-start me-6 aspect-16/9 w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+            className="float-start me-6 aspect-video w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
           />
           <p className="text-justify">
@@ -13254,7 +13254,7 @@ Use the `float-start` and `float-end` utilities, which use [logical properties](
         <p className="mb-4 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">right-to-left</p>
         <div>
           <img
-            className="float-start me-6 aspect-16/9 w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+            className="float-start me-6 aspect-video w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
           />
           <p className="text-justify">
@@ -13296,7 +13296,7 @@ Use the `float-none` utility to reset any floats that are applied to an element:
   {
     <>
       <img
-        className="mb-4 aspect-16/9 w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
+        className="mb-4 aspect-video w-2/5 rounded-lg object-cover outline -outline-offset-1 outline-black/10"
         src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
       />
       <p className="text-justify">
@@ -16602,7 +16602,7 @@ When nesting groups, you can style something based on the state of a _specific_ 
       >
         <li className="group/item relative flex items-center justify-between rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-white/5">
           <div className="flex gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 className="h-12 w-12 rounded-full"
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -16636,7 +16636,7 @@ When nesting groups, you can style something based on the state of a _specific_ 
         </li>
         <li className="group/item relative flex items-center justify-between rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-white/5">
           <div className="flex gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 className="h-12 w-12 rounded-full"
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -16670,7 +16670,7 @@ When nesting groups, you can style something based on the state of a _specific_ 
         </li>
         <li className="group/item relative flex items-center justify-between rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-white/5">
           <div className="flex gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 className="h-12 w-12 rounded-full"
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -17847,7 +17847,7 @@ Use the `starting` variant to set the appearance of an element when it is first 
         <div
           popover="auto"
           id="my-popover"
-          className="relative inset-y-0 mx-auto my-auto transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left opacity-0 shadow-xl transition-all [transition-behavior:allow-discrete] duration-500 sm:w-full sm:max-w-96 sm:p-6 dark:bg-gray-800 [&:is([open],:popover-open)]:opacity-100 [@starting-style]:[&:is([open],:popover-open)]:opacity-0"
+          className="relative inset-y-0 mx-auto my-auto transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left opacity-0 shadow-xl transition-all transition-discrete duration-500 open:opacity-100 sm:w-full sm:max-w-96 sm:p-6 dark:bg-gray-800 starting:open:opacity-0"
         >
           <div>
             <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-600/10">
@@ -18581,7 +18581,7 @@ Like `*`, the `**` variant can be used to style children of an element. The main
       >
         <li className="group/item relative flex items-center justify-between rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-white/5">
           <div className="flex gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 data-avatar
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -18598,7 +18598,7 @@ Like `*`, the `**` variant can be used to style children of an element. The main
         </li>
         <li className="group/item relative flex items-center justify-between rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-white/5">
           <div className="flex gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 data-avatar
                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -18615,7 +18615,7 @@ Like `*`, the `**` variant can be used to style children of an element. The main
         </li>
         <li className="group/item relative flex items-center justify-between rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-white/5">
           <div className="flex gap-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 data-avatar
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -22495,7 +22495,7 @@ Use utilities like `list-inside` and `list-outside` to control the position of t
         </ul>
       </div>
       <div className="relative">
-        <div className="absolute -top-0 -bottom-8 left-8 w-px bg-pink-400/40 sm:-top-8 dark:bg-pink-400/30"></div>
+        <div className="absolute top-0 -bottom-8 left-8 w-px bg-pink-400/40 sm:-top-8 dark:bg-pink-400/30"></div>
         <p className="mb-3 ml-8 font-mono text-xs font-medium text-gray-500 dark:text-gray-400">list-outside</p>
         <ul className="list-outside list-disc rounded-xl p-4 pl-8 text-gray-900 dark:text-gray-200">
           <li>5 cups chopped Porcini mushrooms</li>
@@ -23055,19 +23055,19 @@ Use utilities like `mask-clip-border`, `mask-clip-padding`, and `mask-clip-conte
       <div className="flex flex-col items-center">
         <p className="mb-3">mask-clip-border</p>
         <div className="relative size-24 rounded-lg border-3 border-dashed border-indigo-500/50 dark:border-indigo-400/75">
-          <div className="absolute -inset-[3px] bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-clip-border p-1.5"></div>
+          <div className="absolute inset-[-3px] bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-clip-border p-1.5"></div>
         </div>
       </div>
       <div className="flex flex-col items-center">
         <p className="mb-3">mask-clip-padding</p>
         <div className="relative size-24 rounded-lg border-3 border-dashed border-indigo-500/50 dark:border-indigo-400/75">
-          <div className="absolute -inset-[3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-clip-padding p-1.5"></div>
+          <div className="absolute inset-[-3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-clip-padding p-1.5"></div>
         </div>
       </div>
       <div className="flex flex-col items-center">
         <p className="mb-3">mask-clip-content</p>
         <div className="relative size-24 rounded-lg border-3 border-dashed border-indigo-500/50 dark:border-indigo-400/75">
-          <div className="absolute -inset-[3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-clip-content p-1.5"></div>
+          <div className="absolute inset-[-3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-clip-content p-1.5"></div>
         </div>
       </div>
     </div>
@@ -23120,28 +23120,28 @@ Use utilities like `mask-add` and `mask-intersect` to control how an element's m
   {
     <div className="grid grid-cols-2 items-center justify-center justify-items-center gap-y-8 py-4 text-center font-mono text-xs font-medium text-gray-500 max-sm:grid-cols-1 dark:text-gray-400">
       <div className="relative grid justify-center">
-        <div className="absolute right-[calc(5%-2px)] -bottom-[2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
-        <div className="absolute -bottom-[2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute right-[calc(5%-2px)] bottom-[-2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute bottom-[-2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
         <p className="mb-3">mask-add</p>
-        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,_white_100%,transparent_100%),_radial-gradient(ellipse_25%_50%_at_70%_50%,_white_100%,transparent_100%)] bg-cover bg-center mask-add"></div>
+        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,white_100%,transparent_100%),radial-gradient(ellipse_25%_50%_at_70%_50%,white_100%,transparent_100%)] bg-cover bg-center mask-add"></div>
       </div>
       <div className="relative grid justify-center">
-        <div className="absolute right-[calc(5%-2px)] -bottom-[2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
-        <div className="absolute -bottom-[2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute right-[calc(5%-2px)] bottom-[-2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute bottom-[-2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
         <p className="mb-3 text-center">mask-subtract</p>
-        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,_white_100%,transparent_100%),_radial-gradient(ellipse_25%_50%_at_70%_50%,_white_100%,transparent_100%)] bg-cover bg-center mask-subtract"></div>
+        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,white_100%,transparent_100%),radial-gradient(ellipse_25%_50%_at_70%_50%,white_100%,transparent_100%)] bg-cover bg-center mask-subtract"></div>
       </div>
       <div className="relative grid justify-center">
-        <div className="absolute right-[calc(5%-2px)] -bottom-[2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
-        <div className="absolute -bottom-[2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute right-[calc(5%-2px)] bottom-[-2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute bottom-[-2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
         <p className="mb-3 text-center">mask-intersect</p>
-        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,_white_100%,transparent_100%),_radial-gradient(ellipse_25%_50%_at_70%_50%,_white_100%,transparent_100%)] bg-cover bg-center mask-intersect"></div>
+        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,white_100%,transparent_100%),radial-gradient(ellipse_25%_50%_at_70%_50%,white_100%,transparent_100%)] bg-cover bg-center mask-intersect"></div>
       </div>
       <div className="relative grid justify-center">
-        <div className="absolute right-[calc(5%-2px)] -bottom-[2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
-        <div className="absolute -bottom-[2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute right-[calc(5%-2px)] bottom-[-2px] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
+        <div className="absolute bottom-[-2px] left-[calc(5%-2px)] box-content size-24 rounded-full border-2 border-dashed border-black/10 dark:border-white/20" />
         <p className="mb-3 text-center">mask-exclude</p>
-        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,_white_100%,transparent_100%),_radial-gradient(ellipse_25%_50%_at_70%_50%,_white_100%,transparent_100%)] bg-cover bg-center mask-exclude"></div>
+        <div className="h-24 w-48 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-[radial-gradient(ellipse_25%_50%_at_30%_50%,white_100%,transparent_100%),radial-gradient(ellipse_25%_50%_at_70%_50%,white_100%,transparent_100%)] bg-cover bg-center mask-exclude"></div>
       </div>
     </div>
   }
@@ -23150,10 +23150,10 @@ Use utilities like `mask-add` and `mask-intersect` to control how an element's m
 {/* prettier-ignore */}
 ```html
 <!-- [!code classes:mask-add,mask-subtract,mask-intersect,mask-exclude] -->
-<div class="mask-add mask-[url(/img/circle.png),url(/img/circle.png)] mask-[position:30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
-<div class="mask-subtract mask-[url(/img/circle.png),url(/img/circle.png)] mask-[position:30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
-<div class="mask-intersect mask-[url(/img/circle.png),url(/img/circle.png)] mask-[position:30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
-<div class="mask-exclude mask-[url(/img/circle.png),url(/img/circle.png)] mask-[position:30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
+<div class="mask-add mask-[url(/img/circle.png),url(/img/circle.png)] mask-position-[30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
+<div class="mask-subtract mask-[url(/img/circle.png),url(/img/circle.png)] mask-position-[30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
+<div class="mask-intersect mask-[url(/img/circle.png),url(/img/circle.png)] mask-position-[30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
+<div class="mask-exclude mask-[url(/img/circle.png),url(/img/circle.png)] mask-position-[30%_50%,70%_50%] bg-[url(/img/mountains.jpg)]"></div>
 ```
 
 </Figure>
@@ -24157,7 +24157,7 @@ Use the `mask-alpha`, `mask-luminance` and `mask-match` utilities to control the
   {
     <div className="mx-5 grid gap-10 text-center font-mono text-xs font-medium text-gray-500 dark:text-gray-400">
       <div>
-        <div className="relative h-[3.625rem]">
+        <div className="relative h-14.5">
           <div className="absolute top-0 left-[50%] -ml-3 flex h-12 flex-col items-center">
             <svg viewBox="0 0 32 34" className="w-7 flex-none text-black drop-shadow-sm dark:stroke-white/10">
               <use href="#gradient-color-stop" />
@@ -24178,7 +24178,7 @@ Use the `mask-alpha`, `mask-luminance` and `mask-match` utilities to control the
         <p className="mt-3">mask-alpha</p>
       </div>
       <div>
-        <div className="relative h-[3.625rem]">
+        <div className="relative h-14.5">
           <div className="absolute top-0 left-[50%] -ml-3 flex h-12 flex-col items-center">
             <svg viewBox="0 0 32 34" className="w-7 flex-none text-white drop-shadow-sm dark:stroke-white/10">
               <use href="#gradient-color-stop" />
@@ -24254,19 +24254,19 @@ Use utilities like `mask-origin-border`, `mask-origin-padding`, and `mask-origin
       <div className="flex shrink-0 flex-col items-center">
         <p className="mb-3">mask-origin-border</p>
         <div className="relative size-24 rounded-lg border-3 border-dashed border-indigo-500/50 dark:border-indigo-400/75">
-          <div className="absolute -inset-[3px] bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-no-repeat mask-origin-border p-1.5"></div>
+          <div className="absolute inset-[-3px] bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-no-repeat mask-origin-border p-1.5"></div>
         </div>
       </div>
       <div className="flex shrink-0 flex-col items-center">
         <p className="mb-3">mask-origin-padding</p>
         <div className="relative size-24 rounded-lg border-3 border-dashed border-indigo-500/50 dark:border-indigo-400/75">
-          <div className="absolute -inset-[3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-no-repeat mask-origin-padding p-1.5"></div>
+          <div className="absolute inset-[-3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-no-repeat mask-origin-padding p-1.5"></div>
         </div>
       </div>
       <div className="flex shrink-0 flex-col items-center">
         <p className="mb-3">mask-origin-content</p>
         <div className="relative size-24 rounded-lg border-3 border-dashed border-indigo-500/50 dark:border-indigo-400/75">
-          <div className="absolute -inset-[3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-no-repeat mask-origin-content p-1.5"></div>
+          <div className="absolute inset-[-3px] rounded-lg border-3 bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=80)] mask-radial-[50%_50%] mask-radial-from-100% bg-cover bg-center mask-no-repeat mask-origin-content p-1.5"></div>
         </div>
       </div>
     </div>
@@ -25570,7 +25570,7 @@ Use `min-block-<number>` utilities like `min-block-24` and `min-block-64` to set
   {
     <div className="mx-auto flex justify-center">
       <div className="relative flex items-end space-x-4 font-mono text-xs font-bold text-white">
-        <Stripes border className="absolute -inset-x-[5%] w-[110%] rounded-lg block-20" />
+        <Stripes border className="absolute inset-x-[-5%] w-[110%] rounded-lg block-20" />
         <div className="relative flex w-8 items-end justify-center rounded-lg bg-blue-500 block-96">
           <div className="mb-1 transform-[rotate(-90deg)_translate(50%)] text-left text-nowrap">min-block-96</div>
         </div>
@@ -25720,7 +25720,7 @@ Use `min-h-<number>` utilities like `min-h-24` and `min-h-64` to set an element 
   {
     <div className="mx-auto flex justify-center">
       <div className="relative flex items-end space-x-4 font-mono text-xs font-bold text-white">
-        <Stripes border className="absolute -inset-x-[5%] h-20 w-[110%] rounded-lg" />
+        <Stripes border className="absolute inset-x-[-5%] h-20 w-[110%] rounded-lg" />
         <div className="relative flex h-96 w-8 items-end justify-center rounded-lg bg-blue-500">
           <div className="mb-8 -rotate-90 text-left text-nowrap">min-h-96</div>
         </div>
@@ -26443,7 +26443,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-top-left
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-top-left ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-top-left ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute top-0 left-0 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26455,7 +26455,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-top
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-top ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-top ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute top-0 -left-6 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26467,7 +26467,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-top-right
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-top-right ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-top-right ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute top-0 right-0 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26479,7 +26479,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-left
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-left ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-left ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute -top-6 left-0 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26491,7 +26491,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-center
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-center ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-center ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute -top-6 -left-6 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26503,7 +26503,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-right
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-right ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-right ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute -top-6 right-0 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26515,7 +26515,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-bottom-left
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-bottom-left ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-bottom-left ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute -top-12 left-0 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26527,7 +26527,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-bottom
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-bottom ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-bottom ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute -top-12 -left-6 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26539,7 +26539,7 @@ Use utilities like `object-left` and `object-bottom-right` to specify how a repl
           object-bottom-right
         </p>
         <div className="group relative mx-auto size-20 rounded-lg">
-          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-[size:8rem] bg-bottom-right ring-1 ring-black/10 ring-inset"></div>
+          <div className="relative z-10 h-full w-full rounded-md bg-[url(https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90)] bg-size-[8rem] bg-bottom-right ring-1 ring-black/10 ring-inset"></div>
           <img
             className="absolute -top-12 right-0 size-32 max-w-none overflow-hidden rounded-md opacity-0 transition duration-100 sm:group-hover:opacity-25"
             src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1000&q=90"
@@ -26690,7 +26690,6 @@ export const description = "Utilities for controlling the order of flex and grid
     ["-order-<number>", "order: calc(<number> * -1);"],
     ["order-first", "order: -9999;"],
     ["order-last", "order: 9999;"],
-    ["order-none", "order: 0;"],
     ["order-(<custom-property>)", "order: var(<custom-property>);"],
     ["order-[<value>]", "order: <value>;"],
   ]}
@@ -28815,7 +28814,7 @@ Use `place-content-between` to distribute grid items along the inline and block 
   {
     <div className="grid grid-cols-1">
       <Stripes border className="col-start-1 row-start-1 rounded-lg" />
-      <div className="col-start-1 row-start-1 grid h-56 grid-cols-[repeat(2,56px)] [place-content:space-between] gap-4 rounded-lg font-mono text-sm leading-6 font-bold text-white">
+      <div className="col-start-1 row-start-1 grid h-56 grid-cols-[repeat(2,56px)] place-content-between gap-4 rounded-lg font-mono text-sm leading-6 font-bold text-white">
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-purple-500 p-4">01</div>
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-purple-500 p-4">02</div>
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-purple-500 p-4">03</div>
@@ -28847,7 +28846,7 @@ Use `place-content-around` to distribute grid items along the inline and block a
   {
     <div className="grid grid-cols-1">
       <Stripes border className="col-start-1 row-start-1 rounded-lg" />
-      <div className="col-start-1 row-start-1 grid h-56 grid-cols-[repeat(2,56px)] [place-content:space-around] gap-x-4 rounded-lg font-mono text-sm leading-6 font-bold text-white">
+      <div className="col-start-1 row-start-1 grid h-56 grid-cols-[repeat(2,56px)] place-content-around gap-x-4 rounded-lg font-mono text-sm leading-6 font-bold text-white">
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-500 p-4">01</div>
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-500 p-4">02</div>
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-cyan-500 p-4">03</div>
@@ -28879,7 +28878,7 @@ Use `place-content-evenly` to distribute grid items such that they are evenly sp
   {
     <div className="grid grid-cols-1">
       <Stripes border className="col-start-1 row-start-1 rounded-lg" />
-      <div className="col-start-1 row-start-1 grid h-56 grid-cols-[repeat(2,56px)] [place-content:space-evenly] rounded-lg font-mono text-sm leading-6 font-bold text-white">
+      <div className="col-start-1 row-start-1 grid h-56 grid-cols-[repeat(2,56px)] place-content-evenly rounded-lg font-mono text-sm leading-6 font-bold text-white">
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-violet-500 p-4">01</div>
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-violet-500 p-4">02</div>
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-violet-500 p-4">03</div>
@@ -31913,35 +31912,35 @@ Use the `scroll-ms-<number>` and `scroll-me-<number>` utilities to set the `scro
       <p className="mb-4 pt-8 pl-6 text-sm font-medium">Left-to-right</p>
       <div className="flex w-full snap-x gap-12 overflow-x-auto pb-10" dir="ltr">
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pr-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute start-0 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute inset-s-0 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pr-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pr-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pr-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pr-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
@@ -31951,35 +31950,35 @@ Use the `scroll-ms-<number>` and `scroll-me-<number>` utilities to set the `scro
       <p className="mt-4 mb-4 pl-6 text-sm font-medium">Right-to-left</p>
       <div className="flex w-full snap-x gap-12 overflow-x-auto pb-10" dir="rtl">
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pl-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute start-0 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute inset-s-0 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pl-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pl-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pl-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
           />
         </div>
         <div className="relative shrink-0 snap-start scroll-ms-6 first:ps-6 last:pl-[calc(100%-21.5rem)]">
-          <Stripes border className="absolute -start-6 top-0 bottom-0 w-6" />
+          <Stripes border className="absolute -inset-s-6 top-0 bottom-0 w-6" />
           <img
             className="relative h-40 w-80 shrink-0 rounded-lg bg-white"
             src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
@@ -32170,7 +32169,7 @@ Use the `scroll-ps-<number>` and `scroll-pe-<number>` utilities to set the `scro
     <>
       <p className="mb-4 pt-8 pl-6 text-sm font-medium">Left-to-right</p>
       <div className="relative" dir="ltr">
-        <Stripes border className="absolute start-0 top-0 bottom-10 w-6" />
+        <Stripes border className="absolute inset-s-0 top-0 bottom-10 w-6" />
         <div className="flex w-full snap-x scroll-ps-6 gap-8 overflow-x-auto pb-10">
           <div className="shrink-0 snap-start first:ps-6 last:pe-[calc(100%-21.5rem)]">
             <img
@@ -32206,7 +32205,7 @@ Use the `scroll-ps-<number>` and `scroll-pe-<number>` utilities to set the `scro
       </div>
       <p className="mt-4 mb-4 pl-6 text-sm font-medium">Right-to-left</p>
       <div className="relative" dir="rtl">
-        <Stripes border className="absolute start-0 top-0 bottom-10 w-6" />
+        <Stripes border className="absolute inset-s-0 top-0 bottom-10 w-6" />
         <div className="flex w-full snap-x scroll-ps-6 gap-8 overflow-x-auto pb-10">
           <div className="shrink-0 snap-start first:ps-6 last:pe-[calc(100%-21.5rem)]">
             <img
@@ -32475,7 +32474,7 @@ Use the `snap-start` utility to snap an element to its start when being scrolled
           />
         </div>
         <div className="shrink-0 snap-start scroll-mx-6">
-          <div className="h-40 w-3 shrink-0 sm:-ml-[2px] sm:w-96"></div>
+          <div className="h-40 w-3 shrink-0 sm:ml-[-2px] sm:w-96"></div>
         </div>
       </div>
     </div>
@@ -32526,7 +32525,7 @@ Use the `snap-end` utility to snap an element to its end when being scrolled ins
       </div>
       <div className="relative flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-14">
         <div className="shrink-0 snap-end scroll-mx-6">
-          <div className="w-3 shrink-0 sm:-mr-[2px] sm:w-10"></div>
+          <div className="w-3 shrink-0 sm:mr-[-2px] sm:w-10"></div>
         </div>
         <div className="shrink-0 snap-end scroll-mx-6">
           <img
@@ -33332,7 +33331,7 @@ Use the `scrollbar-gutter-stable` utility to reserve space for the scrollbar eve
             Hey everyone! It’s almost 2027 and we still don’t know if there are aliens living among us, or do we? Maybe
             the person writing this is an alien. You will never know.
           </p>
-          <div className="absolute top-0 right-0 bottom-0 w-4 rounded-r-lg border bg-[image:repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-[size:8px_8px] bg-top-left text-black/10 dark:text-white/12.5"></div>
+          <div className="absolute top-0 right-0 bottom-0 w-4 rounded-r-lg border bg-[repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-size-[8px_8px] bg-top-left text-black/10 dark:text-white/12.5"></div>
         </div>
       </div>
     </div>
