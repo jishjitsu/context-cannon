@@ -152,6 +152,7 @@
 
 #### APIs
 - [APIs](https://react.dev/reference/react-dom.md)
+- [browser](https://react.dev/reference/react-dom/browser.md)
 - [createPortal](https://react.dev/reference/react-dom/createPortal.md)
 - [flushSync](https://react.dev/reference/react-dom/flushSync.md)
 - [preconnect](https://react.dev/reference/react-dom/preconnect.md)
