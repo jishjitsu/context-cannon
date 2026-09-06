@@ -6,7 +6,7 @@
 
 > Index of all docs: /docs/llms.txt
 
-@doc-version: >=v16.3.3
+@doc-version: >=v16.3.4
 @doc-version-notes: Some features may have extended or refined behavior in minor or patch releases
 @router: App Router
 @router-note: Unless otherwise noted in each section, these documents apply to the App Router
@@ -16,7 +16,7 @@
 title: Getting Started
 description: Learn how to create full-stack web applications with the Next.js App Router.
 url: "https://nextjs.org/docs/app/getting-started"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Getting Started
@@ -61,7 +61,7 @@ If you're new to React or need a refresher, we recommend starting with our [Reac
 title: Installation
 description: "Learn how to create a new Next.js application with the `create-next-app` CLI, and set up TypeScript, ESLint, and Module Path Aliases."
 url: "https://nextjs.org/docs/app/getting-started/installation"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Installation
@@ -455,7 +455,7 @@ See [Upgrading](/docs/app/getting-started/upgrading) for version guides and manu
 title: Project Structure
 description: Learn the folder and file conventions in Next.js, and how to organize your project.
 url: "https://nextjs.org/docs/app/getting-started/project-structure"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Project Structure
@@ -733,7 +733,7 @@ In the example above, both `(marketing)` and `(shop)` have their own root layout
 title: Layouts and Pages
 description: Learn how to create your first pages and layouts, and link between them with the Link component.
 url: "https://nextjs.org/docs/app/getting-started/layouts-and-pages"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Layouts and Pages
@@ -1076,7 +1076,7 @@ Learn more about the features mentioned in this page by reading the API Referenc
 title: Linking and Navigating
 description: Learn how the built-in navigation optimizations work, including prefetching, prerendering, and client-side navigation, and how to optimize navigation for dynamic routes and slow networks.
 url: "https://nextjs.org/docs/app/getting-started/linking-and-navigating"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Linking and Navigating
@@ -1512,7 +1512,7 @@ export function LocaleSwitcher() {
 title: Server and Client Components
 description: Learn how you can use React Server and Client Components to render parts of your application on the server or the client.
 url: "https://nextjs.org/docs/app/getting-started/server-and-client-components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Server and Client Components
@@ -2124,7 +2124,7 @@ Learn more about the APIs mentioned in this page.
 title: Fetching Data
 description: Learn how to fetch data and stream content that depends on data.
 url: "https://nextjs.org/docs/app/getting-started/fetching-data"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Fetching Data
@@ -2702,7 +2702,7 @@ Learn more about advanced data-fetching patterns and the features mentioned in t
 title: Mutating Data
 description: Learn how to mutate data using Server Functions and Server Actions in Next.js.
 url: "https://nextjs.org/docs/app/getting-started/mutating-data"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Mutating Data
@@ -3311,7 +3311,7 @@ Learn more about Server Actions and the APIs mentioned in this page.
 title: Caching
 description: Learn how to cache data and UI in Next.js
 url: "https://nextjs.org/docs/app/getting-started/caching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Caching
@@ -3868,7 +3868,7 @@ Learn more about revalidation and the APIs mentioned on this page.
 title: Revalidating
 description: Learn how to revalidate cached data using time-based and on-demand strategies.
 url: "https://nextjs.org/docs/app/getting-started/revalidating"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Revalidating
@@ -4076,7 +4076,7 @@ Learn more about the APIs mentioned on this page.
 title: Error Handling
 description: Learn how to display expected errors and handle uncaught exceptions.
 url: "https://nextjs.org/docs/app/getting-started/error-handling"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Error Handling
@@ -4516,7 +4516,7 @@ Learn more about the features mentioned in this page by reading the API Referenc
 title: CSS
 description: Learn about the different ways to add CSS to your application, including Tailwind CSS, CSS Modules, Global CSS, and more.
 url: "https://nextjs.org/docs/app/getting-started/css"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # CSS
@@ -4805,7 +4805,7 @@ Learn more about the alternatives ways you can use CSS in your application.
 title: Image Optimization
 description: Learn how to optimize images in Next.js
 url: "https://nextjs.org/docs/app/getting-started/images"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Image Optimization
@@ -5042,7 +5042,7 @@ See the API Reference for the full feature set of Next.js Image.
 title: Font Optimization
 description: Learn how to optimize fonts in Next.js
 url: "https://nextjs.org/docs/app/getting-started/fonts"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Font Optimization
@@ -5249,7 +5249,7 @@ See the API Reference for the full feature set of Next.js Font
 title: Metadata and OG images
 description: Learn how to add metadata to your pages and create dynamic OG images.
 url: "https://nextjs.org/docs/app/getting-started/metadata-and-og-images"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Metadata and OG images
@@ -5594,7 +5594,7 @@ Learn more about the Metadata APIs mentioned in this page.
 title: Route Handlers
 description: Learn how to use Route Handlers
 url: "https://nextjs.org/docs/app/getting-started/route-handlers"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Route Handlers
@@ -5797,7 +5797,7 @@ Learn more about Route Handlers
 title: Proxy
 description: Learn how to use Proxy
 url: "https://nextjs.org/docs/app/getting-started/proxy"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Proxy
@@ -5882,7 +5882,7 @@ Learn more about Proxy
 title: Deploying
 description: Learn how to deploy your Next.js application.
 url: "https://nextjs.org/docs/app/getting-started/deploying"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Deploying
@@ -5988,7 +5988,7 @@ For details on which Next.js features require specific platform capabilities, se
 title: Upgrading
 description: Learn how to upgrade your Next.js application to the latest version or canary.
 url: "https://nextjs.org/docs/app/getting-started/upgrading"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Upgrading
@@ -6085,7 +6085,7 @@ See the version guides for in-depth upgrade instructions.
 title: Guides
 description: Learn how to implement common patterns and real-world use cases using Next.js
 url: "https://nextjs.org/docs/app/guides"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Guides
@@ -6161,7 +6161,7 @@ version: 16.3.3
 title: Adopting Partial Prefetching
 description: "Learn how to enable Partial Prefetching and what changes for `<Link>`."
 url: "https://nextjs.org/docs/app/guides/adopting-partial-prefetching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Adopting Partial Prefetching
@@ -6667,7 +6667,7 @@ Learn more about prefetching and instant navigations.
 title: AI Coding Agents
 description: Learn how to configure your Next.js project so AI coding agents use up-to-date documentation instead of outdated training data.
 url: "https://nextjs.org/docs/app/guides/ai-agents"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # AI Coding Agents
@@ -6912,7 +6912,7 @@ Adopt Partial Prefetching in this project using the next-partial-prefetching-ado
 title: Analytics
 description: Measure and track page performance using Next.js Speed Insights
 url: "https://nextjs.org/docs/app/guides/analytics"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Analytics
@@ -7067,7 +7067,7 @@ useReportWebVitals((metric) => {
 title: Authentication
 description: Learn how to implement authentication in your Next.js application.
 url: "https://nextjs.org/docs/app/guides/authentication"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Authentication
@@ -8408,7 +8408,7 @@ To continue learning about authentication and security, check out the following 
 title: Authentication with Cache Components
 description: Learn how to read the user session, show authenticated UI without slowing down the page, and cache data derived from the session when Cache Components is enabled.
 url: "https://nextjs.org/docs/app/guides/authentication-with-cache-components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Authentication with Cache Components
@@ -8733,7 +8733,7 @@ Learn more about authentication, caching, and prefetching in Next.js.
 title: Backend for Frontend
 description: Learn how to use Next.js as a backend framework
 url: "https://nextjs.org/docs/app/guides/backend-for-frontend"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Backend for Frontend
@@ -9668,7 +9668,7 @@ Learn more about Route Handlers, Proxy, and Rewrites
 title: Building
 description: Learn what happens when you run next build and how to read the build output.
 url: "https://nextjs.org/docs/app/guides/building"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Building
@@ -10062,7 +10062,7 @@ Related API references and guides.
 title: Caching (Previous Model)
 description: Learn how to cache and revalidate data using fetch options, unstable_cache, and route segment configs for projects not using Cache Components.
 url: "https://nextjs.org/docs/app/guides/caching-without-cache-components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Caching (Previous Model)
@@ -10435,7 +10435,7 @@ To prerender dynamic routes with [`generateStaticParams`](/docs/app/api-referenc
 title: CDN Caching
 description: Learn how CDN caching works with Next.js, including what works today, cache variability, and the direction toward pathname-based cache keying.
 url: "https://nextjs.org/docs/app/guides/cdn-caching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # CDN Caching
@@ -10561,7 +10561,7 @@ Related guides and references.
 title: CI Build Caching
 description: Learn how to configure CI to cache Next.js builds
 url: "https://nextjs.org/docs/app/guides/ci-build-caching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # CI Build Caching
@@ -10735,7 +10735,7 @@ stage("Build") {
 title: Client-side data fetching
 description: Fetch data in Client Components with a data-fetching library, optionally provide initial data from a Server Component, and coordinate server and client caches.
 url: "https://nextjs.org/docs/app/guides/client-side-data-fetching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Client-side data fetching
@@ -10820,7 +10820,7 @@ Related guides and references.
 title: SWR
 description: Fetch client-side data with SWR, optionally provide initial data from a Server Component, and coordinate server and client caches.
 url: "https://nextjs.org/docs/app/guides/client-side-data-fetching/swr"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # SWR
@@ -11264,7 +11264,7 @@ Related guides and references.
 title: TanStack Query
 description: Fetch client-side data with TanStack Query, optionally provide initial data from a Server Component, and coordinate server and client caches.
 url: "https://nextjs.org/docs/app/guides/client-side-data-fetching/tanstack-query"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # TanStack Query
@@ -11934,7 +11934,7 @@ Related guides and references.
 title: Content Security Policy
 description: Learn how to set a Content Security Policy (CSP) for your Next.js application.
 url: "https://nextjs.org/docs/app/guides/content-security-policy"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Content Security Policy
@@ -12485,7 +12485,7 @@ const cspHeader = `
 title: CSS-in-JS
 description: Use CSS-in-JS libraries with Next.js
 url: "https://nextjs.org/docs/app/guides/css-in-js"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # CSS-in-JS
@@ -12734,7 +12734,7 @@ export default function RootLayout({ children }) {
 title: Custom Server
 description: Start a Next.js app programmatically using a custom server.
 url: "https://nextjs.org/docs/app/guides/custom-server"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Custom Server
@@ -12845,7 +12845,7 @@ The returned `app` can then be used to let Next.js handle requests as required.
 title: Data Security
 description: "Learn the built-in data security features in Next.js and learn best practices for protecting your application's data."
 url: "https://nextjs.org/docs/app/guides/data-security"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Data Security
@@ -13465,7 +13465,7 @@ Learn more about the topics mentioned in this guide.
 title: Debugging
 description: Learn how to debug your Next.js application with VS Code, Chrome DevTools, or Firefox DevTools.
 url: "https://nextjs.org/docs/app/guides/debugging"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Debugging
@@ -13647,7 +13647,7 @@ To learn more about how to use a JavaScript debugger, take a look at the followi
 title: Deploying to Platforms
 description: Understand which Next.js features require specific platform capabilities and how to choose the right deployment target.
 url: "https://nextjs.org/docs/app/guides/deploying-to-platforms"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Deploying to Platforms
@@ -13750,7 +13750,7 @@ Related guides and references.
 title: Draft Mode
 description: Bypass Next.js caching for a request so editors can preview unpublished content from a headless CMS.
 url: "https://nextjs.org/docs/app/guides/draft-mode"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Draft Mode
@@ -14098,7 +14098,7 @@ See the API reference for more information on how to use Draft Mode.
 title: Environment Variables
 description: Learn to add and access environment variables in your Next.js application.
 url: "https://nextjs.org/docs/app/guides/environment-variables"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Environment Variables
@@ -14357,7 +14357,7 @@ For example, if `NODE_ENV` is `development` and you define a variable in both `.
 title: Forms
 description: Learn how to create forms in Next.js with React Server Actions.
 url: "https://nextjs.org/docs/app/guides/forms"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Forms
@@ -14872,7 +14872,7 @@ This will trigger the submission of the nearest `<form>` ancestor, which will in
 title: How Revalidation Works
 description: A deep dive into how Next.js revalidates cached content, including the tag system, cache consistency, and multi-instance coordination.
 url: "https://nextjs.org/docs/app/guides/how-revalidation-works"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # How Revalidation Works
@@ -14978,7 +14978,7 @@ Related guides and references.
 title: ISR
 description: Learn how to create or update static pages at runtime with Incremental Static Regeneration.
 url: "https://nextjs.org/docs/app/guides/incremental-static-regeneration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # ISR
@@ -15335,7 +15335,7 @@ Learn how to [configure ISR](/docs/app/guides/self-hosting#caching-and-isr) when
 title: ISR with Cache Components
 description: Learn how to prerender a subset of dynamic routes, serve App Shells for the rest, and upgrade them after the first visit.
 url: "https://nextjs.org/docs/app/guides/incremental-static-regeneration-cache-components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # ISR with Cache Components
@@ -15567,7 +15567,7 @@ If you are migrating from the Pages Router:
 title: Instant navigation
 description: Learn how to structure your app to prefetch and prerender more content, providing instant page loads and client navigations.
 url: "https://nextjs.org/docs/app/guides/instant-navigation"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Instant navigation
@@ -16048,7 +16048,7 @@ Explore the full instant API, caching, and revalidation.
 title: Instrumentation
 description: Learn how to use instrumentation to run code at server startup in your Next.js app
 url: "https://nextjs.org/docs/app/guides/instrumentation"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Instrumentation
@@ -16145,7 +16145,7 @@ export async function register() {
 title: Interactive apps
 description: Learn how to build responsive interactions with Server Functions, transitions, optimistic UI, and pending feedback.
 url: "https://nextjs.org/docs/app/guides/interactive-apps"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Interactive apps
@@ -16936,7 +16936,7 @@ Learn more about the APIs used in this guide.
 title: Internationalization
 description: Add support for multiple languages with internationalized routing and localized content.
 url: "https://nextjs.org/docs/app/guides/internationalization"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Internationalization
@@ -17243,7 +17243,7 @@ Related API references and conventions.
 title: JSON-LD
 description: Learn how to add JSON-LD to your Next.js application to describe your content to search engines and AI.
 url: "https://nextjs.org/docs/app/guides/json-ld"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # JSON-LD
@@ -17335,7 +17335,7 @@ const jsonLd: WithContext<Product> = {
 title: Lazy Loading
 description: "Lazy load imported libraries and React Components to improve your application's loading performance."
 url: "https://nextjs.org/docs/app/guides/lazy-loading"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Lazy Loading
@@ -17551,7 +17551,7 @@ This is useful for:
 title: Development Environment
 description: Learn how to optimize your local development environment with Next.js.
 url: "https://nextjs.org/docs/app/guides/local-development"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Development Environment
@@ -17564,18 +17564,20 @@ The development process with `next dev` is different than `next build` and `next
 
 `next dev` compiles routes in your application as you open or navigate to them. This enables you to start the dev server without waiting for every route in your application to compile, which is both faster and uses less memory. Running a production build applies other optimizations, like minifying files and creating content hashes, which are not needed for local development.
 
-## Improving local dev performance
+## System configuration
 
 ### 1. Check your computer's antivirus
 
 Antivirus software can slow down file access. While this is more common on Windows machines, this can be an issue for any system with an antivirus tool installed.
 
-On Windows, you can add your project to the [Microsoft Defender Antivirus exclusion list](https://support.microsoft.com/en-us/windows/virus-and-threat-protection-in-the-windows-security-app-1362f4cd-d71a-b52a-0b66-c2820032b65e#bkmk_threat-protection-settings).
+**On Windows,** you can add your project to the [Microsoft Defender Antivirus exclusion list](https://support.microsoft.com/en-us/windows/virus-and-threat-protection-in-the-windows-security-app-1362f4cd-d71a-b52a-0b66-c2820032b65e#bkmk_threat-protection-settings).
 
 1. Open the **"Windows Security"** application and then select **"Virus & threat protection"** → **"Manage settings"** → **"Add or remove exclusions"**.
 2. Add a **"Folder"** exclusion. Select your project folder.
 
-On macOS, you can disable [Gatekeeper](https://support.apple.com/guide/security/gatekeeper-and-runtime-protection-sec5599b66df/web) inside of your terminal.
+Alternatively, you can enable and use a [Dev Drive](#3-windows-use-dev-drive-or-wsl-2), which [uses Microsoft Defender's "performance mode"](https://learn.microsoft.com/en-us/windows/dev-drive/#understanding-security-risks-and-trust-in-relation-to-dev-drive).
+
+**On macOS,** you can disable [Gatekeeper](https://support.apple.com/guide/security/gatekeeper-and-runtime-protection-sec5599b66df/web) inside of your terminal.
 
 1. Run `sudo spctl developer-mode enable-terminal` in your terminal.
 2. Open the **"System Settings"** app and then select **"Privacy & Security"** → **"Developer Tools"**.
@@ -17588,7 +17590,35 @@ On macOS, you can disable [Gatekeeper](https://support.apple.com/guide/security/
 
 If you or your employer have configured any other Antivirus solutions on your system, you should inspect the relevant settings for those products.
 
-### 2. Update Next.js and use Turbopack
+### 2. Avoid common Docker pitfalls
+
+If you're using Docker for development on Mac or Windows, you may experience significantly slower performance compared to running Next.js without Docker.
+
+This generally isn't an issue in production or when Docker runs natively on Linux, because project files don't cross Docker Desktop's host-to-VM file-sharing layer.
+
+When project files are stored on the macOS or Windows host and mounted into a container through Docker Desktop or similar tools, the host-to-VM file-sharing layer can delay or fail to propagate filesystem events. This can cause [Fast Refresh](/docs/architecture/fast-refresh) to take seconds or even minutes, while the same application shows updates quickly when developed on the host without Docker.
+
+For the best development experience:
+
+* Run Next.js without Docker (`npm run dev` or `pnpm dev`) during development.
+* Reserve Docker for production deployments and testing production builds.
+* If you must use Docker for development, consider running Docker natively on a Linux machine or a manually configured virtual machine. If using a manually configured virtual machine, move the source code into the VM and do not share it from the host.
+* If you're using Docker Desktop, evaluate using [synchronized file shares](https://docs.docker.com/desktop/features/synchronized-file-sharing/). Synchronized file shares still add latency compared to running Next.js directly on the host, but can improve file-watching reliability without resorting to polling.
+* Avoid using `watchOptions.pollIntervalMs` in `next.config.js` to work around Fast Refresh issues. Only use it as a last resort. Polling adds significant latency and can drastically increase CPU and I/O usage.
+
+[Learn more about Docker deployment](/docs/app/getting-started/deploying#docker) for production use.
+
+### 3. (Windows) Use Dev Drive or WSL 2
+
+Windows 11's Dev Drive feature uses an alternative filesystem to improve performance for common development workflows. [Microsoft has a guide explaining how to configure it](https://learn.microsoft.com/en-us/windows/dev-drive/).
+
+Alternatively, Windows provides an easy way to set up a Linux virtual machine using [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/). You may see better performance by using WSL 2.
+
+When using WSL 2, store your project directory inside the virtual machine's filesystem (e.g. `/home/$USER/project`) and not on a Windows drive (e.g. `C:\` or `/mnt/c`). If you do not do this, you will experience worse performance and file updates may not be reflected properly in development.
+
+## Improving application development performance
+
+### 1. Update Next.js and use Turbopack
 
 Make sure you're using the latest version of Next.js. Each new version often includes performance improvements.
 
@@ -17634,7 +17664,7 @@ bun run dev --webpack
 
 [Learn more about Turbopack](/blog/turbopack-for-development-stable). See our [upgrade guides](/docs/app/guides/upgrading) and codemods for more information.
 
-### 3. Check your imports
+### 2. Check your imports
 
 The way you import code can greatly affect compilation and bundling time. Learn more about [optimizing package bundling](/docs/app/guides/package-bundling) and explore tools like [Dependency Cruiser](https://github.com/sverweij/dependency-cruiser) or [Madge](https://github.com/pahen/madge).
 
@@ -17683,7 +17713,7 @@ module.exports = {
 
 Turbopack automatically analyzes imports and optimizes them. It does not require this configuration.
 
-### 4. Check your Tailwind CSS setup
+### 3. Check your Tailwind CSS setup
 
 If you're using Tailwind CSS, make sure it's set up correctly.
 
@@ -17715,39 +17745,25 @@ Tailwind CSS version 3.4.8 or newer will warn you about settings that might slow
    }
    ```
 
-### 5. Check custom webpack settings
+### 4. Check custom webpack settings
 
 If you've added custom webpack settings, they might be slowing down compilation.
 
 Consider if you really need them for local development. You can optionally only include certain tools for production builds, or explore using the default Turbopack bundler and configuring [loaders](/docs/app/api-reference/config/next-config-js/turbopack#configuring-webpack-loaders) instead.
 
-### 6. Optimize memory usage
+### 5. Optimize memory usage
 
 If your app is very large, it might need more memory.
 
 [Learn more about optimizing memory usage](/docs/app/guides/memory-usage).
 
-### 7. Server Components and data fetching
+### 6. Server Components and data fetching
 
 Changes to Server Components cause the entire page to re-render locally in order to show the new changes, which includes fetching new data for the component.
 
 The experimental `serverComponentsHmrCache` option allows you to cache `fetch` responses in Server Components across Hot Module Replacement (HMR) refreshes in local development. This results in faster responses and reduced costs for billed API calls.
 
 [Learn more about the experimental option](/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache).
-
-### 8. Consider local development over Docker
-
-If you're using Docker for development on Mac or Windows, you may experience significantly slower performance compared to running Next.js locally.
-
-Docker's filesystem access on Mac and Windows can cause Hot Module Replacement (HMR) to take seconds or even minutes, while the same application runs with fast HMR when developed locally.
-
-This performance difference is due to how Docker handles filesystem operations outside of Linux environments. For the best development experience:
-
-* Use local development (`npm run dev` or `pnpm dev`) instead of Docker during development
-* Reserve Docker for production deployments and testing production builds
-* If you must use Docker for development, consider using Docker on a Linux machine or VM
-
-[Learn more about Docker deployment](/docs/app/getting-started/deploying#docker) for production use.
 
 ## Tools for finding problems
 
@@ -17825,7 +17841,7 @@ Share the trace file generated in the [Turbopack Tracing](#turbopack-tracing) se
 title: Next.js MCP Server
 description: Learn how to use Next.js MCP support to allow coding agents access to your application state
 url: "https://nextjs.org/docs/app/guides/mcp"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Next.js MCP Server
@@ -18018,7 +18034,7 @@ This architecture decouples the agent interface from the internal implementation
 title: MDX
 description: Learn how to configure MDX and use it in your Next.js apps.
 url: "https://nextjs.org/docs/app/guides/mdx"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # MDX
@@ -18625,7 +18641,7 @@ module.exports = withMDX({
 title: Memory Usage
 description: Optimize memory used by your application in development and production.
 url: "https://nextjs.org/docs/app/guides/memory-usage"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Memory Usage
@@ -18799,7 +18815,7 @@ Next.js doesn't unload these JavaScript modules, meaning that even with this opt
 title: Migrating
 description: Learn how to migrate from popular frameworks to Next.js
 url: "https://nextjs.org/docs/app/guides/migrating"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Migrating
@@ -18814,7 +18830,7 @@ version: 16.3.3
 title: App Router
 description: Learn how to upgrade your existing Next.js application from the Pages Router to the App Router.
 url: "https://nextjs.org/docs/app/guides/migrating/app-router-migration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # App Router
@@ -19796,7 +19812,7 @@ Next.js provides Codemod transformations to help upgrade your codebase when a fe
 title: Create React App
 description: Learn how to migrate your existing React application from Create React App to Next.js.
 url: "https://nextjs.org/docs/app/guides/migrating/from-create-react-app"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Create React App
@@ -20418,7 +20434,7 @@ If everything worked, you now have a functioning Next.js application running as 
 title: Vite
 description: Learn how to migrate your existing React application from Vite to Next.js.
 url: "https://nextjs.org/docs/app/guides/migrating/from-vite"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Vite
@@ -21035,7 +21051,7 @@ do next:
 title: Migrating to Cache Components
 description: Learn how to migrate from route segment configs to Cache Components in Next.js.
 url: "https://nextjs.org/docs/app/guides/migrating-to-cache-components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Migrating to Cache Components
@@ -21965,7 +21981,7 @@ Learn about other behavior changes when Cache Components is enabled.
 title: Multi-tenant
 description: Learn how to build multi-tenant apps with the App Router.
 url: "https://nextjs.org/docs/app/guides/multi-tenant"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Multi-tenant
@@ -21977,7 +21993,7 @@ If you are looking to build a single Next.js application that serves multiple te
 title: Multi-zones
 description: Learn how to build micro-frontends using Next.js Multi-Zones to deploy multiple Next.js apps under a single domain.
 url: "https://nextjs.org/docs/app/guides/multi-zones"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Multi-zones
@@ -22112,7 +22128,7 @@ See [`serverActions.allowedOrigins`](/docs/app/api-reference/config/next-config-
 title: Offline support
 description: How a Next.js app can recover when the network drops mid-fetch or mid-Server Action, and how to communicate that state to the user.
 url: "https://nextjs.org/docs/app/guides/offline-support"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Offline support
@@ -22557,7 +22573,7 @@ The hook and config flag used in this guide.
 title: OpenTelemetry
 description: Learn how to instrument your Next.js app with OpenTelemetry.
 url: "https://nextjs.org/docs/app/guides/open-telemetry"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # OpenTelemetry
@@ -22936,7 +22952,7 @@ This zero-length span represents the time when the first byte has been sent in t
 title: Optimizing prefetching
 description: Resolve per-link URL data with the prefetch prop, or include session data in the App Shell.
 url: "https://nextjs.org/docs/app/guides/optimizing-prefetching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Optimizing prefetching
@@ -23166,7 +23182,7 @@ Validate your structure and review the caching primitives.
 title: Package Bundling
 description: "Learn how to analyze and optimize your application's server and client bundles with the Next.js Bundle Analyzer for Turbopack, and the `@next/bundle-analyzer` plugin for Webpack."
 url: "https://nextjs.org/docs/app/guides/package-bundling"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Package Bundling
@@ -23421,7 +23437,7 @@ Learn more about optimizing your application for production.
 title: PPR Platform Guide
 description: A guide for platform engineers on implementing PPR support, from basic origin rendering to optimized CDN integration.
 url: "https://nextjs.org/docs/app/guides/ppr-platform-guide"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # PPR Platform Guide
@@ -23545,7 +23561,7 @@ Related guides and references.
 title: Prefetching
 description: Learn how to configure prefetching in Next.js
 url: "https://nextjs.org/docs/app/guides/prefetching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Prefetching
@@ -23930,7 +23946,7 @@ export function HoverPrefetchLink({ href, children }) {
 title: Preserving UI state
 description: "Learn how React's Activity component preserves UI state across navigations in Next.js and how to control what resets."
 url: "https://nextjs.org/docs/app/guides/preserving-ui-state"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Preserving UI state
@@ -24488,7 +24504,7 @@ Learn more about Cache Components and preserving UI state.
 title: Preventing Flash
 description: Learn how to correct server-rendered content before the browser paints, avoiding visible flash when the page hydrates.
 url: "https://nextjs.org/docs/app/guides/preventing-flash-before-hydration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Preventing Flash
@@ -25027,7 +25043,7 @@ Reading `Accept-Language` with `await headers()` lets the server format per-requ
 title: Production
 description: Recommendations to ensure the best performance and user experience before taking your Next.js application to production.
 url: "https://nextjs.org/docs/app/guides/production-checklist"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Production
@@ -25126,7 +25142,7 @@ Additionally, the following tools can help you understand the impact of adding n
 title: PWAs
 description: Learn how to build a Progressive Web Application (PWA) with Next.js.
 url: "https://nextjs.org/docs/app/guides/progressive-web-apps"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # PWAs
@@ -25806,7 +25822,7 @@ Learn more about defining [Content Security Policies](/docs/app/guides/content-s
 title: Public pages
 description: "Learn how to build public, \"static\" pages that share data across users, such as landing pages, list pages (products, blogs, etc.), marketing and news sites."
 url: "https://nextjs.org/docs/app/guides/public-static-pages"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Public pages
@@ -26068,7 +26084,7 @@ In future guides, we'll learn how to:
 title: Redirecting
 description: Learn the different ways to handle redirects in Next.js.
 url: "https://nextjs.org/docs/app/guides/redirecting"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Redirecting
@@ -26596,7 +26612,7 @@ export function GET(request) {
 title: Rendering Philosophy
 description: Learn how Next.js treats static and dynamic rendering as a spectrum at the component level, and what this means for deployment.
 url: "https://nextjs.org/docs/app/guides/rendering-philosophy"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Rendering Philosophy
@@ -26681,7 +26697,7 @@ Learn more about the features discussed on this page.
 title: Sass
 description: Style your Next.js application using Sass.
 url: "https://nextjs.org/docs/app/guides/sass"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Sass
@@ -26800,7 +26816,7 @@ export default function Page() {
 title: Scripts
 description: Optimize 3rd party scripts with the built-in Script component.
 url: "https://nextjs.org/docs/app/guides/scripts"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Scripts
@@ -27076,7 +27092,7 @@ Learn more about the next/script API.
 title: Self-Hosting
 description: Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports).
 url: "https://nextjs.org/docs/app/guides/self-hosting"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Self-Hosting
@@ -27362,7 +27378,7 @@ When stopping the server, ensure a graceful shutdown by sending `SIGINT` or `SIG
 title: Server Actions
 description: How Server Actions work in Next.js, including the single-roundtrip response model, sequential dispatch, security, and caching integration.
 url: "https://nextjs.org/docs/app/guides/server-actions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Server Actions
@@ -27556,7 +27572,7 @@ Learn more about creating, securing, and configuring Server Actions.
 title: Server and Client Boundary
 description: Learn where Server and Client Components run in the App Router and how the boundary between them works.
 url: "https://nextjs.org/docs/app/guides/server-and-client-boundary"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Server and Client Boundary
@@ -27846,7 +27862,7 @@ Learn how to apply this model and where the boundary is defined.
 title: SPAs
 description: Next.js fully supports building Single-Page Applications (SPAs).
 url: "https://nextjs.org/docs/app/guides/single-page-applications"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # SPAs
@@ -28420,7 +28436,7 @@ Related guides and references.
 title: Static Exports
 description: Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
 url: "https://nextjs.org/docs/app/guides/static-exports"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Static Exports
@@ -28744,7 +28760,7 @@ To deploy to GitHub Pages, use our [template](https://github.com/nextjs/deploy-g
 title: Streaming
 description: Learn how streaming works in Next.js and how to use it to progressively render UI as data becomes available.
 url: "https://nextjs.org/docs/app/guides/streaming"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Streaming
@@ -29543,7 +29559,7 @@ Related API references and guides.
 title: Tailwind CSS v3
 description: Style your Next.js Application using Tailwind CSS v3 for broader browser support.
 url: "https://nextjs.org/docs/app/guides/tailwind-v3-css"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Tailwind CSS v3
@@ -29658,7 +29674,7 @@ As of Next.js 13.1, Tailwind CSS and PostCSS are supported with [Turbopack](http
 title: Testing
 description: Learn how to set up Next.js with four commonly used testing tools — Cypress, Playwright, Vitest, and Jest.
 url: "https://nextjs.org/docs/app/guides/testing"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Testing
@@ -29690,7 +29706,7 @@ See the guides below to learn how to set up Next.js with these commonly used tes
 title: Cypress
 description: Learn how to set up Cypress with Next.js for End-to-End (E2E) and Component Testing.
 url: "https://nextjs.org/docs/app/guides/testing/cypress"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Cypress
@@ -29950,7 +29966,7 @@ You can learn more about Cypress and Continuous Integration from these resources
 title: Jest
 description: Learn how to set up Jest with Next.js for Unit Testing and Snapshot Testing.
 url: "https://nextjs.org/docs/app/guides/testing/jest"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Jest
@@ -30225,7 +30241,7 @@ For further reading, you may find these resources helpful:
 title: Playwright
 description: Learn how to set up Playwright with Next.js for End-to-End (E2E) Testing.
 url: "https://nextjs.org/docs/app/guides/testing/playwright"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Playwright
@@ -30346,7 +30362,7 @@ You can learn more about Playwright and Continuous Integration from these resour
 title: Vitest
 description: Learn how to set up Vitest with Next.js for Unit Testing.
 url: "https://nextjs.org/docs/app/guides/testing/vitest"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Vitest
@@ -30538,7 +30554,7 @@ You may find these resources helpful:
 title: Third Party Libraries
 description: "Optimize the performance of third-party libraries in your application with the `@next/third-parties` package."
 url: "https://nextjs.org/docs/app/guides/third-party-libraries"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Third Party Libraries
@@ -30850,7 +30866,7 @@ export default function Page() {
 title: Upgrading
 description: Learn how to upgrade to the latest versions of Next.js.
 url: "https://nextjs.org/docs/app/guides/upgrading"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Upgrading
@@ -30866,7 +30882,7 @@ Learn how to upgrade to the latest versions of Next.js following the versions-sp
 title: Codemods
 description: Use codemods to upgrade your Next.js codebase when new features are released.
 url: "https://nextjs.org/docs/app/guides/upgrading/codemods"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Codemods
@@ -31632,7 +31648,7 @@ This is one case. All the cases that are transformed (and tested) can be found i
 title: Version 14
 description: Upgrade your Next.js Application from Version 13 to 14.
 url: "https://nextjs.org/docs/app/guides/upgrading/version-14"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Version 14
@@ -31672,7 +31688,7 @@ bun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14
 title: Version 15
 description: Upgrade your Next.js Application from Version 14 to 15.
 url: "https://nextjs.org/docs/app/guides/upgrading/version-15"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Version 15
@@ -32298,7 +32314,7 @@ export function middleware(request: NextRequest) {
 title: Version 16
 description: Upgrade your Next.js Application from Version 15 to 16.
 url: "https://nextjs.org/docs/app/guides/upgrading/version-16"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Version 16
@@ -33549,7 +33565,7 @@ The `unstable_rootParams` function has been removed. Use [`next/root-params`](/d
 title: Videos
 description: Recommendations and best practices for optimizing videos in your Next.js application.
 url: "https://nextjs.org/docs/app/guides/videos"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Videos
@@ -33824,7 +33840,7 @@ Explore these video streaming platforms for integrating video into your Next.js 
 title: View transitions
 description: Learn how to use view transitions to communicate meaning during navigation, loading, and content changes in a Next.js app.
 url: "https://nextjs.org/docs/app/guides/view-transitions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # View transitions
@@ -34273,7 +34289,7 @@ For API details and more patterns:
 title: API Reference
 description: Next.js API Reference for the App Router.
 url: "https://nextjs.org/docs/app/api-reference"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # API Reference
@@ -34294,7 +34310,7 @@ version: 16.3.3
 title: Directives
 description: Learn how React and Next.js directives define client entry points, Server Functions, and cached output.
 url: "https://nextjs.org/docs/app/api-reference/directives"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Directives
@@ -34387,7 +34403,7 @@ With [`'use cache: remote'`](/docs/app/api-reference/directives/use-cache-remote
 title: use cache
 description: "Learn how to use the \"use cache\" directive to cache data in your Next.js application."
 url: "https://nextjs.org/docs/app/api-reference/directives/use-cache"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # use cache
@@ -35181,7 +35197,7 @@ View related API references.
 title: "use cache: private"
 description: "Learn how to use the \"use cache: private\" directive to cache functions that access runtime request APIs."
 url: "https://nextjs.org/docs/app/api-reference/directives/use-cache-private"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # use cache: private
@@ -35362,7 +35378,7 @@ View related API references.
 title: "use cache: remote"
 description: "Learn how to use the \"use cache: remote\" directive for persistent, shared caching using remote cache handlers."
 url: "https://nextjs.org/docs/app/api-reference/directives/use-cache-remote"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # use cache: remote
@@ -35994,7 +36010,7 @@ View related API references.
 title: use client
 description: Learn how to use the use client directive to render a component on the client.
 url: "https://nextjs.org/docs/app/api-reference/directives/use-client"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # use client
@@ -36123,7 +36139,7 @@ See the [React documentation](https://react.dev/reference/rsc/use-client) for mo
 title: use server
 description: Learn how to use the use server directive to execute code on the server.
 url: "https://nextjs.org/docs/app/api-reference/directives/use-server"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # use server
@@ -36325,7 +36341,7 @@ See the [React documentation](https://react.dev/reference/rsc/use-server) for mo
 title: Components
 description: API Reference for Next.js built-in components.
 url: "https://nextjs.org/docs/app/api-reference/components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Components
@@ -36342,7 +36358,7 @@ version: 16.3.3
 title: Font
 description: "Optimizing loading web fonts with the built-in `next/font` loaders."
 url: "https://nextjs.org/docs/app/api-reference/components/font"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Font
@@ -37212,7 +37228,7 @@ When a font function is called on a page of your site, it is not globally availa
 title: Form Component
 description: "Learn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation."
 url: "https://nextjs.org/docs/app/api-reference/components/form"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Form Component
@@ -37546,7 +37562,7 @@ See [Mutating data](/docs/app/getting-started/mutating-data) for more examples.
 title: Image Component
 description: "Optimize Images in your Next.js Application using the built-in `next/image` Component."
 url: "https://nextjs.org/docs/app/api-reference/components/image"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Image Component
@@ -38863,7 +38879,7 @@ export default function Home() {
 title: Link Component
 description: "Enable fast client-side navigation with the built-in `next/link` component."
 url: "https://nextjs.org/docs/app/api-reference/components/link"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Link Component
@@ -39722,7 +39738,7 @@ When a user tries to navigate away using `CustomLink` while the form has unsaved
 title: Script Component
 description: "Optimize third-party scripts in your Next.js application using the built-in `next/script` Component."
 url: "https://nextjs.org/docs/app/api-reference/components/script"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Script Component
@@ -40099,7 +40115,7 @@ export default function Page() {
 title: File-system conventions
 description: API Reference for Next.js file-system conventions.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # File-system conventions
@@ -40133,7 +40149,7 @@ version: 16.3.3
 title: default.js
 description: API Reference for the default.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/default"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # default.js
@@ -40197,7 +40213,7 @@ export default async function Default({ params }) {
 title: Dynamic Segments
 description: Use Dynamic Segments to read URL path params and generate routes from dynamic data.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Dynamic Segments
@@ -40585,7 +40601,7 @@ For more information on what to do next, we recommend the following sections
 title: error.js
 description: API reference for the error.js special file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/error"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # error.js
@@ -40912,7 +40928,7 @@ export default GracefullyDegradingErrorBoundary
 title: forbidden.js
 description: API reference for the forbidden.js special file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/forbidden"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # forbidden.js
@@ -40968,7 +40984,7 @@ export default function Forbidden() {
 title: instrumentation.js
 description: API reference for the instrumentation.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # instrumentation.js
@@ -41125,7 +41141,7 @@ export function onRequestError() {
 title: instrumentation-client.js
 description: "Learn how to add client-side instrumentation to track and monitor your Next.js application's frontend performance."
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # instrumentation-client.js
@@ -41405,7 +41421,7 @@ Next.js already injects a baseline of [widely used polyfills](/docs/architecture
 title: Intercepting Routes
 description: Use intercepting routes to load a new route within the current layout while masking the browser URL, useful for advanced routing patterns such as modals.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Intercepting Routes
@@ -41471,7 +41487,7 @@ Learn how to create modals with Intercepted and Parallel Routes.
 title: layout.js
 description: API reference for the layout.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/layout"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # layout.js
@@ -42208,7 +42224,7 @@ export default function Page({ params }) {
 title: loading.js
 description: API reference for the loading.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/loading"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # loading.js
@@ -42390,7 +42406,7 @@ For more Suspense examples and use cases, please see the [React Documentation](h
 title: mdx-components.js
 description: API reference for the mdx-components.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # mdx-components.js
@@ -42454,7 +42470,7 @@ export function useMDXComponents() {
 title: not-found.js
 description: API reference for the not-found.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/not-found"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # not-found.js
@@ -42697,7 +42713,7 @@ export default function GlobalNotFound() {
 title: page.js
 description: API reference for the page.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/page"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # page.js
@@ -42944,7 +42960,7 @@ export default function Page({ params, searchParams }) {
 title: Parallel Routes
 description: Simultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Parallel Routes
@@ -43403,7 +43419,7 @@ See the [Loading UI](/docs/app/api-reference/file-conventions/loading) and [Erro
 title: proxy.js
 description: API reference for the proxy.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/proxy"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # proxy.js
@@ -44204,7 +44220,7 @@ The codemod will rename the file and the function name from `middleware` to `pro
 title: public
 description: Next.js allows you to serve static files, like images, in the public directory. You can learn how it works here.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/public-folder"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # public
@@ -44242,7 +44258,7 @@ For static metadata files, such as `robots.txt`, `favicon.ico`, etc, you should 
 title: route.js
 description: API reference for the route.js special file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # route.js
@@ -44918,7 +44934,7 @@ See the [API reference](/docs/app/api-reference/file-conventions/route-segment-c
 title: dynamicParams
 description: API reference for the dynamicParams route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/dynamicParams"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # dynamicParams
@@ -44946,7 +44962,7 @@ export const dynamicParams = true // true | false
 title: instant
 description: API reference for the instant route segment config.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/instant"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # instant
@@ -45126,7 +45142,7 @@ Learn how to use instant navigations in practice.
 title: maxDuration
 description: API reference for the maxDuration route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/maxDuration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # maxDuration
@@ -45156,7 +45172,7 @@ If using [Server Actions](/docs/app/getting-started/mutating-data), set the `max
 title: preferredRegion (deprecated)
 description: API reference for the preferredRegion route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/preferredRegion"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # preferredRegion (deprecated)
@@ -45197,7 +45213,7 @@ If an unsupported value is passed, an error will be thrown.
 title: prefetch
 description: API reference for the prefetch route segment config.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/prefetch"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # prefetch
@@ -45288,7 +45304,7 @@ Learn how to use instant navigations in practice.
 title: runtime
 description: API reference for the runtime route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/runtime"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # runtime
@@ -45318,7 +45334,7 @@ export const runtime = 'nodejs'
 title: Route Groups
 description: Route Groups can be used to partition your Next.js application into different sections.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-groups"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Route Groups
@@ -45350,7 +45366,7 @@ This convention indicates the folder is for organizational purposes and should *
 title: src
 description: "Save pages under the `src` folder as an alternative to the root `pages` directory."
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/src-folder"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # src
@@ -45381,7 +45397,7 @@ To use the `src` folder, move the `app` Router folder or `pages` Router folder t
 title: template.js
 description: API Reference for the template.js file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/template"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # template.js
@@ -45543,7 +45559,7 @@ Navigating to `/blog/second-post` (same first segment, different child segment),
 title: unauthorized.js
 description: API reference for the unauthorized.js special file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # unauthorized.js
@@ -45663,7 +45679,7 @@ export default function UnauthorizedPage() {
 title: Metadata Files
 description: API documentation for the metadata file conventions.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Metadata Files
@@ -45689,7 +45705,7 @@ Once a file is defined, Next.js will automatically serve the file (with hashes i
 title: favicon, icon, and apple-icon
 description: API Reference for the Favicon, Icon and Apple Icon file conventions.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # favicon, icon, and apple-icon
@@ -45963,7 +45979,7 @@ export default function Icon() {}
 title: manifest.json
 description: API Reference for manifest.json file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # manifest.json
@@ -46041,7 +46057,7 @@ The manifest object contains an extensive list of options that may be updated du
 title: opengraph-image and twitter-image
 description: API Reference for the Open Graph Image and Twitter Image file conventions.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # opengraph-image and twitter-image
@@ -46576,7 +46592,7 @@ export default async function Image() {
 title: robots.txt
 description: API Reference for robots.txt file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # robots.txt
@@ -46786,7 +46802,7 @@ type Robots = {
 title: sitemap.xml
 description: API Reference for the sitemap.xml file.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # sitemap.xml
@@ -47221,7 +47237,7 @@ Learn how to use the generateSitemaps function.
 title: Route Segment Config
 description: Learn about how to configure options for Next.js route segments.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Route Segment Config
@@ -47254,7 +47270,7 @@ The Route Segment Config options allow you to configure the behavior of a [Page]
 title: dynamicParams
 description: API reference for the dynamicParams route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/dynamicParams"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # dynamicParams
@@ -47282,7 +47298,7 @@ export const dynamicParams = true // true | false
 title: instant
 description: API reference for the instant route segment config.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/instant"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # instant
@@ -47462,7 +47478,7 @@ Learn how to use instant navigations in practice.
 title: maxDuration
 description: API reference for the maxDuration route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/maxDuration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # maxDuration
@@ -47492,7 +47508,7 @@ If using [Server Actions](/docs/app/getting-started/mutating-data), set the `max
 title: preferredRegion (deprecated)
 description: API reference for the preferredRegion route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/preferredRegion"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # preferredRegion (deprecated)
@@ -47533,7 +47549,7 @@ If an unsupported value is passed, an error will be thrown.
 title: prefetch
 description: API reference for the prefetch route segment config.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/prefetch"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # prefetch
@@ -47624,7 +47640,7 @@ Learn how to use instant navigations in practice.
 title: runtime
 description: API reference for the runtime route segment config option.
 url: "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/runtime"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # runtime
@@ -47654,7 +47670,7 @@ export const runtime = 'nodejs'
 title: Functions
 description: API Reference for Next.js Functions and Hooks.
 url: "https://nextjs.org/docs/app/api-reference/functions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Functions
@@ -47707,7 +47723,7 @@ version: 16.3.3
 title: after
 description: API Reference for the after function.
 url: "https://nextjs.org/docs/app/api-reference/functions/after"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # after
@@ -48016,7 +48032,7 @@ const handler = (req, res) => {
 title: cacheLife
 description: Learn how to use the cacheLife function to set the cache expiration time for a cached function or component.
 url: "https://nextjs.org/docs/app/api-reference/functions/cacheLife"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheLife
@@ -48624,7 +48640,7 @@ View related API references.
 title: cacheTag
 description: Learn how to use the cacheTag function to manage cache invalidation in your Next.js application.
 url: "https://nextjs.org/docs/app/api-reference/functions/cacheTag"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheTag
@@ -48854,7 +48870,7 @@ View related API references.
 title: catchError
 description: API Reference for the catchError function.
 url: "https://nextjs.org/docs/app/api-reference/functions/catchError"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # catchError
@@ -49083,7 +49099,7 @@ export default function Component({ children }) {
 title: connection
 description: API Reference for the connection function.
 url: "https://nextjs.org/docs/app/api-reference/functions/connection"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # connection
@@ -49180,7 +49196,7 @@ function connection(): Promise<void>
 title: cookies
 description: API Reference for the cookies function.
 url: "https://nextjs.org/docs/app/api-reference/functions/cookies"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cookies
@@ -49488,7 +49504,7 @@ export async function deleteCookie(data) {
 title: draftMode
 description: API Reference for the draftMode function.
 url: "https://nextjs.org/docs/app/api-reference/functions/draft-mode"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # draftMode
@@ -49635,7 +49651,7 @@ Learn how to use Draft Mode with this step-by-step guide.
 title: fetch
 description: API reference for the extended fetch function.
 url: "https://nextjs.org/docs/app/api-reference/functions/fetch"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # fetch
@@ -49760,7 +49776,7 @@ Browsers typically include `cache-control: no-cache` when the cache is disabled 
 title: forbidden
 description: API Reference for the forbidden function.
 url: "https://nextjs.org/docs/app/api-reference/functions/forbidden"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # forbidden
@@ -50052,7 +50068,7 @@ export async function updateRole(formData) {
 title: generateImageMetadata
 description: Learn how to generate multiple images in a single Metadata API special file.
 url: "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateImageMetadata
@@ -50333,7 +50349,7 @@ View all the Metadata API options.
 title: generateMetadata
 description: Learn how to add Metadata to your Next.js application for improved search engine optimization (SEO) and web shareability.
 url: "https://nextjs.org/docs/app/api-reference/functions/generate-metadata"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateMetadata
@@ -51787,7 +51803,7 @@ View all the Metadata API options.
 title: generateSitemaps
 description: Learn how to use the generateSiteMaps function to create multiple sitemaps for your application.
 url: "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateSitemaps
@@ -51874,7 +51890,7 @@ Learn how to create sitemaps for your Next.js application.
 title: generateStaticParams
 description: API reference for the generateStaticParams function.
 url: "https://nextjs.org/docs/app/api-reference/functions/generate-static-params"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateStaticParams
@@ -52421,7 +52437,7 @@ export async function generateStaticParams({
 title: generateViewport
 description: API Reference for the generateViewport function.
 url: "https://nextjs.org/docs/app/api-reference/functions/generate-viewport"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateViewport
@@ -52734,7 +52750,7 @@ View all the Metadata API options.
 title: headers
 description: API reference for the headers function.
 url: "https://nextjs.org/docs/app/api-reference/functions/headers"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # headers
@@ -52814,7 +52830,7 @@ export default async function Page() {
 title: ImageResponse
 description: API Reference for the ImageResponse constructor.
 url: "https://nextjs.org/docs/app/api-reference/functions/image-response"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # ImageResponse
@@ -53031,7 +53047,7 @@ export default async function Image() {
 title: io
 description: API Reference for the io function.
 url: "https://nextjs.org/docs/app/api-reference/functions/io"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # io
@@ -53146,7 +53162,7 @@ A `Promise<void>`. With Cache Components enabled, awaiting this promise stops pr
 title: NextRequest
 description: API Reference for NextRequest.
 url: "https://nextjs.org/docs/app/api-reference/functions/next-request"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # NextRequest
@@ -53252,7 +53268,7 @@ The following options are available:
 title: NextResponse
 description: API Reference for NextResponse.
 url: "https://nextjs.org/docs/app/api-reference/functions/next-response"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # NextResponse
@@ -53459,7 +53475,7 @@ function proxy(request: NextRequest) {
 title: root-params
 description: API Reference for the next/root-params module that provides access to root-level route parameters.
 url: "https://nextjs.org/docs/app/api-reference/functions/next-root-params"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # root-params
@@ -53895,7 +53911,7 @@ Related API references and conventions.
 title: notFound
 description: API Reference for the notFound function.
 url: "https://nextjs.org/docs/app/api-reference/functions/not-found"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # notFound
@@ -54136,7 +54152,7 @@ export async function GET(request, { params }) {
 title: permanentRedirect
 description: API Reference for the permanentRedirect function.
 url: "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # permanentRedirect
@@ -54216,7 +54232,7 @@ export default async function Profile({ params }) {
 title: redirect
 description: API Reference for the redirect function.
 url: "https://nextjs.org/docs/app/api-reference/functions/redirect"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # redirect
@@ -54445,7 +54461,7 @@ The `redirect()` method uses a `307` by default, instead of a `302` temporary re
 title: refresh
 description: API Reference for the refresh function.
 url: "https://nextjs.org/docs/app/api-reference/functions/refresh"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # refresh
@@ -54522,7 +54538,7 @@ export async function POST() {
 title: revalidatePath
 description: API Reference for the revalidatePath function.
 url: "https://nextjs.org/docs/app/api-reference/functions/revalidatePath"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # revalidatePath
@@ -54756,7 +54772,7 @@ export async function GET(request) {
 title: revalidateTag
 description: API Reference for the revalidateTag function.
 url: "https://nextjs.org/docs/app/api-reference/functions/revalidateTag"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # revalidateTag
@@ -54907,7 +54923,7 @@ revalidateTag(tag, { expire: 0 })
 title: unauthorized
 description: API Reference for the unauthorized function.
 url: "https://nextjs.org/docs/app/api-reference/functions/unauthorized"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # unauthorized
@@ -55257,7 +55273,7 @@ export async function GET() {
 title: unstable_cache
 description: API Reference for the unstable_cache function.
 url: "https://nextjs.org/docs/app/api-reference/functions/unstable_cache"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # unstable_cache
@@ -55361,7 +55377,7 @@ export default async function Page({ params }) {
 title: unstable_noStore
 description: API Reference for the unstable_noStore function.
 url: "https://nextjs.org/docs/app/api-reference/functions/unstable_noStore"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # unstable_noStore
@@ -55415,7 +55431,7 @@ export default async function ServerComponent() {
 title: unstable_rethrow
 description: API Reference for the unstable_rethrow function.
 url: "https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # unstable_rethrow
@@ -55487,7 +55503,7 @@ If a route segment is marked to throw an error unless it's static, a Request-tim
 title: updateTag
 description: API Reference for the updateTag function.
 url: "https://nextjs.org/docs/app/api-reference/functions/updateTag"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # updateTag
@@ -55646,7 +55662,7 @@ Use `revalidateTag` instead when:
 title: useLinkStatus
 description: API Reference for the useLinkStatus hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-link-status"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useLinkStatus
@@ -55896,7 +55912,7 @@ Learn more about the features mentioned in this page by reading the API Referenc
 title: useOffline
 description: API Reference for the useOffline hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-offline"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useOffline
@@ -56093,7 +56109,7 @@ When connectivity is restored, Next.js retries the blocked request and the dynam
 title: useParams
 description: API Reference for the useParams hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-params"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useParams
@@ -56183,7 +56199,7 @@ See [Next.js encountered URL data in a Client Component outside of Suspense](/do
 title: usePathname
 description: API Reference for the usePathname hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-pathname"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # usePathname
@@ -56355,7 +56371,7 @@ export default function PathnameBadge() {
 title: useReportWebVitals
 description: API Reference for the useReportWebVitals function.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useReportWebVitals
@@ -56513,7 +56529,7 @@ useReportWebVitals(postWebVitals)
 title: useRouter
 description: API reference for the useRouter hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-router"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useRouter
@@ -56706,7 +56722,7 @@ When `cacheComponents` is enabled, the App Router preserves Client Component sta
 title: useSearchParams
 description: API Reference for the useSearchParams hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-search-params"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useSearchParams
@@ -57096,7 +57112,7 @@ export default function ExampleClientComponent() {
 title: useSelectedLayoutSegment
 description: API Reference for the useSelectedLayoutSegment hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useSelectedLayoutSegment
@@ -57294,7 +57310,7 @@ export default async function Layout({ children }) {
 title: useSelectedLayoutSegments
 description: API Reference for the useSelectedLayoutSegments hook.
 url: "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useSelectedLayoutSegments
@@ -57398,7 +57414,7 @@ See [Next.js encountered URL data in a Client Component outside of Suspense](/do
 title: userAgent
 description: The userAgent helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request.
 url: "https://nextjs.org/docs/app/api-reference/functions/userAgent"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # userAgent
@@ -57481,7 +57497,7 @@ An object containing information about the CPU architecture.
 title: Configuration
 description: Learn how to configure Next.js applications.
 url: "https://nextjs.org/docs/app/api-reference/config"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Configuration
@@ -57496,7 +57512,7 @@ version: 16.3.3
 title: next.config.js
 description: Learn how to configure your application with next.config.js.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # next.config.js
@@ -57716,7 +57732,7 @@ expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
 title: adapterPath
 description: Configure a custom adapter for Next.js to hook into the build process.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # adapterPath
@@ -57801,7 +57817,7 @@ See [Use Cases](/docs/app/api-reference/adapters/use-cases).
 title: allowedDevOrigins
 description: "Use `allowedDevOrigins` to configure additional origins that can request the dev server."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # allowedDevOrigins
@@ -57823,7 +57839,7 @@ module.exports = {
 title: appDir
 description: Enable the App Router to use layouts, streaming, and more.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/appDir"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # appDir
@@ -57841,7 +57857,7 @@ Using the `app` directory will automatically enable [React Strict Mode](https://
 title: assetPrefix
 description: Learn how to use the assetPrefix config option to configure your CDN.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # assetPrefix
@@ -57898,7 +57914,7 @@ While `assetPrefix` covers requests to `_next/static`, it does not influence the
 title: authInterrupts
 description: "Learn how to enable the experimental `authInterrupts` configuration option to use `forbidden` and `unauthorized`."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # authInterrupts
@@ -57940,7 +57956,7 @@ module.exports = {
 title: basePath
 description: "Use `basePath` to deploy a Next.js application under a sub-path of a domain."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # basePath
@@ -58013,7 +58029,7 @@ export default Home
 title: cacheComponents
 description: Learn how to enable the cacheComponents flag in Next.js.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheComponents
@@ -58085,7 +58101,7 @@ Some UI patterns behave differently when components stay mounted instead of unmo
 title: cacheHandlers
 description: Configure custom cache handlers for use cache directives in Next.js.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheHandlers"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheHandlers
@@ -58604,7 +58620,7 @@ View related API references.
 title: cacheLife
 description: Learn how to set up cacheLife configurations in Next.js.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheLife
@@ -58698,7 +58714,7 @@ View related API references.
 title: cacheMaxMemorySize
 description: Configure the size of the in-memory cache that Next.js keeps in each server instance.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheMaxMemorySize"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheMaxMemorySize
@@ -58738,7 +58754,7 @@ Setting `cacheMaxMemorySize: 0` disables both in-memory caches. It is also a way
 title: compress
 description: Next.js provides gzip compression to compress rendered content and static files, it only works with the server target. Learn more about it here.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/compress"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # compress
@@ -58764,7 +58780,7 @@ We **do not recommend disabling compression** unless you have compression config
 title: crossOrigin
 description: "Use the `crossOrigin` option to add a crossOrigin tag on the `script` tags generated by `next/script`."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/crossOrigin"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # crossOrigin
@@ -58787,7 +58803,7 @@ module.exports = {
 title: cssChunking
 description: "Use the `cssChunking` option to control how CSS files are chunked in your Next.js application."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/cssChunking"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cssChunking
@@ -58962,7 +58978,7 @@ The algorithm chooses where to split chunks to minimize the total download cost 
 title: deploymentId
 description: Configure a deployment identifier used for version skew protection and cache busting.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/deploymentId"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # deploymentId
@@ -59039,7 +59055,7 @@ A per-deployment value only avoids skew if requests are also routed by deploymen
 title: devIndicators
 description: "Configuration options for the on-screen indicator that gives context about the current route you're viewing during development."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # devIndicators
@@ -59107,7 +59123,7 @@ Check your route for any of these conditions, and if you are not able to statica
 title: distDir
 description: Set a custom build directory to use instead of the default .next directory.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/distDir"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # distDir
@@ -59131,7 +59147,7 @@ Now if you run `next build` Next.js will use `build` instead of the default `.ne
 title: env
 description: Learn to add and access environment variables in your Next.js application at build time.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/env"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # env
@@ -59181,7 +59197,7 @@ return <h1>The value of customKey is: {'my-value'}</h1>
 title: expireTime
 description: Customize stale-while-revalidate expire time for ISR enabled pages.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/expireTime"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # expireTime
@@ -59206,7 +59222,7 @@ For example, if you have a revalidate of 15 minutes on a path and the expire tim
 title: exportPathMap
 description: "Customize the pages that will be exported as HTML files when using `next export`."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # exportPathMap
@@ -59288,7 +59304,7 @@ next export -o outdir
 title: generateBuildId
 description: Configure the build id, which is used to identify the current build in which your application is being served.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/generateBuildId"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateBuildId
@@ -59313,7 +59329,7 @@ module.exports = {
 title: generateEtags
 description: Next.js will generate etags for every page by default. Learn more about how to disable etag generation here.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/generateEtags"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # generateEtags
@@ -59333,7 +59349,7 @@ module.exports = {
 title: headers
 description: Add custom HTTP headers to your Next.js app.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # headers
@@ -59840,7 +59856,7 @@ Learn more about adding a [Content Security Policy](/docs/app/guides/content-sec
 title: htmlLimitedBots
 description: Specify a list of user agents that should receive blocking metadata.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # htmlLimitedBots
@@ -59921,7 +59937,7 @@ module.exports = {
 title: httpAgentOptions
 description: Next.js will automatically use HTTP Keep-Alive by default. Learn more about how to disable HTTP Keep-Alive here.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/httpAgentOptions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # httpAgentOptions
@@ -59943,7 +59959,7 @@ module.exports = {
 title: images
 description: Custom configuration for the next/image loader
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/images"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # images
@@ -60200,7 +60216,7 @@ export default function aioLoader({ src, width, quality }) {
 title: cacheHandler
 description: Configure the Next.js cache used for storing and revalidating data to use any external service like Redis, Memcached, or others.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # cacheHandler
@@ -60308,7 +60324,7 @@ Learn how to [configure ISR](/docs/app/guides/self-hosting#caching-and-isr) when
 title: inlineCss
 description: Enable inline CSS support.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # inlineCss
@@ -60387,7 +60403,7 @@ This trade-off matters most with:
 title: instrumentationClientInject
 description: "Inject additional client-side instrumentation modules before the user's `instrumentation-client.{js,ts}` file."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/instrumentationClientInject"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # instrumentationClientInject
@@ -60461,7 +60477,7 @@ Modules that do not export `onRouterTransitionStart` are skipped during navigati
 title: logging
 description: Configure logging behavior in the terminal when running Next.js in development mode, including fetch logging, incoming requests, and forwarding browser console logs to the terminal.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # logging
@@ -60621,7 +60637,7 @@ module.exports = {
 title: mdxRs
 description: Use the new Rust compiler to compile MDX files in the App Router.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/mdxRs"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # mdxRs
@@ -60649,7 +60665,7 @@ module.exports = withMDX(nextConfig)
 title: onDemandEntries
 description: Configure how Next.js will dispose and keep in memory pages created in development.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/onDemandEntries"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # onDemandEntries
@@ -60674,7 +60690,7 @@ module.exports = {
 title: optimizePackageImports
 description: API Reference for optimizePackageImports Next.js Config Option
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # optimizePackageImports
@@ -60728,7 +60744,7 @@ The following libraries are optimized by default:
 title: output
 description: Next.js automatically traces which files are needed by each page to allow for easy deployment of your application. Learn how it works here.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/output"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # output
@@ -60877,7 +60893,7 @@ module.exports = {
 title: outputHashSalt
 description: Learn how to incorporate a custom salt string into content-addressed output filenames.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/outputHashSalt"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # outputHashSalt
@@ -60914,7 +60930,7 @@ NEXT_HASH_SALT=my-deployment-salt next build
 title: pageExtensions
 description: Extend the default page extensions used by Next.js when resolving pages in the Pages Router.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # pageExtensions
@@ -60937,7 +60953,7 @@ module.exports = withMDX(nextConfig)
 title: partialPrefetching
 description: Configure the default link prefetch behavior to fetch only the static parts of each route.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/partialPrefetching"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # partialPrefetching
@@ -61014,7 +61030,7 @@ View related API references and guides.
 title: poweredByHeader
 description: "Next.js will add the `x-powered-by` header by default. Learn to opt-out of it here."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/poweredByHeader"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # poweredByHeader
@@ -61032,7 +61048,7 @@ module.exports = {
 title: prefetchInlining
 description: Override how the App Router bundles small prefetch responses together.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/prefetchInlining"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # prefetchInlining
@@ -61140,7 +61156,7 @@ View related API references and guides.
 title: productionBrowserSourceMaps
 description: Enables browser source map generation during the production build.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # productionBrowserSourceMaps
@@ -61165,7 +61181,7 @@ When the `productionBrowserSourceMaps` option is enabled, the source maps will b
 title: proxyClientMaxBodySize
 description: Configure the maximum request body size when using proxy.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/proxyClientMaxBodySize"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # proxyClientMaxBodySize
@@ -61290,7 +61306,7 @@ export async function POST(request: NextRequest) {
 title: reactCompiler
 description: Enable the React Compiler to automatically optimize component rendering.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # reactCompiler
@@ -61394,7 +61410,7 @@ export default function Page() {
 title: reactMaxHeadersLength
 description: The maximum length of the headers that are emitted by React and added to the response.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactMaxHeadersLength"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # reactMaxHeadersLength
@@ -61416,7 +61432,7 @@ Depending on the type of proxy between the browser and the server, the headers c
 title: reactStrictMode
 description: The complete Next.js runtime is now Strict Mode-compliant, learn how to opt-in
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactStrictMode"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # reactStrictMode
@@ -61442,7 +61458,7 @@ If you or your team are not ready to use Strict Mode in your entire application,
 title: redirects
 description: Add redirects to your Next.js app.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # redirects
@@ -61753,7 +61769,7 @@ In some rare cases, you might need to assign a custom status code for older HTTP
 title: rewrites
 description: Add rewrites to your Next.js app.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/rewrites"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # rewrites
@@ -62160,7 +62176,7 @@ module.exports = {
 title: sassOptions
 description: Configure Sass options.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/sassOptions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # sassOptions
@@ -62215,7 +62231,7 @@ module.exports = nextConfig
 title: serverActions
 description: Configure Server Actions behavior in your Next.js application.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # serverActions
@@ -62280,7 +62296,7 @@ module.exports = config
 title: serverComponentsHmrCache
 description: Configure whether fetch responses in Server Components are cached across HMR refresh requests.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # serverComponentsHmrCache
@@ -62323,7 +62339,7 @@ module.exports = nextConfig
 title: serverExternalPackages
 description: "Opt-out specific dependencies from the Server Components bundling and use native Node.js `require`."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # serverExternalPackages
@@ -62432,7 +62448,7 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 title: staleTimes
 description: Learn how to override the invalidation time of the client cache.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # staleTimes
@@ -62482,7 +62498,7 @@ The `static` and `dynamic` properties correspond with the time period (in second
 title: "staticGeneration*"
 description: Learn how to configure static generation in your Next.js application.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/staticGeneration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # staticGeneration*
@@ -62530,7 +62546,7 @@ The following options are available:
 title: supportsImmutableAssets
 description: Configure support for immutable static assets
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/supportsImmutableAssets"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # supportsImmutableAssets
@@ -62578,7 +62594,7 @@ See [Supporting immutable static assets](/docs/app/api-reference/adapters/immuta
 title: taint
 description: Enable tainting Objects and Values.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/taint"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # taint
@@ -62811,7 +62827,7 @@ A better approach is to remove `SERVICE_API_KEY` from the data returned by `getS
 title: trailingSlash
 description: Configure Next.js pages to resolve with or without a trailing slash.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/trailingSlash"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # trailingSlash
@@ -62848,7 +62864,7 @@ When used with [`output: "export"`](/docs/app/guides/static-exports) configurati
 title: transpilePackages
 description: "Transpile and bundle dependencies from monorepo workspace packages or `node_modules` libraries that ship TypeScript, JSX, or modern syntax."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/transpilePackages"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # transpilePackages
@@ -62887,7 +62903,7 @@ Turbopack transpiles workspace packages (npm, pnpm, or Yarn workspaces) in your 
 title: turbopack
 description: Configure Next.js with Turbopack-specific options
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopack
@@ -63289,7 +63305,7 @@ The option automatically adds a polyfill for debug IDs to the JavaScript bundle 
 title: turbopackChunking
 description: Configure how Turbopack splits your client-side JavaScript into chunks in production.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackChunking"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopackChunking
@@ -63403,7 +63419,7 @@ chunks is worth it.
 title: turbopackFileSystemCache
 description: Learn how to enable and configure FileSystem Caching for Turbopack builds
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopackFileSystemCache
@@ -63469,7 +63485,7 @@ If your build environment never preserves `.next/cache`, set `turbopackFileSyste
 title: turbopack.ignoreIssue
 description: Suppress specific Turbopack errors and warnings from the CLI output and error overlay.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackIgnoreIssue"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopack.ignoreIssue
@@ -63650,7 +63666,7 @@ Learn more about Turbopack configuration.
 title: turbopackLocalPostcssConfig
 description: Enable per-directory PostCSS config resolution in Turbopack so that the config closest to each CSS file takes precedence over the project root config.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackLocalPostcssConfig"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopackLocalPostcssConfig
@@ -63719,7 +63735,7 @@ my-app/
 title: turbopackMemoryEviction
 description: "Learn how to control Turbopack's memory eviction strategy for the persistent cache."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackMemoryEviction"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopackMemoryEviction
@@ -63770,7 +63786,7 @@ module.exports = nextConfig
 title: turbopackRustReactCompiler
 description: Use the native Rust port of the React Compiler with Turbopack instead of the Babel transform.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackRustReactCompiler"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # turbopackRustReactCompiler
@@ -63829,7 +63845,7 @@ See the [`reactCompiler` option documentation](/docs/app/api-reference/config/ne
 title: typedRoutes
 description: Enable support for statically typed links.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/typedRoutes"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # typedRoutes
@@ -63852,7 +63868,7 @@ module.exports = nextConfig
 title: typescript
 description: Configure how Next.js handles TypeScript errors during production builds and specify a custom tsconfig file.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/typescript"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # typescript
@@ -63916,7 +63932,7 @@ See the [TypeScript configuration](/docs/app/api-reference/config/typescript#cus
 title: urlImports
 description: Configure Next.js to allow importing modules from external URLs.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # urlImports
@@ -64013,7 +64029,7 @@ console.log(logo.pathname)
 title: useLightningcss
 description: Enable experimental support for Lightning CSS.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/useLightningcss"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useLightningcss
@@ -64146,7 +64162,7 @@ Composite groups (shorthand for enabling multiple features at once):
 title: useOffline
 description: "Learn how to enable the experimental `useOffline` configuration option to detect connectivity and retry failed requests automatically."
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/useOffline"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useOffline
@@ -64252,7 +64268,7 @@ In practice, this feature is unlikely to flood your server. The only extra traff
 title: useTypeScriptCli
 description: Run the project-local TypeScript CLI for type checking during production builds.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/useTypeScriptCli"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # useTypeScriptCli
@@ -64321,7 +64337,7 @@ Learn more about [using TypeScript 7 with Next.js](/docs/app/api-reference/confi
 title: webpack
 description: Learn how to customize the webpack config used by Next.js
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # webpack
@@ -64398,7 +64414,7 @@ Notice that `isServer` is `true` when `nextRuntime` is `"edge"` or `"nodejs"`, `
 title: webVitalsAttribution
 description: Learn how to use the webVitalsAttribution option to pinpoint the source of Web Vitals issues.
 url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/webVitalsAttribution"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # webVitalsAttribution
@@ -64430,7 +64446,7 @@ Valid attribution values are all `web-vitals` metrics specified in the [`NextWeb
 title: TypeScript
 description: Next.js provides a TypeScript-first development experience for building your React application.
 url: "https://nextjs.org/docs/app/api-reference/config/typescript"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # TypeScript
@@ -64912,7 +64928,7 @@ When you need to declare custom types, you might be tempted to modify `next-env.
 title: ESLint
 description: Learn how to use and configure the ESLint plugin to catch common issues and problems in a Next.js application.
 url: "https://nextjs.org/docs/app/api-reference/config/eslint"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # ESLint
@@ -65300,7 +65316,7 @@ When you spread `...nextConfig`, you're adding multiple config objects that incl
 title: CLI
 description: API Reference for the Next.js Command Line Interface (CLI) tools.
 url: "https://nextjs.org/docs/app/api-reference/cli"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # CLI
@@ -65317,7 +65333,7 @@ Next.js comes with **two** Command Line Interface (CLI) tools:
 title: create-next-app
 description: Create Next.js apps using one command with the create-next-app CLI.
 url: "https://nextjs.org/docs/app/api-reference/cli/create-next-app"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # create-next-app
@@ -65482,7 +65498,7 @@ bun create next-app --example "https://github.com/.../" [your-project-name]
 title: next CLI
 description: Learn how to run and build your application with the Next.js CLI.
 url: "https://nextjs.org/docs/app/api-reference/cli/next"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # next CLI
@@ -65908,7 +65924,7 @@ The generated `.cpuprofile` files can be opened in Chrome DevTools (Performance 
 title: Adapters
 description: Build deployment adapters for Next.js platforms and infrastructure.
 url: "https://nextjs.org/docs/app/api-reference/adapters"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Adapters
@@ -65932,7 +65948,7 @@ Use this section to build and validate deployment adapters that integrate with t
 title: Configuration
 description: "Configure `adapterPath` or `NEXT_ADAPTER_PATH` to use a custom deployment adapter."
 url: "https://nextjs.org/docs/app/api-reference/adapters/configuration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Configuration
@@ -65955,7 +65971,7 @@ Alternatively `NEXT_ADAPTER_PATH` can be set to enable zero-config usage in depl
 title: Creating an Adapter
 description: "Create an adapter module that implements the `NextAdapter` interface."
 url: "https://nextjs.org/docs/app/api-reference/adapters/creating-an-adapter"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Creating an Adapter
@@ -66087,7 +66103,7 @@ module.exports = adapter
 title: API Reference
 description: "Reference for `modifyConfig` and `onBuildComplete` in the `NextAdapter` interface."
 url: "https://nextjs.org/docs/app/api-reference/adapters/api-reference"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # API Reference
@@ -66134,7 +66150,7 @@ Called after the build process completes with detailed information about routes 
 title: Testing Adapters
 description: Validate adapters with the Next.js compatibility test harness and custom lifecycle scripts.
 url: "https://nextjs.org/docs/app/api-reference/adapters/testing-adapters"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Testing Adapters
@@ -66369,7 +66385,7 @@ The cleanup script can be used to clean up any resources created by the deploy s
 title: "Routing with @next/routing"
 description: "Use `@next/routing` to apply Next.js route matching behavior in adapters."
 url: "https://nextjs.org/docs/app/api-reference/adapters/routing-with-next-routing"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Routing with @next/routing
@@ -66428,7 +66444,7 @@ For example, if `/blog/post-1?draft=1` matches `/blog/[slug]?slug=post-1`, `reso
 title: Implementing PPR in an Adapter
 description: Implement Partial Prerendering support in an adapter using fallback output and cache hooks.
 url: "https://nextjs.org/docs/app/api-reference/adapters/implementing-ppr-in-an-adapter"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Implementing PPR in an Adapter
@@ -66547,7 +66563,7 @@ requestMeta.onCacheEntryV2 callback
 title: Runtime Integration
 description: Understand how build-time adapters and runtime cache interfaces work together.
 url: "https://nextjs.org/docs/app/api-reference/adapters/runtime-integration"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Runtime Integration
@@ -66583,7 +66599,7 @@ When your adapter detects a PPR-enabled route with a cached static shell:
 title: Invoking Entrypoints
 description: Invoke Node.js and Edge build entrypoints with adapter runtime context.
 url: "https://nextjs.org/docs/app/api-reference/adapters/invoking-entrypoints"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Invoking Entrypoints
@@ -66684,7 +66700,7 @@ Relevant files in the Next.js core:
 title: Output Types
 description: Reference for all build output types exposed to adapters.
 url: "https://nextjs.org/docs/app/api-reference/adapters/output-types"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Output Types
@@ -66934,7 +66950,7 @@ See [Supporting immutable static assets](/docs/app/api-reference/adapters/immuta
 title: Routing Information
 description: "Reference for routing phases and route fields exposed in `onBuildComplete`."
 url: "https://nextjs.org/docs/app/api-reference/adapters/routing-information"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Routing Information
@@ -66987,7 +67003,7 @@ Each route entry can include:
 title: Use Cases
 description: Common patterns and examples for deployment adapter implementations.
 url: "https://nextjs.org/docs/app/api-reference/adapters/use-cases"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Use Cases
@@ -67006,7 +67022,7 @@ Common use cases for adapters include:
 title: Supporting Immutable Static Assets
 description: Support immutable static assets in an adapter
 url: "https://nextjs.org/docs/app/api-reference/adapters/immutable-static-assets"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Supporting Immutable Static Assets
@@ -67072,7 +67088,7 @@ const adapter = {
 title: Edge Runtime
 description: API Reference for the Edge Runtime.
 url: "https://nextjs.org/docs/app/api-reference/edge"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Edge Runtime
@@ -67253,7 +67269,7 @@ Be warned that if these statements are executed on the Edge, *they will throw an
 title: Turbopack
 description: Turbopack is an incremental bundler optimized for JavaScript and TypeScript, written in Rust, and built into Next.js.
 url: "https://nextjs.org/docs/app/api-reference/turbopack"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Turbopack
@@ -67714,7 +67730,7 @@ Turbopack is a **Rust-based**, **incremental** bundler designed to make local de
 title: Glossary
 description: A glossary of common terms used in Next.js.
 url: "https://nextjs.org/docs/app/glossary"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Glossary
@@ -68016,7 +68032,7 @@ After a new version of your application is deployed, clients that are still acti
 title: Getting Started
 description: Learn how to create full-stack web applications with Next.js with the Pages Router.
 url: "https://nextjs.org/docs/pages/getting-started"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -68035,7 +68051,7 @@ router: Pages Router
 title: Installation
 description: "How to create a new Next.js application with `create-next-app`. Set up TypeScript, ESLint,and configure your `next.config.js` file."
 url: "https://nextjs.org/docs/pages/getting-started/installation"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -68370,7 +68386,7 @@ See [Upgrading](/docs/app/getting-started/upgrading) for version guides and manu
 title: Project Structure
 description: Learn about the folder and file conventions in a Next.js project, and how to organize your project.
 url: "https://nextjs.org/docs/pages/getting-started/project-structure"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -68453,7 +68469,7 @@ Top-level files are used to configure your application, manage dependencies, run
 title: Images
 description: "Optimize your images with the built-in `next/image` component."
 url: "https://nextjs.org/docs/pages/getting-started/images"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -68691,7 +68707,7 @@ See the API Reference for the full feature set of Next.js Image.
 title: Fonts
 description: Learn how to use fonts in Next.js
 url: "https://nextjs.org/docs/pages/getting-started/fonts"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -68889,7 +68905,7 @@ See the API Reference for the full feature set of Next.js Font
 title: CSS
 description: Learn about the different ways to add CSS to your application, including CSS Modules, Global CSS, Tailwind CSS, and more.
 url: "https://nextjs.org/docs/pages/getting-started/css"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -69141,7 +69157,7 @@ Learn more about the alternatives ways you can use CSS in your application.
 title: Deploying
 description: Learn how to deploy your Next.js application.
 url: "https://nextjs.org/docs/pages/getting-started/deploying"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -69249,7 +69265,7 @@ For details on which Next.js features require specific platform capabilities, se
 title: Guides
 description: Learn how to implement common UI patterns and use cases using Next.js
 url: "https://nextjs.org/docs/pages/guides"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -69294,7 +69310,7 @@ router: Pages Router
 title: Analytics
 description: Measure and track page performance using Next.js
 url: "https://nextjs.org/docs/pages/guides/analytics"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -69445,7 +69461,7 @@ useReportWebVitals((metric) => {
 title: Authentication
 description: Learn how to implement authentication in Next.js, covering best practices, securing routes, authorization techniques, and session management.
 url: "https://nextjs.org/docs/pages/guides/authentication"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -69929,7 +69945,7 @@ To continue learning about authentication and security, check out the following 
 title: Babel
 description: Extend the babel preset added by Next.js with your own configs.
 url: "https://nextjs.org/docs/pages/guides/babel"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -70001,7 +70017,7 @@ To learn more about the available options for each config, visit babel's [docume
 title: CI Build Caching
 description: Learn how to configure CI to cache Next.js builds
 url: "https://nextjs.org/docs/pages/guides/ci-build-caching"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -70176,7 +70192,7 @@ stage("Build") {
 title: Content Security Policy
 description: Learn how to set a Content Security Policy (CSP) for your Next.js application.
 url: "https://nextjs.org/docs/pages/guides/content-security-policy"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -70728,7 +70744,7 @@ const cspHeader = `
 title: CSS-in-JS
 description: Use CSS-in-JS libraries with Next.js
 url: "https://nextjs.org/docs/pages/guides/css-in-js"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -70806,7 +70822,7 @@ Yes, if you disable JavaScript the CSS will still be loaded in the production bu
 title: Custom Server
 description: Start a Next.js app programmatically using a custom server.
 url: "https://nextjs.org/docs/pages/guides/custom-server"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -70934,7 +70950,7 @@ module.exports = {
 title: Debugging
 description: Learn how to debug your Next.js application with VS Code or Chrome DevTools.
 url: "https://nextjs.org/docs/pages/guides/debugging"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -71117,7 +71133,7 @@ To learn more about how to use a JavaScript debugger, take a look at the followi
 title: Draft Mode
 description: Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with Pages Router.
 url: "https://nextjs.org/docs/pages/guides/draft-mode"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -71305,7 +71321,7 @@ This ensures that the bypass cookie can’t be guessed.
 title: Environment Variables
 description: Learn to add and access environment variables in your Next.js application.
 url: "https://nextjs.org/docs/pages/guides/environment-variables"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -71522,7 +71538,7 @@ For example, if `NODE_ENV` is `development` and you define a variable in both `.
 title: Forms
 description: Learn how to handle form submissions and data mutations with Next.js.
 url: "https://nextjs.org/docs/pages/guides/forms"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -71864,7 +71880,7 @@ export default async function handler(req, res) {
 title: ISR
 description: Learn how to create or update static pages at runtime with Incremental Static Regeneration.
 url: "https://nextjs.org/docs/pages/guides/incremental-static-regeneration"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -72179,7 +72195,7 @@ Learn how to [configure ISR](/docs/app/guides/self-hosting#caching-and-isr) when
 title: Instrumentation
 description: Learn how to use instrumentation to run code at server startup in your Next.js app
 url: "https://nextjs.org/docs/pages/guides/instrumentation"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -72277,7 +72293,7 @@ export async function register() {
 title: Internationalization
 description: Next.js has built-in support for internationalized routing and language detection. Learn more here.
 url: "https://nextjs.org/docs/pages/guides/internationalization"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -72638,7 +72654,7 @@ export async function getStaticProps({ locale }) {
 title: Lazy Loading
 description: "Lazy load imported libraries and React Components to improve your application's overall loading performance."
 url: "https://nextjs.org/docs/pages/guides/lazy-loading"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -72736,7 +72752,7 @@ export default function Page() {
 title: MDX
 description: Learn how to configure MDX to write JSX in your markdown files.
 url: "https://nextjs.org/docs/pages/guides/mdx"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -73322,7 +73338,7 @@ module.exports = withMDX({
 title: Migrating
 description: Learn how to migrate from popular frameworks to Next.js
 url: "https://nextjs.org/docs/pages/guides/migrating"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -73338,7 +73354,7 @@ router: Pages Router
 title: App Router
 description: Learn how to upgrade your existing Next.js application from the Pages Router to the App Router.
 url: "https://nextjs.org/docs/pages/guides/migrating/app-router-migration"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -74321,7 +74337,7 @@ Next.js provides Codemod transformations to help upgrade your codebase when a fe
 title: Create React App
 description: Learn how to migrate your existing React application from Create React App to Next.js.
 url: "https://nextjs.org/docs/pages/guides/migrating/from-create-react-app"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -74944,7 +74960,7 @@ If everything worked, you now have a functioning Next.js application running as 
 title: Vite
 description: Learn how to migrate your existing React application from Vite to Next.js.
 url: "https://nextjs.org/docs/pages/guides/migrating/from-vite"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -75562,7 +75578,7 @@ do next:
 title: Multi-Zones
 description: Learn how to build micro-frontends using Next.js Multi-Zones to deploy multiple Next.js apps under a single domain.
 url: "https://nextjs.org/docs/pages/guides/multi-zones"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -75682,7 +75698,7 @@ Since the pages in different zones may be released at different times, feature f
 title: OpenTelemetry
 description: Learn how to instrument your Next.js app with OpenTelemetry.
 url: "https://nextjs.org/docs/pages/guides/open-telemetry"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -76065,7 +76081,7 @@ This zero-length span represents the time when the first byte has been sent in t
 title: Package Bundling
 description: "Learn how to optimize your application's server and client bundles."
 url: "https://nextjs.org/docs/pages/guides/package-bundling"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -76348,7 +76364,7 @@ Learn more about optimizing your application for production.
 title: PostCSS
 description: Extend the PostCSS config and plugins added by Next.js with your own.
 url: "https://nextjs.org/docs/pages/guides/post-css"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -76517,7 +76533,7 @@ Do **not use `require()`** to import the PostCSS Plugins. Plugins must be provid
 title: Preview Mode
 description: Next.js has the preview mode for statically generated pages. You can learn how it works here.
 url: "https://nextjs.org/docs/pages/guides/preview-mode"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -76776,7 +76792,7 @@ This ensures that the bypass cookie can’t be guessed.
 title: Production
 description: Recommendations to ensure the best performance and user experience before taking your Next.js application to production.
 url: "https://nextjs.org/docs/pages/guides/production-checklist"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -76856,7 +76872,7 @@ Additionally, the following tools can help you understand the impact of adding n
 title: Redirecting
 description: Learn the different ways to handle redirects in Next.js.
 url: "https://nextjs.org/docs/pages/guides/redirecting"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -77276,7 +77292,7 @@ export default function handler(req, res) {
 title: Sass
 description: Learn how to use Sass in your Next.js application.
 url: "https://nextjs.org/docs/pages/guides/sass"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -77398,7 +77414,7 @@ export default function MyApp({ Component, pageProps }) {
 title: Scripts
 description: Optimize 3rd party scripts with the built-in Script component.
 url: "https://nextjs.org/docs/pages/guides/scripts"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -77661,7 +77677,7 @@ Learn more about the next/script API.
 title: Self-Hosting
 description: Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports).
 url: "https://nextjs.org/docs/pages/guides/self-hosting"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -77895,7 +77911,7 @@ if (process.env.NEXT_MANUAL_SIG_HANDLE) {
 title: Static Exports
 description: Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
 url: "https://nextjs.org/docs/pages/guides/static-exports"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -78085,7 +78101,7 @@ To deploy to GitHub Pages, use our [template](https://github.com/nextjs/deploy-g
 title: Tailwind CSS
 description: Style your Next.js Application using Tailwind CSS.
 url: "https://nextjs.org/docs/pages/guides/tailwind-v3-css"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -78181,7 +78197,7 @@ As of Next.js 13.1, Tailwind CSS and PostCSS are supported with [Turbopack](http
 title: Testing
 description: Learn how to set up Next.js with three commonly used testing tools — Cypress, Playwright, Vitest, and Jest.
 url: "https://nextjs.org/docs/pages/guides/testing"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -78210,7 +78226,7 @@ See the guides below to learn how to set up Next.js with these commonly used tes
 title: Cypress
 description: Learn how to set up Next.js with Cypress for End-to-End (E2E) and Component Testing.
 url: "https://nextjs.org/docs/pages/guides/testing/cypress"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -78451,7 +78467,7 @@ You can learn more about Cypress and Continuous Integration from these resources
 title: Jest
 description: Learn how to set up Next.js with Jest for Unit Testing.
 url: "https://nextjs.org/docs/pages/guides/testing/jest"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -78817,7 +78833,7 @@ For further reading, you may find these resources helpful:
 title: Playwright
 description: Learn how to set up Next.js with Playwright for End-to-End (E2E) and Integration testing.
 url: "https://nextjs.org/docs/pages/guides/testing/playwright"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -78939,7 +78955,7 @@ You can learn more about Playwright and Continuous Integration from these resour
 title: Vitest
 description: Learn how to set up Next.js with Vitest and React Testing Library - two popular unit testing libraries.
 url: "https://nextjs.org/docs/pages/guides/testing/vitest"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -79130,7 +79146,7 @@ You may find these resources helpful:
 title: Third Party Libraries
 description: "Optimize the performance of third-party libraries in your application with the `@next/third-parties` package."
 url: "https://nextjs.org/docs/pages/guides/third-party-libraries"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -79406,7 +79422,7 @@ export default function Page() {
 title: Upgrading
 description: Learn how to upgrade to the latest versions of Next.js.
 url: "https://nextjs.org/docs/pages/guides/upgrading"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -79426,7 +79442,7 @@ Learn how to upgrade to the latest versions of Next.js following the versions-sp
 title: Codemods
 description: Use codemods to upgrade your Next.js codebase when new features are released.
 url: "https://nextjs.org/docs/pages/guides/upgrading/codemods"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80193,7 +80209,7 @@ This is one case. All the cases that are transformed (and tested) can be found i
 title: Version 10
 description: Upgrade your Next.js Application from Version 9 to Version 10.
 url: "https://nextjs.org/docs/pages/guides/upgrading/version-10"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80226,7 +80242,7 @@ bun add next@10
 title: Version 11
 description: Upgrade your Next.js Application from Version 10 to Version 11.
 url: "https://nextjs.org/docs/pages/guides/upgrading/version-11"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80382,7 +80398,7 @@ yarn add react@latest react-dom@latest
 title: Version 12
 description: Upgrade your Next.js Application from Version 11 to Version 12.
 url: "https://nextjs.org/docs/pages/guides/upgrading/version-12"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80543,7 +80559,7 @@ If you are currently using the `target` option set to `serverless`, please read 
 title: Version 13
 description: Upgrade your Next.js Application from Version 12 to 13.
 url: "https://nextjs.org/docs/pages/guides/upgrading/version-13"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80637,7 +80653,7 @@ See [Optimizing Fonts](/docs/pages/api-reference/components/font) to learn how t
 title: Version 14
 description: Upgrade your Next.js Application from Version 13 to 14.
 url: "https://nextjs.org/docs/pages/guides/upgrading/version-14"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80678,7 +80694,7 @@ bun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14
 title: Version 9
 description: Upgrade your Next.js Application from Version 8 to Version 9.
 url: "https://nextjs.org/docs/pages/guides/upgrading/version-9"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80911,7 +80927,7 @@ export default DynamicBundle
 title: Building Your Application
 description: Learn how to use Next.js features to build your application.
 url: "https://nextjs.org/docs/pages/building-your-application"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80928,7 +80944,7 @@ router: Pages Router
 title: Routing
 description: Learn the fundamentals of routing for front-end applications with the Pages Router.
 url: "https://nextjs.org/docs/pages/building-your-application/routing"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -80948,7 +80964,7 @@ The Pages Router has a file-system based router built on concepts of pages. When
 title: Pages and Layouts
 description: Create your first page and shared layout with the Pages Router.
 url: "https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -81168,7 +81184,7 @@ export default function Layout({ children }) {
 title: Dynamic Routes
 description: Dynamic Routes are pages that allow you to add custom params to your URLs. Start creating Dynamic Routes and learn more here.
 url: "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -81241,7 +81257,7 @@ For more information on what to do next, we recommend the following sections
 title: Linking and Navigating
 description: "Learn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook."
 url: "https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -81432,7 +81448,7 @@ When shallow routing is used with proxy it will not ensure the new page matches 
 title: Custom App
 description: Control page initialization and add a layout that persists for all pages by overriding the default App component used by Next.js.
 url: "https://nextjs.org/docs/pages/building-your-application/routing/custom-app"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -81528,7 +81544,7 @@ MyApp.getInitialProps = async (context) => {
 title: Custom Document
 description: Extend the default document markup added by Next.js.
 url: "https://nextjs.org/docs/pages/building-your-application/routing/custom-document"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -81682,7 +81698,7 @@ export default MyDocument
 title: API Routes
 description: Next.js supports API Routes, which allow you to build your API without leaving your Next.js app. Learn how it works here.
 url: "https://nextjs.org/docs/pages/building-your-application/routing/api-routes"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82148,7 +82164,7 @@ export default async function handler(req, res) {
 title: Custom Errors
 description: Override and extend the built-in Error page to handle custom errors.
 url: "https://nextjs.org/docs/pages/building-your-application/routing/custom-error"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82255,7 +82271,7 @@ If you have a custom `Error` component be sure to import that one instead. `next
 title: Rendering
 description: Learn the fundamentals of rendering in React and Next.js.
 url: "https://nextjs.org/docs/pages/building-your-application/rendering"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82287,7 +82303,7 @@ You can also use client-side data fetching along with Static Generation or Serve
 title: Server-side Rendering (SSR)
 description: Use Server-side Rendering to render pages on each request.
 url: "https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82326,7 +82342,7 @@ To learn more about how `getServerSideProps` works, check out our [Data Fetching
 title: Static Site Generation (SSG)
 description: Use Static Site Generation (SSG) to prerender pages at build time.
 url: "https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82516,7 +82532,7 @@ In cases like this, you can do one of the following:
 title: Automatic Static Optimization
 description: Next.js automatically optimizes your app to be static HTML whenever possible. Learn how it works here.
 url: "https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82571,7 +82587,7 @@ And if you add `getServerSideProps` to the page, it will then be JavaScript, lik
 title: Client-side Rendering (CSR)
 description: Learn how to implement client-side rendering in the Pages Router.
 url: "https://nextjs.org/docs/pages/building-your-application/rendering/client-side-rendering"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82653,7 +82669,7 @@ Learn about the alternative rendering methods in Next.js.
 title: Data Fetching
 description: Next.js allows you to fetch data in multiple ways, with prerendering, server-side rendering or static-site generation, and incremental static regeneration. Learn how to manage your application data in Next.js.
 url: "https://nextjs.org/docs/pages/building-your-application/data-fetching"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82701,7 +82717,7 @@ Data fetching in Next.js allows you to render your content in different ways, de
 title: getStaticProps
 description: "Fetch data and generate static pages with `getStaticProps`. Learn more about this API for data fetching in Next.js."
 url: "https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -82910,7 +82926,7 @@ You can temporarily bypass static generation and render the page at **request ti
 title: getStaticPaths
 description: "Fetch data and generate static pages with `getStaticPaths`. Learn more about this API for data fetching in Next.js."
 url: "https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83058,7 +83074,7 @@ export async function getStaticPaths() {
 title: getServerSideProps
 description: "Fetch data on each request with `getServerSideProps`."
 url: "https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83173,7 +83189,7 @@ However, before reaching for `cache-control`, we recommend seeing if [`getStatic
 title: Client-side Fetching
 description: Learn about client-side data fetching, and how to use SWR, a data fetching React Hook library that handles caching, revalidation, focus tracking, refetching on interval and more.
 url: "https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83250,7 +83266,7 @@ function Profile() {
 title: Configuring
 description: Learn how to configure your Next.js application.
 url: "https://nextjs.org/docs/pages/building-your-application/configuring"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83264,7 +83280,7 @@ Next.js allows you to customize your project to meet specific requirements. This
 title: Error Handling
 description: Handle errors in your Next.js app.
 url: "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83371,7 +83387,7 @@ To monitor client errors, use a service like [Sentry](https://github.com/vercel/
 title: API Reference
 description: Next.js API Reference for the Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83392,7 +83408,7 @@ router: Pages Router
 title: Components
 description: API Reference for Next.js built-in components in the Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference/components"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -83412,7 +83428,7 @@ router: Pages Router
 title: Font
 description: API Reference for the Font Module
 url: "https://nextjs.org/docs/pages/api-reference/components/font"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -84079,7 +84095,7 @@ When a font function is called on a page of your site, it is not globally availa
 title: Form
 description: "Learn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation."
 url: "https://nextjs.org/docs/pages/api-reference/components/form"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -84156,7 +84172,7 @@ When `action` is a string, the `<Form>` component supports the following props:
 title: Head
 description: "Add custom elements to the `head` of your page with the built-in Head component."
 url: "https://nextjs.org/docs/pages/api-reference/components/head"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -84230,7 +84246,7 @@ You **cannot** use `<Head>` to set attributes on `<html>` or `<body>` tags. This
 title: Image
 description: "Optimize Images in your Next.js Application using the built-in `next/image` Component."
 url: "https://nextjs.org/docs/pages/api-reference/components/image"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -85536,7 +85552,7 @@ export default function Home() {
 title: Image (Legacy)
 description: Backwards compatible Image Optimization with the Legacy Image component.
 url: "https://nextjs.org/docs/pages/api-reference/components/image-legacy"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -86203,7 +86219,7 @@ Auto-detection for animated files is best-effort and supports GIF, APNG, and Web
 title: Link
 description: "API reference for the `<Link>` component."
 url: "https://nextjs.org/docs/pages/api-reference/components/link"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -86848,7 +86864,7 @@ export default function Home() {
 title: Script
 description: "Optimize third-party scripts in your Next.js application using the built-in `next/script` Component."
 url: "https://nextjs.org/docs/pages/api-reference/components/script"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -87155,7 +87171,7 @@ export default function Page() {
 title: File-system conventions
 description: API Reference for Next.js file-system conventions.
 url: "https://nextjs.org/docs/pages/api-reference/file-conventions"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -87172,7 +87188,7 @@ router: Pages Router
 title: instrumentation.js
 description: API reference for the instrumentation.js file.
 url: "https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -87330,7 +87346,7 @@ export function onRequestError() {
 title: Proxy
 description: Learn how to use Proxy to run code before a request is completed.
 url: "https://nextjs.org/docs/pages/api-reference/file-conventions/proxy"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88128,7 +88144,7 @@ The codemod will rename the file and the function name from `middleware` to `pro
 title: public
 description: Next.js allows you to serve static files, like images, in the public directory. You can learn how it works here.
 url: "https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88167,7 +88183,7 @@ The folder is also useful for `robots.txt`, `favicon.ico`, Google Site Verificat
 title: src Directory
 description: "Save pages under the `src` folder as an alternative to the root `pages` directory."
 url: "https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88199,7 +88215,7 @@ To use the `src` folder, move the `app` Router folder or `pages` Router folder t
 title: Functions
 description: API Reference for Functions and Hooks in Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference/functions"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88224,7 +88240,7 @@ router: Pages Router
 title: catchError
 description: API Reference for the catchError function.
 url: "https://nextjs.org/docs/pages/api-reference/functions/catchError"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88373,7 +88389,7 @@ export default catchError(ErrorFallback)
 title: getInitialProps
 description: Fetch dynamic data on the server for your React component with getInitialProps.
 url: "https://nextjs.org/docs/pages/api-reference/functions/get-initial-props"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88438,7 +88454,7 @@ export default function Page({ stars }) {
 title: getServerSideProps
 description: "API reference for `getServerSideProps`. Learn how to fetch data on each request with Next.js."
 url: "https://nextjs.org/docs/pages/api-reference/functions/get-server-side-props"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88585,7 +88601,7 @@ export async function getServerSideProps(context) {
 title: getStaticPaths
 description: "API reference for `getStaticPaths`. Learn how to fetch data and generate static pages with `getStaticPaths`."
 url: "https://nextjs.org/docs/pages/api-reference/functions/get-static-paths"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -88851,7 +88867,7 @@ export default Post
 title: getStaticProps
 description: "API reference for `getStaticProps`. Learn how to use `getStaticProps` to generate static pages with Next.js."
 url: "https://nextjs.org/docs/pages/api-reference/functions/get-static-props"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -89087,7 +89103,7 @@ export default Blog
 title: NextRequest
 description: API Reference for NextRequest.
 url: "https://nextjs.org/docs/pages/api-reference/functions/next-request"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -89198,7 +89214,7 @@ The following options are available:
 title: NextResponse
 description: API Reference for NextResponse.
 url: "https://nextjs.org/docs/pages/api-reference/functions/next-response"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -89406,7 +89422,7 @@ function proxy(request: NextRequest) {
 title: useParams
 description: API Reference for the useParams hook in the Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference/functions/use-params"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -89655,7 +89671,7 @@ export function Breadcrumb() {
 title: useReportWebVitals
 description: useReportWebVitals
 url: "https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -89811,7 +89827,7 @@ useReportWebVitals(postWebVitals)
 title: useRouter
 description: Learn more about the API of the Next.js Router, and access the router instance in your page with the useRouter hook.
 url: "https://nextjs.org/docs/pages/api-reference/functions/use-router"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -90415,7 +90431,7 @@ export default withRouter(MyComponent)
 title: useSearchParams
 description: API Reference for the useSearchParams hook in the Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference/functions/use-search-params"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -90740,7 +90756,7 @@ export function SearchBar() {
 title: userAgent
 description: The userAgent helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request.
 url: "https://nextjs.org/docs/pages/api-reference/functions/userAgent"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -90824,7 +90840,7 @@ An object containing information about the CPU architecture.
 title: Configuration
 description: Learn how to configure your Next.js application.
 url: "https://nextjs.org/docs/pages/api-reference/config"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -90840,7 +90856,7 @@ router: Pages Router
 title: next.config.js Options
 description: Learn about the options available in next.config.js for the Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91030,7 +91046,7 @@ expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
 title: adapterPath
 description: Configure a custom adapter for Next.js to hook into the build process.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91116,7 +91132,7 @@ See [Use Cases](/docs/app/api-reference/adapters/use-cases).
 title: allowedDevOrigins
 description: "Use `allowedDevOrigins` to configure additional origins that can request the dev server."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/allowedDevOrigins"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91139,7 +91155,7 @@ module.exports = {
 title: assetPrefix
 description: Learn how to use the assetPrefix config option to configure your CDN.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/assetPrefix"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91199,7 +91215,7 @@ While `assetPrefix` covers requests to `_next/static`, it does not influence the
 title: basePath
 description: "Use `basePath` to deploy a Next.js application under a sub-path of a domain."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/basePath"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91273,7 +91289,7 @@ export default Home
 title: bundlePagesRouterDependencies
 description: Enable automatic dependency bundling for Pages Router
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91303,7 +91319,7 @@ Explicitly opt-out certain packages from being bundled using the [`serverExterna
 title: compress
 description: Next.js provides gzip compression to compress rendered content and static files, it only works with the server target. Learn more about it here.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/compress"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91330,7 +91346,7 @@ We **do not recommend disabling compression** unless you have compression config
 title: crossOrigin
 description: "Use the `crossOrigin` option to add a crossOrigin tag on the `script` tags generated by `next/script` and `next/head`."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/crossOrigin"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91354,7 +91370,7 @@ module.exports = {
 title: deploymentId
 description: Configure a deployment identifier used for version skew protection and cache busting.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/deploymentId"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91431,7 +91447,7 @@ A per-deployment value only avoids skew if requests are also routed by deploymen
 title: devIndicators
 description: "Optimized pages include an indicator to let you know if it's being statically optimized. You can opt-out of it here."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/devIndicators"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91495,7 +91511,7 @@ When exporting [`getServerSideProps`](/docs/pages/building-your-application/data
 title: distDir
 description: Set a custom build directory to use instead of the default .next directory.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/distDir"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91520,7 +91536,7 @@ Now if you run `next build` Next.js will use `build` instead of the default `.ne
 title: env
 description: Learn to add and access environment variables in your Next.js application at build time.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/env"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91571,7 +91587,7 @@ return <h1>The value of customKey is: {'my-value'}</h1>
 title: exportPathMap
 description: "Customize the pages that will be exported as HTML files when using `next export`."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91654,7 +91670,7 @@ next export -o outdir
 title: generateBuildId
 description: Configure the build id, which is used to identify the current build in which your application is being served.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91680,7 +91696,7 @@ module.exports = {
 title: generateEtags
 description: Next.js will generate etags for every page by default. Learn more about how to disable etag generation here.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateEtags"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -91701,7 +91717,7 @@ module.exports = {
 title: headers
 description: Add custom HTTP headers to your Next.js app.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92278,7 +92294,7 @@ Learn more about adding a [Content Security Policy](/docs/app/guides/content-sec
 title: httpAgentOptions
 description: Next.js will automatically use HTTP Keep-Alive by default. Learn more about how to disable HTTP Keep-Alive here.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/httpAgentOptions"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92301,7 +92317,7 @@ module.exports = {
 title: images
 description: Custom configuration for the next/image loader
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92555,7 +92571,7 @@ export default function aioLoader({ src, width, quality }) {
 title: logging
 description: Configure logging behavior in the terminal when running Next.js in development mode.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/logging"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92669,7 +92685,7 @@ module.exports = {
 title: onDemandEntries
 description: Configure how Next.js will dispose and keep in memory pages created in development.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92695,7 +92711,7 @@ module.exports = {
 title: optimizePackageImports
 description: API Reference for optimizePackageImports Next.js Config Option
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/optimizePackageImports"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92750,7 +92766,7 @@ The following libraries are optimized by default:
 title: output
 description: Next.js automatically traces which files are needed by each page to allow for easy deployment of your application. Learn how it works here.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/output"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92901,7 +92917,7 @@ module.exports = {
 title: pageExtensions
 description: Extend the default page extensions used by Next.js when resolving pages in the Pages Router.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92942,7 +92958,7 @@ Then, rename your pages to have a file extension that includes `.page` (e.g. ren
 title: poweredByHeader
 description: "Next.js will add the `x-powered-by` header by default. Learn to opt-out of it here."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/poweredByHeader"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92961,7 +92977,7 @@ module.exports = {
 title: productionBrowserSourceMaps
 description: Enables browser source map generation during the production build.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -92987,7 +93003,7 @@ When the `productionBrowserSourceMaps` option is enabled, the source maps will b
 title: experimental.proxyClientMaxBodySize
 description: Configure the maximum request body size when using proxy.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -93113,7 +93129,7 @@ export async function POST(request: NextRequest) {
 title: reactStrictMode
 description: The complete Next.js runtime is now Strict Mode-compliant, learn how to opt-in
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -93140,7 +93156,7 @@ If you or your team are not ready to use Strict Mode in your entire application,
 title: redirects
 description: Add redirects to your Next.js app.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -93464,7 +93480,7 @@ In some rare cases, you might need to assign a custom status code for older HTTP
 title: rewrites
 description: Add rewrites to your Next.js app.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -93917,7 +93933,7 @@ module.exports = {
 title: serverExternalPackages
 description: "Opt-out specific dependencies from the dependency bundling enabled by `bundlePagesRouterDependencies`."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94023,7 +94039,7 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 title: trailingSlash
 description: Configure Next.js pages to resolve with or without a trailing slash.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94061,7 +94077,7 @@ When used with [`output: "export"`](/docs/app/guides/static-exports) configurati
 title: transpilePackages
 description: "Automatically transpile and bundle dependencies from local packages (like monorepos) or from external dependencies (`node_modules`)."
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/transpilePackages"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94101,7 +94117,7 @@ Turbopack transpiles workspace packages (npm, pnpm, or Yarn workspaces) in your 
 title: turbopack
 description: Configure Next.js with Turbopack-specific options
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopack"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94504,7 +94520,7 @@ The option automatically adds a polyfill for debug IDs to the JavaScript bundle 
 title: turbopackChunking
 description: Configure how Turbopack splits your client-side JavaScript into chunks in production.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbopackChunking"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94597,7 +94613,7 @@ chunks is worth it.
 title: typescript
 description: Next.js reports TypeScript errors by default. Learn to opt-out of this behavior here.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94662,7 +94678,7 @@ See the [TypeScript configuration](/docs/app/api-reference/config/typescript#cus
 title: urlImports
 description: Configure Next.js to allow importing modules from external URLs.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/urlImports"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94760,7 +94776,7 @@ console.log(logo.pathname)
 title: useLightningcss
 description: Enable experimental support for Lightning CSS.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/useLightningcss"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94894,7 +94910,7 @@ Composite groups (shorthand for enabling multiple features at once):
 title: useTypeScriptCli
 description: Run the project-local TypeScript CLI for type checking during production builds.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/useTypeScriptCli"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -94964,7 +94980,7 @@ Learn more about [using TypeScript 7 with Next.js](/docs/app/api-reference/confi
 title: webpack
 description: Learn how to customize the webpack config used by Next.js
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -95043,7 +95059,7 @@ Notice that `isServer` is `true` when `nextRuntime` is `"edge"` or `"nodejs"`, `
 title: webVitalsAttribution
 description: Learn how to use the webVitalsAttribution option to pinpoint the source of Web Vitals issues.
 url: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/webVitalsAttribution"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -95076,7 +95092,7 @@ Valid attribution values are all `web-vitals` metrics specified in the [`NextWeb
 title: TypeScript
 description: Next.js provides a TypeScript-first development experience for building your React application.
 url: "https://nextjs.org/docs/pages/api-reference/config/typescript"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -95557,7 +95573,7 @@ When you need to declare custom types, you might be tempted to modify `next-env.
 title: ESLint
 description: Next.js reports ESLint errors and warnings during builds by default. Learn how to opt-out of this behavior here.
 url: "https://nextjs.org/docs/pages/api-reference/config/eslint"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -95946,7 +95962,7 @@ When you spread `...nextConfig`, you're adding multiple config objects that incl
 title: CLI
 description: API Reference for the Next.js Command Line Interface (CLI) tools.
 url: "https://nextjs.org/docs/pages/api-reference/cli"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -95964,7 +95980,7 @@ Next.js comes with **two** Command Line Interface (CLI) tools:
 title: create-next-app CLI
 description: Create Next.js apps using one command with the create-next-app CLI.
 url: "https://nextjs.org/docs/pages/api-reference/cli/create-next-app"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -96130,7 +96146,7 @@ bun create next-app --example "https://github.com/.../" [your-project-name]
 title: next CLI
 description: Learn how to run and build your application with the Next.js CLI.
 url: "https://nextjs.org/docs/pages/api-reference/cli/next"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -96557,7 +96573,7 @@ The generated `.cpuprofile` files can be opened in Chrome DevTools (Performance 
 title: Adapters
 description: Build deployment adapters for Next.js platforms and infrastructure.
 url: "https://nextjs.org/docs/pages/api-reference/adapters"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -96580,7 +96596,7 @@ Use this section to build and validate deployment adapters that integrate with t
 title: Configuration
 description: "Configure `adapterPath` or `NEXT_ADAPTER_PATH` to use a custom deployment adapter."
 url: "https://nextjs.org/docs/pages/api-reference/adapters/configuration"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -96604,7 +96620,7 @@ Alternatively `NEXT_ADAPTER_PATH` can be set to enable zero-config usage in depl
 title: Creating an Adapter
 description: "Create an adapter module that implements the `NextAdapter` interface."
 url: "https://nextjs.org/docs/pages/api-reference/adapters/creating-an-adapter"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -96737,7 +96753,7 @@ module.exports = adapter
 title: API Reference
 description: "Reference for `modifyConfig` and `onBuildComplete` in the `NextAdapter` interface."
 url: "https://nextjs.org/docs/pages/api-reference/adapters/api-reference"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -96785,7 +96801,7 @@ Called after the build process completes with detailed information about routes 
 title: Testing Adapters
 description: Validate adapters with the Next.js compatibility test harness and custom lifecycle scripts.
 url: "https://nextjs.org/docs/pages/api-reference/adapters/testing-adapters"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97021,7 +97037,7 @@ The cleanup script can be used to clean up any resources created by the deploy s
 title: "Routing with @next/routing"
 description: "Use `@next/routing` to apply Next.js route matching behavior in adapters."
 url: "https://nextjs.org/docs/pages/api-reference/adapters/routing-with-next-routing"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97081,7 +97097,7 @@ For example, if `/blog/post-1?draft=1` matches `/blog/[slug]?slug=post-1`, `reso
 title: Runtime Integration
 description: Understand how build-time adapters and runtime cache interfaces work together.
 url: "https://nextjs.org/docs/pages/api-reference/adapters/runtime-integration"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97106,7 +97122,7 @@ When invoking entrypoints, adapters pass a `ctx` object to the Next.js handler. 
 title: Invoking Entrypoints
 description: Invoke Node.js and Edge build entrypoints with adapter runtime context.
 url: "https://nextjs.org/docs/pages/api-reference/adapters/invoking-entrypoints"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97208,7 +97224,7 @@ Relevant files in the Next.js core:
 title: Output Types
 description: Reference for all build output types exposed to adapters.
 url: "https://nextjs.org/docs/pages/api-reference/adapters/output-types"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97459,7 +97475,7 @@ See [Supporting immutable static assets](/docs/app/api-reference/adapters/immuta
 title: Routing Information
 description: "Reference for routing phases and route fields exposed in `onBuildComplete`."
 url: "https://nextjs.org/docs/pages/api-reference/adapters/routing-information"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97513,7 +97529,7 @@ Each route entry can include:
 title: Use Cases
 description: Common patterns and examples for deployment adapter implementations.
 url: "https://nextjs.org/docs/pages/api-reference/adapters/use-cases"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97533,7 +97549,7 @@ Common use cases for adapters include:
 title: Edge Runtime
 description: API Reference for the Edge Runtime.
 url: "https://nextjs.org/docs/pages/api-reference/edge"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -97715,7 +97731,7 @@ Be warned that if these statements are executed on the Edge, *they will throw an
 title: Turbopack
 description: Turbopack is an incremental bundler optimized for JavaScript and TypeScript, written in Rust, and built into Next.js.
 url: "https://nextjs.org/docs/pages/api-reference/turbopack"
-version: 16.3.3
+version: 16.3.4
 router: Pages Router
 ---
 
@@ -98177,7 +98193,7 @@ Turbopack is a **Rust-based**, **incremental** bundler designed to make local de
 title: Architecture
 description: How Next.js Works
 url: "https://nextjs.org/docs/architecture"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Architecture
@@ -98193,7 +98209,7 @@ Learn about the Next.js architecture and how it works under the hood.
 title: Accessibility
 description: The built-in accessibility features of Next.js.
 url: "https://nextjs.org/docs/architecture/accessibility"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Accessibility
@@ -98233,7 +98249,7 @@ For example, this plugin helps ensure you add alt text to `img` tags, use correc
 title: Fast Refresh
 description: Fast Refresh is a hot module reloading experience that gives you instantaneous feedback on edits made to your React components.
 url: "https://nextjs.org/docs/architecture/fast-refresh"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Fast Refresh
@@ -98348,7 +98364,7 @@ which we highly recommend enabling.
 title: Next.js Compiler
 description: Next.js Compiler, written in Rust, which transforms and minifies your Next.js application.
 url: "https://nextjs.org/docs/architecture/nextjs-compiler"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Next.js Compiler
@@ -98713,7 +98729,7 @@ If you're using a custom Babel setup, [please share your configuration](https://
 title: Supported Browsers
 description: Browser support and which JavaScript features are supported by Next.js.
 url: "https://nextjs.org/docs/architecture/supported-browsers"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Supported Browsers
@@ -98845,7 +98861,7 @@ You can customize babel configuration. [Learn more here](/docs/pages/guides/babe
 title: Community
 description: Get involved in the Next.js community.
 url: "https://nextjs.org/docs/community"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Community
@@ -98883,7 +98899,7 @@ We believe in creating an inclusive, welcoming community. As such, we ask all me
 title: Contribution Guide
 description: Learn how to contribute to Next.js Documentation
 url: "https://nextjs.org/docs/community/contribution-guide"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Contribution Guide
@@ -99324,7 +99340,7 @@ Thank you for contributing to the docs and being part of the Next.js community!
 title: Rspack
 description: "Use the `next-rspack` plugin to bundle your Next.js with Rspack."
 url: "https://nextjs.org/docs/community/rspack"
-version: 16.3.3
+version: 16.3.4
 ---
 
 # Rspack
