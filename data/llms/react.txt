@@ -144,6 +144,7 @@
 - [<progress>](https://react.dev/reference/react-dom/components/progress.md)
 - [<select>](https://react.dev/reference/react-dom/components/select.md)
 - [<textarea>](https://react.dev/reference/react-dom/components/textarea.md)
+- [<img>](https://react.dev/reference/react-dom/components/img.md)
 - [<link>](https://react.dev/reference/react-dom/components/link.md)
 - [<meta>](https://react.dev/reference/react-dom/components/meta.md)
 - [<script>](https://react.dev/reference/react-dom/components/script.md)
