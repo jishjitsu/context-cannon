@@ -202,6 +202,7 @@
 
 ### React DevTools
 - [React Performance tracks](https://react.dev/reference/dev-tools/react-performance-tracks.md)
+- [React DevTools for agents](https://react.dev/reference/dev-tools/react-devtools-cdt-mcp.md)
 
 ### Eslint Plugin React Hooks
 
